@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+
+  --color-purple-dark: #290241; /* Morado Oscuro - Fondo principal y elementos oscuros */
+  --color-purple-medium: #620097; /* Morado Medio - Encabezado y fondo de la sección de adaptación */
+  --color-purple-pf: #9600FA; /* Color principal de planet fitness */
+  --color-purple-light-bg: #DEBBFF; /* Morado Claro - Fondo de las cards */
+  --color-purple-light-text: #FAEEFF; /* Morado Claro - Textos de titulos */
+
+  --color-yellow-accent: #FFDC00; /* Amarillo de Acento - Etiquetas de zona y puntos de nivel seleccionados */
+  --color-light-gray-dots: #DEBBFF; /* Gris Claro - Puntos de nivel no seleccionados */
+  --color-white: #FFFFFF; /* Blanco - Textos principales */
+
+}
+
+@theme {
+  --color-theme-primary: var(--color-purple-pf, #9600FA);
+  --color-theme-secondary: var(--color-purple-dark, #290241);
+  --color-theme-tertiary: var(--color-purple-light-bg, #DEBBFF);
+  --color-theme-accent: var(--color-yellow-accent, #FFDC00);
+  --color-theme-text-light: var(--color-purple-light-text, #FAEEFF);
+  --color-theme-disable: var(--color-light-gray-dots, #DEBBFF);
+}
