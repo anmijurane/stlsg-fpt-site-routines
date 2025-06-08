@@ -1,8 +1,49 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
+
+import ExpandableCard from "@components/ExpandableCard.astro";
+import CardLevel from "@components/CardLevel.astro";
+import HeroLayout from "@layouts/HeroLayout.astro";
 ---
 
 <MainLayout title="Inicio">
-	<p>Pagina inicial</p>
-</MainLayout>
+	<HeroLayout>
+		<div class="flex justify-center items-center flex-col gap-8 py-12">
+			<ExpandableCard title="ADAPTACIÓN" id="adaptation" syncCollaps="routines">
+				<CardLevel numberLevel={1} frequencyDays={4} totalExercise={12} />
+				<CardLevel numberLevel={2} frequencyDays={3} totalExercise={8} />
+				<CardLevel numberLevel={3} frequencyDays={1} totalExercise={10} />
+				<CardLevel numberLevel={4} frequencyDays={5} totalExercise={7} />
+			</ExpandableCard>
 
+			<ExpandableCard title="SALUD" id="health" syncCollaps="routines">
+				<CardLevel numberLevel={1} frequencyDays={4} totalExercise={12} />
+				<CardLevel numberLevel={2} frequencyDays={3} totalExercise={8} />
+				<CardLevel numberLevel={3} frequencyDays={1} totalExercise={10} />
+				<CardLevel numberLevel={4} frequencyDays={5} totalExercise={7} />
+			</ExpandableCard>
+
+			<ExpandableCard
+				title="GANANCIA \n MUSCULAR"
+				id="muscle_gain"
+				syncCollaps="routines"
+			>
+				<CardLevel numberLevel={1} frequencyDays={4} totalExercise={12} />
+				<CardLevel numberLevel={2} frequencyDays={3} totalExercise={8} />
+				<CardLevel numberLevel={3} frequencyDays={1} totalExercise={10} />
+				<CardLevel numberLevel={4} frequencyDays={5} totalExercise={7} />
+			</ExpandableCard>
+
+			<ExpandableCard
+				title="QUEMA DE \n GRASA"
+				id="fat_burning"
+				syncCollaps="routines"
+			>
+				<CardLevel numberLevel={1} frequencyDays={4} totalExercise={12} />
+				<CardLevel numberLevel={2} frequencyDays={3} totalExercise={8} />
+				<CardLevel numberLevel={3} frequencyDays={1} totalExercise={10} />
+				<CardLevel numberLevel={4} frequencyDays={5} totalExercise={7} />
+			</ExpandableCard>
+		</div>
+	</HeroLayout>
+</MainLayout>
