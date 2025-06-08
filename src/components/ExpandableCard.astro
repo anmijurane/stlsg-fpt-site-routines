@@ -12,23 +12,23 @@ const { title, id, syncCollaps = false } = Astro.props;
 ---
 
 <div class="w-11/12">
-  <div
-    id={`card__${id}`}
-    class="bg-theme-secondary h-20 rounded-lg text-theme-text-light px-8 flex items-center scroll-mt-15"
+  <button
+    class="border-0 bg-transparent w-full text-start"
+    id={`chevron__${id}`}
+    data-sync={`btn__${syncCollaps}`}
   >
-    <div class="w-4/6 flex items-center justify-center h-full">
-      <p class="text-2xl w-full font-bold">{title}</p>
-    </div>
-    <div class="w-2/6 flex justify-end">
-      <button
-        class="border-0 bg-transparent"
-        id={`chevron__${id}`}
-        data-sync={`btn__${syncCollaps}`}
-      >
+    <div
+      id={`card__${id}`}
+      class="bg-theme-secondary h-20 rounded-lg text-theme-text-light px-8 flex items-center scroll-mt-15"
+    >
+      <div class="w-4/6 flex items-center justify-center h-full">
+        <p class="text-2xl w-full font-bold">{title}</p>
+      </div>
+      <div class="w-2/6 flex justify-end">
         <Chevron />
-      </button>
+      </div>
     </div>
-  </div>
+  </button>
   <div
     id={`content__${id}`}
     data-sync={`content__${syncCollaps}`}
@@ -44,25 +44,23 @@ const { title, id, syncCollaps = false } = Astro.props;
 
 <script define:vars={{ id }} is:inline type="module">
   const __init__ = () => {
-    let isActive = false;
     const card = document.getElementById(`card__${id}`);
     const button = document.getElementById(`chevron__${id}`);
     const content = document.getElementById(`content__${id}`);
     const chevronIcon = button.querySelector("svg");
-
+    
     if (!button || !chevronIcon || !content) return;
-
+    
     const attSyncBtn = button.dataset.sync;
     const attSyncContent = content.dataset.sync;
-
-    const btnsOtherSync = document.querySelectorAll(
-      `[data-sync=${attSyncBtn}] > svg`,
-    );
+    
+    const btnsOtherSync = document.querySelectorAll('svg.chevron');
     const contentOtherSync = document.querySelectorAll(
       `[data-sync=${attSyncContent}]`,
     );
 
     button.addEventListener("click", () => {
+      const isCurrentlyOpen = chevronIcon.classList.contains('rotate-180');
       attSyncBtn !== "false" &&
         btnsOtherSync.forEach((btn) => {
           btn.classList.remove("rotate-180");
@@ -73,11 +71,11 @@ const { title, id, syncCollaps = false } = Astro.props;
           cnt.style.maxHeight = "0px";
         });
 
-      isActive = !isActive;
-      chevronIcon?.classList.toggle("rotate-180", isActive);
-      content.style.maxHeight = isActive ? content.scrollHeight + "px" : "0px";
+      const isOpening = !isCurrentlyOpen;
+      chevronIcon?.classList.toggle("rotate-180", isOpening);
+      content.style.maxHeight = isOpening ? content.scrollHeight + "px" : "0px";
 
-      if (isActive) {
+      if (isOpening) {
         setTimeout(() => {
           card.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 450);
