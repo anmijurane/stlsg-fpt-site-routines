@@ -8,12 +8,13 @@ interface Props {
   numberLevel: number;
   totalExercise: number;
   frequencyDays: number;
+  to: string;
 }
 
-const { numberLevel, totalExercise, frequencyDays } = Astro.props;
+const { numberLevel, totalExercise, frequencyDays, to } = Astro.props;
 ---
 
-<div class="rounded-[20px] bg-white w-11/12 shadow-2xl">
+<a class="rounded-[20px] bg-white w-11/12 shadow-2xl" href={to}>
   <div
     class="rounded-t-[20px] bg-theme-primary flex justify-between items-center px-4 py-2"
   >
