@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+
+import heroImage from "@assets/header/hero.png";
+import logo from "@assets/logo.webp";
+import rutinas from "@assets/routines_text.svg";
+---
+
+<div class="w-full sm:w-10/12 md:w-6/12 lg:w-5/12 xl:w-1/2">
+  <div class="relative">
+    <Image
+      src={heroImage}
+      alt="image hero"
+      class="w-full sm:w-11/12 lg:w-11/12 xl:w-3/4 object-cover h-auto"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-theme-primary/100 via-theme-primary/50 to-theme-purple-medium/30"
+    >
+      <div
+        class="absolute inset-0 flex flex-col items-center justify-end text-white text-center pb-4 gap-5"
+      >
+        <Image src={logo} alt="logo plannet fitness" class="w-24 mb-2" />
+        <Image src={rutinas} alt="Rutinas" />
+      </div>
+    </div>
+  </div>
+  <slot> Content Slot </slot>
+</div>
