@@ -1,13 +1,15 @@
 ---
 import "@styles/global.css";
+import PreventConsoleProd from "src/utils/PreventConsoleProd.astro";
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+const buildDate = new Date().getTime();
 ---
 
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/ico" href="/favicon.ico" />
@@ -23,6 +25,9 @@ const { title } = Astro.props;
 		/>
 		<meta property="og:url" content="https://routines.planet-fitness.com.mx" />
 		<meta property="og:type" content="website" />
+		<meta name="theme-color" content="#9600FA">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta
 			name="keywords"
 			content="planet fitness, rutinas de ejercicio, entrenamiento personalizado, gimnasio, salud, fitness, ganar músculo, quemar grasa, rutinas por nivel, ejercicios en video, plataforma para gimnasios"
@@ -36,3 +41,14 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
+<PreventConsoleProd />
+
+<script define:vars={{ buildDate }}>
+	document.addEventListener('DOMContentLoaded', () => {
+		console.log(`c?d¿{${buildDate}}`);
+		console.log(
+      "%cDesarrollado y mantenido por: SITELSEG | A&D | FPT",
+      "color: blue; font-size: 20px;"
+    );
+	});
+</script>
