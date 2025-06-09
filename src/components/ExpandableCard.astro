@@ -13,13 +13,13 @@ const { title, id, syncCollaps = false } = Astro.props;
 
 <div class="w-11/12">
   <button
-    class="border-0 bg-transparent w-full text-start"
+    class="border-0 bg-transparent w-full text-start cursor-pointer"
     id={`chevron__${id}`}
     data-sync={`btn__${syncCollaps}`}
   >
     <div
       id={`card__${id}`}
-      class="bg-theme-secondary h-20 rounded-lg text-theme-text-light px-8 flex items-center scroll-mt-15"
+      class="bg-theme-secondary h-20 rounded-md data-open:rounded-b-none text-theme-text-light px-8 flex items-center scroll-mt-15"
     >
       <div class="w-4/6 flex items-center justify-center h-full">
         <p class="text-2xl w-full font-bold">{title}</p>
@@ -64,6 +64,7 @@ const { title, id, syncCollaps = false } = Astro.props;
       attSyncBtn !== "false" &&
         btnsOtherSync.forEach((btn) => {
           btn.classList.remove("rotate-180");
+          card.removeAttribute('data-open');
         });
 
       attSyncContent !== "false" &&
@@ -74,6 +75,7 @@ const { title, id, syncCollaps = false } = Astro.props;
       const isOpening = !isCurrentlyOpen;
       chevronIcon?.classList.toggle("rotate-180", isOpening);
       content.style.maxHeight = isOpening ? content.scrollHeight + "px" : "0px";
+      card.toggleAttribute('data-open', isOpening);
 
       if (isOpening) {
         setTimeout(() => {
