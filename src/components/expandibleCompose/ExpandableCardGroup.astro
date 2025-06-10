@@ -1,0 +1,92 @@
+---
+interface Props {
+  class: string;
+  name: string;
+}
+const { class: classList, name: id } = Astro.props;
+---
+
+<section class={classList} id={id}>
+  <slot />
+</section>
+
+<script define:vars={{ id }}>
+    document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById(id);
+    if (!container) {
+      console.warn(`Accordion container with id #${id} not found.`);
+      return;
+    }
+
+    const items = Array.from(container.querySelectorAll('div[data-collapsable-item]'));
+    if (items.length === 0) {
+      console.log('No collapsable items found in this group.');
+      return;
+    }
+
+    /**
+     * Close a element of acordeon
+     * @param {HTMLElement} item
+     */
+    const closeItem = (item) => {
+      const button = item.querySelector('button');
+      const content = item.querySelector('[data-content]');
+      const card = item.querySelector('[data-card]');
+      const chevronIcon = button?.querySelector('svg');
+
+      if (!content || !card || !chevronIcon) return;
+
+      item.setAttribute('data-open', 'false');
+      card.removeAttribute('data-open');
+      chevronIcon.classList.remove('rotate-180');
+      content.classList.remove('is-open');
+    };
+
+    /**
+     * Open a element of acorideon.
+     * @param {HTMLElement} item
+     */
+    const openItem = (item) => {
+      const button = item.querySelector('button');
+      const content = item.querySelector('[data-content]');
+      const card = item.querySelector('[data-card]');
+      const chevronIcon = button?.querySelector('svg');
+
+      if (!content || !card || !chevronIcon) return;
+
+      item.setAttribute('data-open', 'true');
+      card.setAttribute('data-open', 'true');
+      chevronIcon.classList.add('rotate-180');
+      content.classList.add('is-open');
+    };
+
+    items.forEach(item => {
+        closeItem(item);
+    });
+
+    items.forEach(item => {
+      const button = item.querySelector('button');
+      if (!button) return;
+
+      button.addEventListener('click', () => {
+        const isCurrentlyOpen = item.getAttribute('data-open') === 'true';
+
+        items.forEach(i => closeItem(i));
+
+        if (!isCurrentlyOpen) {
+          openItem(item);
+
+          const content = item.querySelector('[data-content]');
+          if (content) {
+            content.addEventListener('transitionend', () => {
+              item.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }, { once: true });
+          }
+        }
+      });
+    });
+  });
+</script>
