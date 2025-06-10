@@ -1,49 +1,41 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 
-import ExpandableCard from "@components/ExpandableCard.astro";
 import CardLevel from "@components/CardLevel.astro";
+import ExapandibleCardGroup from "@components/ExpandibleCompouse/ExpandableCardGroup.astro";
 import HeroLayout from "@layouts/HeroLayout.astro";
+import ExpandableCard from "@components/ExpandibleCompouse/ExpandableCard.astro";
 ---
 
 <MainLayout title="Inicio">
 	<HeroLayout>
-		<div class="flex justify-center items-center flex-col gap-8 py-12">
-			<ExpandableCard title="ADAPTACIÓN" id="adaptation" syncCollaps="routines">
+		<ExapandibleCardGroup name="levels" class="flex justify-center items-center flex-col gap-8 py-12">
+			<ExpandableCard title="ADAPTACIÓN" id="adaptation">
 				<CardLevel numberLevel={1} frequencyDays={4} totalExercise={12} to={`/adaptation/${1}`} />
 				<CardLevel numberLevel={2} frequencyDays={3} totalExercise={8} to={`/adaptation/${2}`} />
 				<CardLevel numberLevel={3} frequencyDays={1} totalExercise={10} to={`/adaptation/${3}`} />
 				<CardLevel numberLevel={4} frequencyDays={5} totalExercise={7} to={`/adaptation/${4}`} />
 			</ExpandableCard>
 
-			<ExpandableCard title="SALUD" id="health" syncCollaps="routines">
+			<ExpandableCard title="SALUD" id="health">
 				<CardLevel numberLevel={1} frequencyDays={4} totalExercise={12} to={`/health/${1}`} />
 				<CardLevel numberLevel={2} frequencyDays={3} totalExercise={8} to={`/health/${2}`} />
 				<CardLevel numberLevel={3} frequencyDays={1} totalExercise={10} to={`/health/${3}`} />
 				<CardLevel numberLevel={4} frequencyDays={5} totalExercise={7} to={`/health/${4}`} />
 			</ExpandableCard>
 
-			<ExpandableCard
-				title="GANANCIA \n MUSCULAR"
-				id="muscle-gain"
-				syncCollaps="routines"
-			>
+			<ExpandableCard title="GANANCIA \n MUSCULAR" id="muscle-gain">
 				<CardLevel numberLevel={1} frequencyDays={4} totalExercise={12} to={`/muscle-gain/${1}`} />
 				<CardLevel numberLevel={2} frequencyDays={3} totalExercise={8} to={`/muscle-gain/${2}`} />
 				<CardLevel numberLevel={3} frequencyDays={1} totalExercise={10} to={`/muscle-gain/${3}`} />
 				<CardLevel numberLevel={4} frequencyDays={5} totalExercise={7} to={`/muscle-gain/${4}`} />
 			</ExpandableCard>
 
-			<ExpandableCard
-				title="QUEMA DE \n GRASA"
-				id="fat-burning"
-				syncCollaps="routines"
-			>
+			<ExpandableCard title="QUEMA DE \n GRASA" id="fat-burning">
 				<CardLevel numberLevel={1} frequencyDays={4} totalExercise={12} to={`/fat-burning/${1}`} />
 				<CardLevel numberLevel={2} frequencyDays={3} totalExercise={8} to={`/fat-burning/${2}`} />
 				<CardLevel numberLevel={3} frequencyDays={1} totalExercise={10} to={`/fat-burning/${3}`} />
 				<CardLevel numberLevel={4} frequencyDays={5} totalExercise={7} to={`/fat-burning/${4}`} />
 			</ExpandableCard>
-		</div>
 	</HeroLayout>
 </MainLayout>
