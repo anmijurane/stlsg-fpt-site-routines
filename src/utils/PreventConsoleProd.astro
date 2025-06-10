@@ -4,9 +4,6 @@ const isProd = import.meta.env.PROD;
 
 {isProd && (
   <script is:inline>
-    let devtoolsOpen = false;
-    const threshold = 160;
-
     setInterval(() => {
 
       console.log(
@@ -28,18 +25,6 @@ const isProd = import.meta.env.PROD;
         "%cCierra esta consola si no sabes lo que estás haciendo.",
         "color: white; background: red; font-size: 18px; font-weight: bold; padding: 4px;"
       );
-
-      const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-      const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-
-      if (widthThreshold || heightThreshold) {
-        if (!devtoolsOpen) {
-          devtoolsOpen = true;
-          alert("⚠️ Las herramientas de desarrollo están abiertas. Por seguridad, por favor ciérralas.");
-        }
-      } else {
-        devtoolsOpen = false;
-      }
     }, 6000);
   </script>
 )}
