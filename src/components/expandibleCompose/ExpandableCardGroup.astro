@@ -1,4 +1,5 @@
 ---
+import expandibleURL from "@scripts/expandable.ts?url";
 interface Props {
   class: string;
   name: string;
@@ -7,20 +8,26 @@ const { class: classList, name: id } = Astro.props;
 ---
 
 <section class={classList} id={id}>
+  <meta data-id={id} />
   <slot />
 </section>
 
-<script define:vars={{ id }}>
-    document.addEventListener('DOMContentLoaded', () => {
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const id =
+      document.querySelector<HTMLMetaElement>("meta[data-id]")?.dataset.id;
+    if (!id) return;
     const container = document.getElementById(id);
     if (!container) {
       console.warn(`Accordion container with id #${id} not found.`);
       return;
     }
 
-    const items = Array.from(container.querySelectorAll('div[data-collapsable-item]'));
+    const items = Array.from<HTMLDivElement>(
+      container.querySelectorAll("div[data-collapsable-item]"),
+    );
     if (items.length === 0) {
-      console.log('No collapsable items found in this group.');
+      console.log("No collapsable items found in this group.");
       return;
     }
 
@@ -28,63 +35,69 @@ const { class: classList, name: id } = Astro.props;
      * Close a element of acordeon
      * @param {HTMLElement} item
      */
-    const closeItem = (item) => {
-      const button = item.querySelector('button');
-      const content = item.querySelector('[data-content]');
-      const card = item.querySelector('[data-card]');
-      const chevronIcon = button?.querySelector('svg');
+    const closeItem = (item: HTMLDivElement) => {
+      const button = item.querySelector("button");
+      const content = item.querySelector("[data-content]");
+      const card = item.querySelector("[data-card]");
+      const chevronIcon = button?.querySelector("svg");
 
       if (!content || !card || !chevronIcon) return;
 
-      item.setAttribute('data-open', 'false');
-      card.removeAttribute('data-open');
-      chevronIcon.classList.remove('rotate-180');
-      content.classList.remove('is-open');
+      item.setAttribute("data-open", "false");
+      card.removeAttribute("data-open");
+      chevronIcon.classList.remove("rotate-180");
+      content.classList.remove("is-open");
     };
 
     /**
      * Open a element of acorideon.
      * @param {HTMLElement} item
      */
-    const openItem = (item) => {
-      const button = item.querySelector('button');
-      const content = item.querySelector('[data-content]');
-      const card = item.querySelector('[data-card]');
-      const chevronIcon = button?.querySelector('svg');
+    const openItem = (item: HTMLDivElement) => {
+      const button = item.querySelector("button");
+      const content = item.querySelector("[data-content]");
+      const card = item.querySelector("[data-card]");
+      const chevronIcon = button?.querySelector("svg");
 
       if (!content || !card || !chevronIcon) return;
 
-      item.setAttribute('data-open', 'true');
-      card.setAttribute('data-open', 'true');
-      chevronIcon.classList.add('rotate-180');
-      content.classList.add('is-open');
+      item.setAttribute("data-open", "true");
+      card.setAttribute("data-open", "true");
+      chevronIcon.classList.add("rotate-180");
+      content.classList.add("is-open");
     };
 
-    items.forEach(item => {
-        closeItem(item);
-    });
-
-    items.forEach(item => {
-      const button = item.querySelector('button');
+    items.forEach((item) => {
+      const button = item.querySelector("button");
       if (!button) return;
 
-      button.addEventListener('click', () => {
-        const isCurrentlyOpen = item.getAttribute('data-open') === 'true';
+      button.addEventListener("click", () => {
+        const isCurrentlyOpen = item.getAttribute("data-open") === "true";
+        const currentOpenItem = container.querySelector('[data-open="true"]');
 
-        items.forEach(i => closeItem(i));
+        if (isCurrentlyOpen) {
+          closeItem(item);
+          return;
+        }
 
-        if (!isCurrentlyOpen) {
-          openItem(item);
+        if (currentOpenItem && currentOpenItem !== item) {
+          closeItem(currentOpenItem as HTMLDivElement);
+        }
 
-          const content = item.querySelector('[data-content]');
-          if (content) {
-            content.addEventListener('transitionend', () => {
+        openItem(item);
+
+        const content = item.querySelector("[data-content]");
+        if (content) {
+          content.addEventListener(
+            "transitionend",
+            () => {
               item.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+                behavior: "smooth",
+                block: "start",
               });
-            }, { once: true });
-          }
+            },
+            { once: true },
+          );
         }
       });
     });
