@@ -7,10 +7,14 @@ import HeroLayout from "@layouts/HeroLayout.astro";
 import ExpandableCard from "@components/expandibleCompose/ExpandableCard.astro";
 
 import { routines } from "@data/index";
+import Modal from "@components/ModalV2.astro";
 ---
 
 <MainLayout title="Inicio">
 	<HeroLayout>
+		<button onclick="document.dispatchEvent(new Event('open-dialog-not'))"
+			>Abrir Modal</button
+		>
 		<ExapandibleCardGroup
 			name="levels"
 			class="flex justify-center items-center flex-col gap-8 py-12"
@@ -107,5 +111,6 @@ import { routines } from "@data/index";
 				}
 			</ExpandableCard>
 		</ExapandibleCardGroup>
+		<Modal id="not" btnClose> Danos tu opción </Modal>
 	</HeroLayout>
 </MainLayout>
