@@ -19,7 +19,7 @@ const { title, id } = Astro.props;
       data-card
       class="bg-theme-secondary h-20 rounded-md data-open:rounded-b-none text-theme-text-light px-8 flex items-center scroll-mt-30"
     >
-      <div class="w-4/6 flex items-center justify-center h-full">
+      <div class="w-4/6 flex items-center justify-start h-full">
         <p class="text-2xl w-full font-bold">{title}</p>
       </div>
       <div class="w-2/6 flex justify-end">
@@ -29,7 +29,7 @@ const { title, id } = Astro.props;
   </button>
   <div
     id={`content__${id}`}
-    class="grid bg-theme-tertiary rounded-b-md transition-[grid-template-rows] duration-500 ease-in-out"
+    class="grid bg-theme-tertiary rounded-b-md"
     data-content
   >
     <div class="overflow-hidden">
@@ -45,6 +45,7 @@ const { title, id } = Astro.props;
 <style>
   [data-content] {
     grid-template-rows: 0fr;
+    transition: grid-template-rows 400ms cubic-bezier(0.25, 0.1, 0.25, 1); /* Transición suave */
   }
   [data-content].is-open {
     grid-template-rows: 1fr;
