@@ -1,18 +1,47 @@
 import { defineMiddleware } from "astro:middleware";
 import { locationsGym } from "./data/location_gym";
+const isProd = import.meta.env.PROD;
 
-export const onRequest = defineMiddleware( async (context, next) => {
-  const { url } = context;
+const ASSET_EXTENSIONS = [
+  '.js', '.css', '.json', '.png', '.jpg', '.jpeg', 
+  '.svg', '.gif', '.webp', '.ico', '.woff', '.woff2', '.map'
+];
 
-  const slug = url.searchParams.get('slug');
-  
-  const isValidGym = locationsGym.find(gym => gym.slug === slug && gym.active);
-
-  if (url.pathname === '/' && slug === null && !isValidGym) {
-    console.log('VALID!!')
-    // return Response.redirect('https://planetfitness.mx', 301);
+export const onRequest = defineMiddleware(async (context, next) => {
+  const { url, cookies, clientAddress } = context;
+  console.log({ clientAddress });
+  // --- FILTRO DE ASSETS ---
+  // Si es un asset, no ejecutamos nada de la lógica de abajo.
+  if (
+    url.pathname.startsWith('/_astro/') || 
+    ASSET_EXTENSIONS.some(ext => url.pathname.endsWith(ext))
+  ) {
+    return next();
   }
 
-  return next();
+  const slug = url.searchParams.get('slug');
+  const alreadyCookieExist = cookies.get('slug')?.value;
+  console.log({ slug, alreadyCookieExist });
+  // 1. Validamos si viene un slug en la URL
+  if (slug) {
+    const isValidGym = locationsGym.find(gym => gym.slug === slug && gym.active);
+    if (isValidGym) {
+      cookies.set('slug', slug, {
+        path: '/',
+        sameSite: 'lax',
+        httpOnly: true,
+        secure: isProd,
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 12),
+      });
+      return next();
+    }
+  }
 
+  // 2. Si no hubo slug en la URL, ¿existe ya una cookie?
+  if (alreadyCookieExist) {
+    return next();
+  }
+
+  // 3. Si no hay slug válido ni cookie, redirigimos.
+  return Response.redirect('https://planetfitness.mx', 301);
 });
