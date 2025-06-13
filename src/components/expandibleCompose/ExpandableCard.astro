@@ -1,0 +1,58 @@
+---
+import Chevron from "@assets/icons/astro/Chevron.astro";
+
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { title, id } = Astro.props;
+---
+
+<div class="w-11/12" data-collapsable-item>
+  <button
+    class="border-0 bg-transparent w-full text-start cursor-pointer"
+    id={`chevron__${id}`}
+  >
+    <div
+      id={`card__${id}`}
+      data-card
+      class="bg-theme-secondary h-20 rounded-md data-open:rounded-b-none text-theme-text-light px-8 flex items-center scroll-mt-30"
+    >
+      <div class="w-4/6 flex items-center justify-start h-full">
+        <p class="text-2xl w-full font-bold">{title}</p>
+      </div>
+      <div class="w-2/6 flex justify-end">
+        <Chevron />
+      </div>
+    </div>
+  </button>
+  <div
+    id={`content__${id}`}
+    class="grid bg-theme-tertiary rounded-b-md"
+    data-content
+  >
+    <div class="overflow-hidden">
+      <div class="py-8 px-2 flex flex-col gap-8 items-center">
+        <slot>
+          <p>No hay nada que mostrar</p>
+        </slot>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  [data-content] {
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 400ms cubic-bezier(0.25, 0.1, 0.25, 1); /* Transición suave */
+  }
+  [data-content].is-open {
+    grid-template-rows: 1fr;
+  }
+  [data-card] {
+    transition-property: border-radius;
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+  }
+</style>
