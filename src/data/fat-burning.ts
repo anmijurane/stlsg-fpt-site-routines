@@ -117,7 +117,7 @@ export const fat_burning = {
       {
         "id": 3,
         "name": "Nivel 3",
-        "totalExercises": 13,
+        "totalExercises": 12,
         "frequency": {
           "total": 4,
           "label": "días por semana"
