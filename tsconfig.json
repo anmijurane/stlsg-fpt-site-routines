@@ -11,6 +11,7 @@
       "@assets/*": ["./src/assets/*"],
       "@scripts/*": ["./src/scripts/*"],
       "@data/*": ["./src/data/*"],
+      "@utils/*": ["./src/utils/*"],
     }
   }
 }
