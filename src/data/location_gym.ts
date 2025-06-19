@@ -1,4 +1,5 @@
 export const locationsGym = [
+  { "slug": "a912a94d79", "state": "Stadistica",  "club": "statistics",             "active": true  },
   { "slug": "6623005224", "state": "Queretaro",   "club": "Cimatario",              "active": true  },
   { "slug": "c4e220d3af", "state": "Puebla",      "club": "Torrecillas",            "active": false },
   { "slug": "c022aa7cdc", "state": "Queretaro",   "club": "Candiles",               "active": false },
