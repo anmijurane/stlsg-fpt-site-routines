@@ -7,13 +7,19 @@ const ASSET_EXTENSIONS = [
   '.svg', '.gif', '.webp', '.ico', '.woff', '.woff2', '.map'
 ];
 
+const locationsGymMap = new Map(
+  locationsGym
+    .filter(gym => gym.active)
+    .map(gym => [gym.slug, gym])
+);
+
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const { url, cookies, clientAddress } = context;
-  console.log({ clientAddress });
-  // --- FILTRO DE ASSETS ---
-  // Si es un asset, no ejecutamos nada de la lógica de abajo.
+  console.log('IP :: Client :: ', clientAddress);
   if (
     url.pathname.startsWith('/_astro/') ||
+    url.pathname.startsWith('/_image') ||
     ASSET_EXTENSIONS.some(ext => url.pathname.endsWith(ext))
   ) {
     return next();
@@ -21,13 +27,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   const slug = url.searchParams.get('slug');
   const alreadyCookieExist = cookies.get('slug')?.value;
-  console.log('_____________');
-  console.log({ slug, alreadyCookieExist });
-  // 1. Validamos si viene un slug en la URL
+
   if (slug) {
-    const isValidGym = locationsGym.find(gym => gym.slug === slug && gym.active);
-    console.log('Acceso por:', { gym: isValidGym?.club });
+    const isValidGym = locationsGymMap.get(slug);
     if (isValidGym) {
+      console.log('Acceso primera vez por:', { gym: isValidGym?.club });
       cookies.set('slug', slug, {
         path: '/',
         sameSite: 'lax',
@@ -35,15 +39,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
         secure: isProd,
         expires: new Date(Date.now() + 1000 * 60 * 60 * 12),
       });
-      return next('/');
+
+      const urlWithoutParam = new URL(url.toString());
+      urlWithoutParam.searchParams.delete('slug');
+
+      return Response.redirect(urlWithoutParam.toString(), 302);
     }
   }
 
-  // 2. Si no hubo slug en la URL, ¿existe ya una cookie?
   if (alreadyCookieExist) {
+    console.log('Ya hay cookie, se acceso con:', alreadyCookieExist);
     return next();
   }
 
-  // 3. Si no hay slug válido ni cookie, redirigimos.
+  console.log('Se quiso acceder, se redirige...')
+  // Si no hay slug válido ni cookie, redirigimos.
   return Response.redirect('https://planetfitness.mx', 301);
 });
