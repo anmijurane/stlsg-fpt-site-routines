@@ -33,7 +33,8 @@ const locationsGymMap = new Map(
 
 const appendLog = async (log: string) => {
   try {
-    await fs.appendFile(LOGS_FILE_PATH, `${log},\n`, 'utf8');
+    console.log(log);
+    //await fs.appendFile(LOGS_FILE_PATH, `${log},\n`, 'utf8');
   } catch (error) {
     console.log('Error a registry log', error);
   }
