@@ -1,0 +1,21 @@
+---
+interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
+  variant: "primary" | "secundary";
+}
+const { variant, ...rest } = Astro.props;
+const isPrimary = variant === "primary";
+const isSecundary = variant === "secundary";
+const disabled = rest.disabled || false;
+---
+
+<button
+  {...rest}
+  class="py-2 px-8 rounded-sm transition transform active:scale-95 border opacity-80"
+  class:list={{
+    "bg-theme-accent text-theme-primary border-theme-accent": isPrimary,
+    "text-theme-primary border-theme-primary": isSecundary,
+    "opacity-70 active:scale-100 bg-theme-accent/50": disabled,
+  }}
+>
+  <slot />
+</button>
