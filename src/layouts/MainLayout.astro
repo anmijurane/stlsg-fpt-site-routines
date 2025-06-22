@@ -1,6 +1,7 @@
 ---
 import "@styles/global.css";
 import PreventConsoleProd from "src/utils/PreventConsoleProd.astro";
+import { ClientRouter } from "astro:transitions";
 interface Props {
 	title: string;
 }
@@ -45,6 +46,7 @@ const buildDate = new Date().getTime();
 	</body>
 </html>
 <PreventConsoleProd />
+<ClientRouter />
 
 <script define:vars={{ buildDate }}>
 	console.log(`c?d¿{${buildDate}}`);
