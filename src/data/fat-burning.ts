@@ -1,4 +1,4 @@
-import type { Routine } from "src/interfaces/routines";
+import type { Routine } from "@interfaces/routines";
 
 export const fat_burning: Routine = {
   "id": "fat_burning",

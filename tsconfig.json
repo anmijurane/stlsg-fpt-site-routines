@@ -12,6 +12,7 @@
       "@scripts/*": ["./src/scripts/*"],
       "@data/*": ["./src/data/*"],
       "@utils/*": ["./src/utils/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
     }
   }
 }

@@ -1,4 +1,4 @@
-import type { Routine, TypeRoutine } from 'src/interfaces/routines';
+import type { Routine, TypeRoutine } from '@interfaces/routines';
 import { adaptation } from './adaptation';
 import { fat_burning } from './fat-burning';
 import { health } from './health';
