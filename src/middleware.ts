@@ -85,7 +85,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
       const urlWithoutParam = new URL(url.toString());
       urlWithoutParam.searchParams.delete('slug');
 
-      return Response.redirect(urlWithoutParam.toString(), 302);
+      return Response.redirect(urlWithoutParam.toString(), 304);
     }
   }
 
@@ -97,5 +97,5 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   // Si no hay slug válido ni cookie, redirigimos.
-  return Response.redirect('https://planetfitness.mx', 301);
+  return Response.redirect('https://planetfitness.mx', 303);
 });
