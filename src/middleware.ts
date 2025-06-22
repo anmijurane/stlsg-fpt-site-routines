@@ -40,10 +40,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
         expires: new Date(Date.now() + 1000 * 60 * 60 * 12),
       });
 
-      const urlWithoutParam = new URL(url.toString());
-      urlWithoutParam.searchParams.delete('slug');
-
-      return Response.redirect(urlWithoutParam.toString(), 302);
+      return next('/');
     }
   }
 
