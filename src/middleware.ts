@@ -82,10 +82,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
       logEntry.club_name = isValidGym.club;
 
       appendLog(JSON.stringify(logEntry));
-      const urlWithoutParam = new URL(url.toString());
-      urlWithoutParam.searchParams.delete('slug');
+      // const urlWithoutParam = new URL(url.toString());
+      // urlWithoutParam.searchParams.delete('slug');
 
-      return Response.redirect(urlWithoutParam.toString(), 302);
+      // return Response.redirect(urlWithoutParam.toString(), 302);
+      return next('/');
     }
   }
 
