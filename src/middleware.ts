@@ -85,8 +85,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
         status: 302,
         headers: headers
       });
-
-      console.log('Redireccionando con cookie. URL:', redirectUrl);
       return response;
     }
   }
