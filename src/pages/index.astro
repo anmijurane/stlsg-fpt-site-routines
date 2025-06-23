@@ -1,8 +1,114 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
+
+import CardLevel, { type Zone } from "@components/CardLevel.astro";
+import ExapandibleCardGroup from "@components/expandibleCompose/ExpandableCardGroup.astro";
+import HeroLayout from "@layouts/HeroLayout.astro";
+import ExpandableCard from "@components/expandibleCompose/ExpandableCard.astro";
+
+import { routines } from "@data/index";
+
+import ModalFeedback from "@components/feedback/ModalFeedback.astro";
 ---
 
 <MainLayout title="Inicio">
-	<p>Pagina inicial</p>
-</MainLayout>
+	<HeroLayout>
+		<ExapandibleCardGroup
+			name="levels"
+			class="flex justify-center items-center flex-col gap-8 py-12"
+		>
+			<ExpandableCard
+				title={routines.adaptatio.name.toUpperCase()}
+				id={routines.adaptatio.id}
+			>
+				{
+					routines.adaptatio.levels.map((level) => {
+						const zones: Zone[] = level.categoriesZone.map((zone, idx) => ({
+							id: `${zone}_${idx}`,
+							name: zone,
+						}));
+						return (
+							<CardLevel
+								zones={zones}
+								numberLevel={level.id}
+								frequencyDays={level.frequency.total}
+								totalExercise={level.totalExercises}
+								to={`${routines.adaptatio.name}/${level.id}`}
+							/>
+						);
+					})
+				}
+			</ExpandableCard>
 
+			<ExpandableCard
+				title={routines.health.name.toUpperCase()}
+				id={routines.health.id}
+			>
+				{
+					routines.health.levels.map((level) => {
+						const zones: Zone[] = level.categoriesZone.map((zone, idx) => ({
+							id: `${zone}_${idx}`,
+							name: zone,
+						}));
+						return (
+							<CardLevel
+								zones={zones}
+								numberLevel={level.id}
+								frequencyDays={level.frequency.total}
+								totalExercise={level.totalExercises}
+								to={`${routines.health.name}/${level.id}`}
+							/>
+						);
+					})
+				}
+			</ExpandableCard>
+
+			<ExpandableCard
+				title={routines.muscle_gain.name.toUpperCase()}
+				id={routines.muscle_gain.id}
+			>
+				{
+					routines.muscle_gain.levels.map((level) => {
+						const zones: Zone[] = level.categoriesZone.map((zone, idx) => ({
+							id: `${zone}_${idx}`,
+							name: zone,
+						}));
+						return (
+							<CardLevel
+								zones={zones}
+								numberLevel={level.id}
+								frequencyDays={level.frequency.total}
+								totalExercise={level.totalExercises}
+								to={`${routines.muscle_gain.name}/${level.id}`}
+							/>
+						);
+					})
+				}
+			</ExpandableCard>
+
+			<ExpandableCard
+				title={routines.fat_burning.name.toUpperCase()}
+				id={routines.fat_burning.id}
+			>
+				{
+					routines.fat_burning.levels.map((level) => {
+						const zones: Zone[] = level.categoriesZone.map((zone, idx) => ({
+							id: `${zone}_${idx}`,
+							name: zone,
+						}));
+						return (
+							<CardLevel
+								zones={zones}
+								numberLevel={level.id}
+								frequencyDays={level.frequency.total}
+								totalExercise={level.totalExercises}
+								to={`${routines.fat_burning.name}/${level.id}`}
+							/>
+						);
+					})
+				}
+			</ExpandableCard>
+		</ExapandibleCardGroup>
+		<ModalFeedback />
+	</HeroLayout>
+</MainLayout>

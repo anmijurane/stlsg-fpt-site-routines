@@ -1,0 +1,23 @@
+---
+interface Props {
+  isOpen?: boolean;
+}
+const { isOpen } = Astro.props;
+---
+
+<svg
+  width="54"
+  height="28"
+  viewBox="0 0 54 28"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class="chevron transition duration-500"
+  class:list={{ ["rotate-180"]: isOpen }}
+>
+  <path
+    d="M46.3223 5.45202L30.0021 21.5412C30.0021 21.5412 27.2016 24.6058 24.1734 21.6139C20.5221 18.0143 7.93364 5.45201 7.93364 5.45201"
+    stroke="#FAEEFF"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>

@@ -1,0 +1,30 @@
+---
+const isProd = import.meta.env.PROD;
+---
+
+{isProd && (
+  <script>
+    setInterval(() => {
+
+      console.log(
+        "%c⚠️ Atención",
+        "color: red; font-size: 40px; font-weight: bold; text-shadow: 1px 1px 2px black;"
+      );
+
+      console.log(
+        "%cEstás utilizando las herramientas de desarrollador.",
+        "color: orange; font-size: 20px;"
+      );
+
+      console.log(
+        "%cSi alguien te pidió que copies o pegues código aquí, podrías estar siendo víctima de fraude o robo de identidad.",
+        "color: yellow; background: black; font-size: 16px; padding: 4px;"
+      );
+
+      console.log(
+        "%cCierra esta consola si no sabes lo que estás haciendo.",
+        "color: white; background: red; font-size: 18px; font-weight: bold; padding: 4px;"
+      );
+    }, 6000);
+  </script>
+)}
