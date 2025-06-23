@@ -72,21 +72,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (slug) {
     const isValidGym = locationsGymMap.get(slug);
     if (isValidGym) {
-      cookies.set('slug', slug, {
-        path: '/',
-        sameSite: 'lax',
-        httpOnly: true,
-        secure: isProd,
-        expires: new Date(Date.now() + 1000 * 60 * 60 * 12),
+      const redirectUrl = `${url.origin}${url.pathname}`;
+      const expiresDate = new Date(Date.now() + 1000 * 60 * 60 * 12); // 12 horas
+
+      const cookieValue = `${encodeURIComponent('slug')}=${encodeURIComponent(slug)}; Path=/; SameSite=Lax; HttpOnly; ${isProd ? 'Secure;' : ''} Expires=${expiresDate.toUTCString()}`;
+
+      const headers = new Headers();
+      headers.set('Location', redirectUrl);
+      headers.set('Set-Cookie', cookieValue);
+
+      const response = new Response(null, {
+        status: 302,
+        headers: headers
       });
-      logEntry.club_name = isValidGym.club;
 
-      appendLog(JSON.stringify(logEntry));
-      // const urlWithoutParam = new URL(url.toString());
-      // urlWithoutParam.searchParams.delete('slug');
-
-      // return Response.redirect(urlWithoutParam.toString(), 302);
-      return next('/');
+      console.log('Redireccionando con cookie. URL:', redirectUrl);
+      return response;
     }
   }
 
