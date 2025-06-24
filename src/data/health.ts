@@ -23,7 +23,7 @@ export const health: Routine = {
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Fuerza - Cuerpo Completo",
+          "focus": "Tren superior",
           "exercises": [
             { "id": "h1a8f6e8", "name": "Sentadilla TRX", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "TRX", "imgUrl": "" } },
             { "id": "h9b3d2a4", "name": "Marcha alternando estático", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Cuádriceps/glúteo", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Peso corporal", "imgUrl": "" } },
@@ -35,7 +35,7 @@ export const health: Routine = {
         {
           "id": 2,
           "name": "Día 2",
-          "focus": "Cardiovascular",
+          "focus": "Cardio",
           "exercises": [
             { "id": "h4e6f8a2", "name": "Elíptica", "series": null, "reps": 1, "time": { "by": 20, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } },
             { "id": "hc1a2b38", "name": "Caminadora", "series": null, "reps": 1, "time": { "by": 20, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
@@ -56,13 +56,12 @@ export const health: Routine = {
         "Funcional",
         "Peso integrado",
         "Cardio",
-        "Circuito Express"
       ],
       "days": [
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Fuerza - Cuerpo Completo",
+          "focus": "Todo el cuerpo",
           "exercises": [
             { "id": "i7y8z9a1", "name": "Sentadilla trx con salto", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Piernas/glúteos/femoral", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "TRX", "imgUrl": "" } },
             { "id": "ia1b2c3d", "name": "Talones alternados al glúteo", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Cuádriceps/glúteo", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Peso corporal", "imgUrl": "" } },
@@ -74,7 +73,7 @@ export const health: Routine = {
         {
           "id": 2,
           "name": "Día 2",
-          "focus": "Cardiovascular",
+          "focus": "Cardio",
           "exercises": [
             { "id": "h4e6f8a2", "name": "Elíptica", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } },
             { "id": "hc1a2b38", "name": "Caminadora", "series": null, "reps": 1, "time": { "by": 15, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
@@ -83,7 +82,7 @@ export const health: Routine = {
         {
           "id": 3,
           "name": "Día 3",
-          "focus": "Clase Grupal",
+          "focus": "Circuito express",
           "exercises": [
             { "id": "ij1k2l3m", "name": "Clase de circuito express", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Circuito Express", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -91,7 +90,7 @@ export const health: Routine = {
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Cardiovascular",
+          "focus": "Cardio",
           "exercises": [
             { "id": "im4n5o6p", "name": "Cardio a elegir", "series": null, "reps": 1, "time": { "by": 15, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, elíptica, etc.", "imgUrl": "" } },
             { "id": "hc1a2b38", "name": "Caminadora", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
@@ -117,7 +116,7 @@ export const health: Routine = {
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Fuerza - Pierna y Core",
+          "focus": "Tren inferior",
           "exercises": [
             { "id": "j1k2l3m4", "name": "Extensión de cuadricep", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Cuádriceps", "imgUrl": "" }, "zone": "Peso integrado", "videoUrl": "", "apparatus": { "name": "Máquina de extensiones", "imgUrl": "" } },
             { "id": "j5n6o7p8", "name": "Curl de pierna sentado", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Femoral", "imgUrl": "" }, "zone": "Peso integrado", "videoUrl": "", "apparatus": { "name": "Máquina de curl femoral", "imgUrl": "" } },
@@ -138,7 +137,7 @@ export const health: Routine = {
         {
           "id": 3,
           "name": "Día 3",
-          "focus": "Clase Grupal",
+          "focus": "Clase PE&PF",
           "exercises": [
             { "id": "jb1c2d3e", "name": "Clase PE&PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -146,7 +145,7 @@ export const health: Routine = {
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Cardiovascular",
+          "focus": "Cardio",
           "exercises": [
             { "id": "im4n5o6p", "name": "Cardio a elegir", "series": null, "reps": 1, "time": { "by": 45, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, elíptica, etc.", "imgUrl": "" } }
           ]
@@ -164,7 +163,6 @@ export const health: Routine = {
       "generalFocus": "Fuerza y Potencia",
       "categoriesZone": [
         "Funcional",
-        "Funcional (TRX)",
         "Peso integrado",
         "Cardio"
       ],
@@ -172,7 +170,7 @@ export const health: Routine = {
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Fuerza - Torso",
+          "focus": "Todo el cuerpo",
           "exercises": [
             { "id": "i7y8z9a1", "name": "Sentadilla TRX con salto", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Piernas/glúteos/femoral", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "TRX", "imgUrl": "" } },
             { "id": "k1l2m3n4", "name": "Desplante alternado con salto", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Piernas/glúteos/femoral", "imgUrl": "" }, "zone": "Funcional (TRX)", "videoUrl": "", "apparatus": { "name": "TRX", "imgUrl": "" } },
@@ -193,15 +191,15 @@ export const health: Routine = {
         {
           "id": 3,
           "name": "Día 3",
-          "focus": "Clase Grupal",
+          "focus": "Clase PE@PF",
           "exercises": [
-            { "id": "ky7z8a9b", "name": "Clase PE@PF de glúteo y abdomen", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Glúteo/Abdomen", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "ky7z8a9b", "name": "Clase PE@PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Glúteo/Abdomen", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
         },
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Fuerza - Core y Espalda",
+          "focus": "Tren superior",
           "exercises": [
             { "id": "h8a9b3d5", "name": "Abdominal crunch", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Abdomen", "imgUrl": "" }, "zone": "Peso integrado", "videoUrl": "", "apparatus": { "name": "Máquina de crunch", "imgUrl": "" } },
             { "id": "ku4v5w6x", "name": "Extensión de espalda", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Espalda (sin lumbar)", "imgUrl": "" }, "zone": "Peso integrado", "videoUrl": "", "apparatus": { "name": "Máquina de extensión lumbar", "imgUrl": "" } },

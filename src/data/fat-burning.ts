@@ -22,7 +22,7 @@ export const fat_burning: Routine = {
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Circuito Funcional",
+          "focus": "Todo el cuerpo",
           "exercises": [
             { "id": "e4f1c9a8", "name": "Talones alternados al glúteo", "series": null, "reps": null, "time": null, "active": { "by": 20, "unit": "seg" }, "rest": { "by": 30, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Peso corporal", "imgUrl": "" } },
             { "id": "d2a4b3e9", "name": "Marcha alternada estático", "series": null, "reps": null, "time": null, "active": { "by": 20, "unit": "seg" }, "rest": { "by": 30, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Cuádriceps/glúteo", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Peso corporal", "imgUrl": "" } },
@@ -35,7 +35,7 @@ export const fat_burning: Routine = {
         {
           "id": 2,
           "name": "Día 2",
-          "focus": "Cardiovascular",
+          "focus": "Cardio",
           "exercises": [
             { "id": "e9f1c9a8", "name": "Caminadora o máquina de cardio a elegir", "series": null, "reps": 1, "time": { "by": 20, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, etc.", "imgUrl": "" } },
             { "id": "f1c9a8b3", "name": "Escaladora o máquina de cardio a elegir", "series": null, "reps": 1, "time": { "by": 20, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Escaladora, etc.", "imgUrl": "" } }
@@ -44,7 +44,7 @@ export const fat_burning: Routine = {
         {
           "id": 3,
           "name": "Día 3",
-          "focus": "Clase Grupal",
+          "focus": "Circuito express",
           "exercises": [
             { "id": "b3e9f1c9a", "name": "Clase de circuito express", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -77,7 +77,7 @@ export const fat_burning: Routine = {
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Circuito Funcional",
+          "focus": "Tren inferior y abdomen",
           "exercises": [
             { "id": "b3e9f1c9a8", "name": "Paso joggie", "series": null, "reps": null, "time": null, "active": { "by": 30, "unit": "seg" }, "rest": { "by": 30, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Cuádriceps/glúteo", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Peso corporal", "imgUrl": "" } },
             { "id": "a8b3e9f1c9", "name": "Sentadilla en TRX con salto", "series": null, "reps": null, "time": null, "active": { "by": 30, "unit": "seg" }, "rest": { "by": 30, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "TRX", "imgUrl": "" } },
@@ -90,7 +90,7 @@ export const fat_burning: Routine = {
         {
           "id": 2,
           "name": "Día 2",
-          "focus": "Cardiovascular",
+          "focus": "Cardio",
           "exercises": [
             { "id": "e9f1c9a8b3e", "name": "Éliptica o máquina de cardio a elegir", "series": null, "reps": 1, "time": { "by": 20, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica, etc.", "imgUrl": "" } },
             { "id": "e9f1c9a8", "name": "Caminadora o máquina de cardio a elegir", "series": null, "reps": 1, "time": { "by": 20, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, etc.", "imgUrl": "" } }
@@ -99,7 +99,7 @@ export const fat_burning: Routine = {
         {
           "id": 3,
           "name": "Día 3",
-          "focus": "Clase Grupal",
+          "focus": "Clase PE@PF",
           "exercises": [
             { "id": "a8b3e9f1c", "name": "Clase PE@PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -132,7 +132,7 @@ export const fat_burning: Routine = {
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Circuito Funcional",
+          "focus": "Todo el cuerpo",
           "exercises": [
             { "id": "f1c9a8b3e9f", "name": "Oruga", "series": null, "reps": null, "time": null, "active": { "by": 30, "unit": "seg" }, "rest": { "by": 20, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Abdomen", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Peso corporal", "imgUrl": "" } },
             { "id": "a8b3e9f1c9a", "name": "Plancha con rotacion de torso", "series": null, "reps": null, "time": null, "active": { "by": 30, "unit": "seg" }, "rest": { "by": 20, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Abdomen (oblicuos)", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Tapete", "imgUrl": "" } },
@@ -145,7 +145,7 @@ export const fat_burning: Routine = {
         {
           "id": 2,
           "name": "Día 2",
-          "focus": "Cardiovascular",
+          "focus": "Cardio",
           "exercises": [
             { "id": "e9f1c9a8b3e", "name": "Éliptica o máquina de cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica, etc.", "imgUrl": "" } },
             { "id": "e9f1c9a8", "name": "Caminadora o máquina de cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, etc.", "imgUrl": "" } }
@@ -154,7 +154,7 @@ export const fat_burning: Routine = {
         {
           "id": 3,
           "name": "Día 3",
-          "focus": "Circuito Funcional",
+          "focus": "Tren superior",
           "exercises": [
             { "id": "a8b3e9f1c9a8", "name": "Curl martillo alternado con mancuerna", "series": null, "reps": null, "time": null, "active": { "by": 30, "unit": "seg" }, "rest": { "by": 20, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Bicep", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Mancuernas", "imgUrl": "" } },
             { "id": "e9f1c9a8b3", "name": "Tijeras frontales en tapete", "series": null, "reps": null, "time": null, "active": { "by": 30, "unit": "seg" }, "rest": { "by": 20, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Abdomen", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Tapete", "imgUrl": "" } },
@@ -167,7 +167,7 @@ export const fat_burning: Routine = {
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Clase Grupal",
+          "focus": "Circuito express",
           "exercises": [
             { "id": "b3e9f1c9a", "name": "Clase de circuito express", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -191,7 +191,7 @@ export const fat_burning: Routine = {
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Circuito Funcional",
+          "focus": "Tren inferior y abdomen",
           "exercises": [
             { "id": "e9f1c9a8b3e9f", "name": "Sentadilla TRX", "series": null, "reps": null, "time": null, "active": { "by": 40, "unit": "seg" }, "rest": { "by": 20, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "TRX", "imgUrl": "" } },
             { "id": "b3e9f1c9a8", "name": "Paso joggie", "series": null, "reps": null, "time": null, "active": { "by": 40, "unit": "seg" }, "rest": { "by": 20, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Cuádriceps/glúteo", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Peso corporal", "imgUrl": "" } },
@@ -204,7 +204,7 @@ export const fat_burning: Routine = {
         {
           "id": 2,
           "name": "Día 2",
-          "focus": "Cardiovascular",
+          "focus": "Cardio",
           "exercises": [
             { "id": "c9a8b3e9f", "name": "Arc-trainer o máquina de cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Arc Trainer, etc.", "imgUrl": "" } },
             { "id": "e9f1c9a8", "name": "Caminadora o máquina de cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, etc.", "imgUrl": "" } }
@@ -213,7 +213,7 @@ export const fat_burning: Routine = {
         {
           "id": 3,
           "name": "Día 3",
-          "focus": "Circuito Funcional",
+          "focus": "Todo el cuerpo",
           "exercises": [
             { "id": "a8b3e9f1c9", "name": "Sentadilla TRX con salto", "series": null, "reps": null, "time": null, "active": { "by": 40, "unit": "seg" }, "rest": { "by": 20, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "TRX", "imgUrl": "" } },
             { "id": "b3e9f1c9a8b3e", "name": "azote de cuerda sentadilla isometrica", "series": null, "reps": null, "time": null, "active": { "by": 40, "unit": "seg" }, "rest": { "by": 20, "unit": "seg" }, "rounds": 3, "muscle": { "name": "Cuádriceps/glúteo/hombro", "imgUrl": "" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Cuerdas (battle ropes)", "imgUrl": "" } },
@@ -226,7 +226,7 @@ export const fat_burning: Routine = {
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Clase Grupal",
+          "focus": "Clase PE@PF",
           "exercises": [
             { "id": "a8b3e9f1c", "name": "Clase PE@PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "active": null, "rest": null, "rounds": null, "muscle": { "name": "Todo el cuerpo", "imgUrl": "" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
