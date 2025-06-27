@@ -11,6 +11,9 @@ import type { TypeRoutine } from "@interfaces/routines";
 import { imgRoute } from "@utils/getPathsIcon";
 
 const { category } = Astro.params;
+const url = Astro.url;
+
+const params = new URL(url).searchParams;
 const categoryType = category as TypeRoutine;
 
 const isValid = Object.keys(routines).includes(categoryType);
@@ -19,6 +22,7 @@ if (!isValid) {
   return Astro.redirect("/404");
 }
 const { id, name, description } = routines[categoryType];
+const level = params.get("level");
 ---
 
 <MainLayout title={name}>
@@ -82,7 +86,9 @@ const { id, name, description } = routines[categoryType];
             <Button variant="secundary" onclick="history.back()">
               Regresar
             </Button>
-            <Button variant="primary" disabled>Continuar</Button>
+            <Button variant="primary">
+              <a href={`/routine/${categoryType}/?level=${level}`}>Continuar</a>
+            </Button>
           </div>
         </div>
       </div>
