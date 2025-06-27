@@ -1,0 +1,58 @@
+---
+import Button from "./Button.astro";
+
+interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
+  position: "left" | "right";
+}
+const { position, ...rest } = Astro.props;
+const disabled = rest.disabled || false;
+---
+
+<Button
+  variant="transparent"
+  {...rest}
+  class:list={{
+    "opacity-70 active:scale-100 bg-theme-accent/50": disabled,
+  }}
+>
+  <svg width="38" height="36" viewBox="0 0 38 36">
+    <g filter="url(#filter0_d_300_1006)">
+      <path
+        d="M21.4861 31.0348L19.8385 32.6824C19.1408 33.3801 18.0127 33.3801 17.3225 32.6824L2.89434 18.2617C2.19668 17.5641 2.19668 16.4359 2.89434 15.7457L17.3225 1.31758C18.0201 0.61992 19.1482 0.61992 19.8385 1.31758L21.4861 2.96523C22.1912 3.67031 22.1764 4.8207 21.4564 5.51094L12.5131 14.0312H33.8436C34.8307 14.0312 35.6248 14.8254 35.6248 15.8125V18.1875C35.6248 19.1746 34.8307 19.9687 33.8436 19.9687H12.5131L21.4564 28.4891C22.1838 29.1793 22.1986 30.3297 21.4861 31.0348Z"
+        fill="#DEBBFF"></path>
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_300_1006"
+        x="-1.62891"
+        y="0.794334"
+        width="41.2539"
+        height="40.4113"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"></feColorMatrix>
+        <feOffset dy="4"></feOffset>
+        <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+        <feComposite in2="hardAlpha" operator="out"></feComposite>
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_300_1006"></feBlend>
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_300_1006"
+          result="shape"></feBlend>
+      </filter>
+    </defs>
+  </svg>
+</Button>
