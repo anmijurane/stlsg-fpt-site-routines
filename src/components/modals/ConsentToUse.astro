@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+
+import Button from "@components/Button.astro";
+import Modal from "@components/global/Modal.astro";
+import InfoIcon from "@assets/icons/info.svg";
+---
+
+<Modal id="ConsentToUse" closeBy="none">
+  <div class="flex flex-col w-full gap-16">
+    <div class="w-full flex items-center justify-center gap-4">
+      <Image src={InfoIcon} alt="icono de información" />
+      <h2 class="text-4xl uppercase text-theme-primary">INFORMACIÓN</h2>
+    </div>
+    <div class="w-full text-center text-gray-900 text-lg">
+      <p>
+        Las rutinas prediseñadas se proporcionan únicamente como sugerencia y
+        con fines informativos. Planet Fitness® no se hace responsable por
+        lesiones que puedan derivarse de una ejecución incorrecta o del uso
+        inadecuado del equipo. Se recomienda consultar a su médico antes de
+        comenzar cualquier rutina de ejercicio.
+      </p>
+    </div>
+    <div class="w-full flex items-center justify-around">
+      <Button variant="primary" id="accept_consent_to_use"> Aceptar </Button>
+    </div>
+  </div>
+</Modal>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.dispatchEvent(new Event("open-modal-ConsentToUse"));
+    const acceptButton = document.getElementById("accept_consent_to_use");
+    const eventCloseModal = () => {
+      document.dispatchEvent(new Event("close-modal-ConsentToUse"));
+    };
+    acceptButton?.addEventListener("click", eventCloseModal);
+  });
+</script>
