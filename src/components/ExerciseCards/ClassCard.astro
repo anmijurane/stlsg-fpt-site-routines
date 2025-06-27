@@ -1,0 +1,65 @@
+---
+import CheckButton from "@components/CheckButton.astro";
+import TimeChip from "@components/TimeChip.astro";
+const classMachines = ["Zumba", "Yoga", "Spinning", "Meditación", "Otro"];
+---
+
+<div
+  class="border border-theme-grandient rounded-[20px] w-full pb-3 bg-theme-text-light"
+>
+  <div class="flex h-full justify-between px-4 pt-4 mb-2 items-center w-full">
+    <p class="text-theme-primary text-2xl font-semibold w-10/12">
+      Clase PE@PF a elegir
+    </p>
+    <CheckButton />
+  </div>
+  <div class="w-full px-4 flex gap-2 items-center">
+    <svg width="22" height="22" class="w1/6">
+      <use href="/icons.svg#information"></use>
+    </svg>
+    <p class="w-5/6 text-base">
+      Consulta los horarios y la <br /> disponibilidad en la recepción del club
+    </p>
+  </div>
+  <div class="relative overflow-x-auto my-4 hide-scroll mask-fade-both">
+    <div class="flex gap-4 p-4 py-2">
+      {
+        classMachines.map((machine) => (
+          <div class="h-24 w-24 min-w-24 min-h-24 bg-theme-tertiary rounded-xl">
+            <div class="flex items-center justify-center w-full h-full">
+              {machine}
+            </div>
+          </div>
+        ))
+      }
+      <div class="shrink-0 w-3"></div>
+    </div>
+  </div>
+  <TimeChip by={5} unit="mins" />
+</div>
+
+<style>
+  .mask-fade-both {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+  }
+  .hide-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

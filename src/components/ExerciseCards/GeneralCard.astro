@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import CheckButton from "@components/CheckButton.astro";
 import ChipCategory from "@components/ChipCategory.astro";
 
@@ -17,7 +16,7 @@ const { title, zone, series, rep, img } = Astro.props;
 <div
   class="border border-theme-grandient rounded-[20px] w-full bg-gradient-to-br from-[#FFFFFF] to-[#FAEEFF]"
 >
-  <div class="flex h-full justify-between px-4 pt-4 mb-2 items-center w-full">
+  <div class="flex h-full justify-between px-2 pt-4 mb-2 items-center w-full">
     <p class="text-theme-primary text-2xl font-semibold w-10/12">{title}</p>
     <CheckButton />
   </div>
