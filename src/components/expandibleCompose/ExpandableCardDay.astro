@@ -32,7 +32,7 @@ const { title, id, day } = Astro.props;
           class="text-2xl w-full font-semibold"
           transition:name={`title_${id}`}
         >
-          {title}
+          {title.toUpperCase()}
         </p>
       </div>
       <div class="w-2/12 flex justify-end">
