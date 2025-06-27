@@ -1,8 +1,9 @@
 ---
 interface Props {
   isOpen?: boolean;
+  color?: string;
 }
-const { isOpen } = Astro.props;
+const { isOpen, color = "#FAEEFF" } = Astro.props;
 ---
 
 <svg
@@ -16,7 +17,7 @@ const { isOpen } = Astro.props;
 >
   <path
     d="M46.3223 5.45202L30.0021 21.5412C30.0021 21.5412 27.2016 24.6058 24.1734 21.6139C20.5221 18.0143 7.93364 5.45201 7.93364 5.45201"
-    stroke="#FAEEFF"
+    stroke={color}
     stroke-width="4"
     stroke-linecap="round"
     stroke-linejoin="round"></path>
