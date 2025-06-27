@@ -6,6 +6,8 @@
   --color-purple-dark: #290241;
   /* Morado Oscuro - Fondo principal y elementos oscuros */
   --color-purple-medium: #AE00FF;
+  /* Morado ligth */
+  --color-purple-light-bg-card: #E7DCF9;
   /* Morado Medio - Encabezado y fondo de la sección de adaptación */
   --color-purple-pf: #9600FA;
   /* Color principal de planet fitness */
@@ -36,7 +38,7 @@
   --color-theme-disable: var(--color-light-gray-dots, #DEBBFF);
   --color-theme-purple-medium: var(--color-purple-medium, #AE00FF);
   --color-theme-grandient: linear-gradient(245deg, #9600FA 45%, #AE00FF 100%);
-
+  --color-theme-light-card: var(--color-purple-light-bg-card, #E7DCF9);
 }
 
 @layer utilities {
