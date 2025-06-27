@@ -1,0 +1,37 @@
+---
+import DivitionsDots from "@components/DivitionsDots.astro";
+import Cooling from "@components/ExerciseCards/Cooling.astro";
+import GeneralCard from "@components/ExerciseCards/GeneralCard.astro";
+import Heating from "@components/ExerciseCards/Heating.astro";
+import ExpandableCardDay from "@components/expandibleCompose/ExpandableCardDay.astro";
+import ProgressRoutine from "@components/ProgressRoutine.astro";
+import type { Day } from "@interfaces/routines";
+
+interface Props {
+  day: Day;
+}
+const { day } = Astro.props;
+---
+
+<ExpandableCardDay day={day.id} id={`${day.id}`} title={day.focus}>
+  <div class="flex flex-col gap-8 items-center bg-white p-3 rounded-b-2xl">
+    <ProgressRoutine />
+    <Heating />
+    <DivitionsDots length={15} />
+    {
+      day.exercises.map((it) => {
+        return (
+          <GeneralCard
+            title={it.name}
+            zone={it.zone}
+            rep={it?.reps || 0}
+            series={it?.series || 0}
+            img={it.muscle.imgUrl}
+          />
+        );
+      })
+    }
+    <DivitionsDots length={15} />
+    <Cooling />
+  </div>
+</ExpandableCardDay>
