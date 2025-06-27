@@ -1,0 +1,14 @@
+---
+interface Props {
+  length: number;
+}
+const { length } = Astro.props;
+---
+
+<div class="flex justify-center gap-2">
+  {
+    new Array(length)
+      .fill(0)
+      .map((_, it) => <span class="w-2 h-2 bg-theme-dots rounded-full" />)
+  }
+</div>
