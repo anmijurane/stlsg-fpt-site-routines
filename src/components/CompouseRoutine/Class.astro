@@ -1,22 +1,13 @@
 ---
-import CheckButton from "@components/CheckButton.astro";
-import ChipCategory from "@components/ChipCategory.astro";
-import CardioCard from "@components/ExerciseCards/CardioCard.astro";
 import ClassCard from "@components/ExerciseCards/ClassCard.astro";
 import ExpandableCardDay from "@components/expandibleCompose/ExpandableCardDay.astro";
 import ProgressRoutine from "@components/ProgressRoutine.astro";
 import type { Day } from "@interfaces/routines";
 
 interface Props {
-  // title: string;
-  // zone: string;
-  // series: number;
-  // rep: number;
-  // img: string;
   day: Day;
 }
 
-// const { title, zone, series, rep, img } = Astro.props;
 const { day } = Astro.props;
 ---
 
