@@ -1,11 +1,18 @@
 ---
 import CircleProgress from "./CircleProgress.astro";
+
+interface Props {
+  totalExercises: Number;
+}
+const { totalExercises } = Astro.props;
 ---
 
 <div class="w-full flex gap-6 items-center justify-center">
   <CircleProgress />
   <div class="text-theme-primary">
     <p class="text-3xl font-extrabold">¡Sigue Así!</p>
-    <span>1/6 ejercicios completado</span>
+    <span
+      ><span id={`counter`}>0</span>/{totalExercises} ejercicios completado</span
+    >
   </div>
 </div>

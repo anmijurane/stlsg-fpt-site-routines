@@ -20,7 +20,7 @@ const classPF = day.exercises.find((it) => it.zone === "PE@PF");
   <div
     class="flex flex-col gap-8 items-center bg-white px-3 py-8 rounded-b-2xl"
   >
-    <ProgressRoutine />
+    <ProgressRoutine totalExercises={day.exercises.length} />
     <CardioCard {...cardioExercise} />
     <DivitionsDots length={15} />
     <ClassCard {...classPF} />
