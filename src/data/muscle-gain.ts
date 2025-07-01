@@ -55,9 +55,9 @@ export const muscle_gain: Routine = {
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Clase PE&PF",
+          "focus": "Clase PE@PF",
           "exercises": [
-            { "id": "w4x5y6z7", "name": "Clase PE&PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "w4x5y6z7", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
         }
       ]
@@ -80,7 +80,7 @@ export const muscle_gain: Routine = {
         {
           "id": 1,
           "name": "Día 1",
-          "focus": "Tren unferior",
+          "focus": "Tren inferior",
           "exercises": [
             { "id": "a1b2c3d4", "name": "Press de Hombro", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Hombro (frontal y lateral)", "imgUrl": "/hombros_frontal_lateral" }, "zone": "Peso integrado", "videoUrl": "", "apparatus": { "name": "Máquina o mancuernas", "imgUrl": "" } },
             { "id": "e5f6g7h8", "name": "Press de Pecho", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "", "apparatus": { "name": "Máquina o barra", "imgUrl": "" } },
@@ -99,7 +99,7 @@ export const muscle_gain: Routine = {
         {
           "id": 3,
           "name": "Día 3",
-          "focus": "Tre inferior",
+          "focus": "Tren inferior",
           "exercises": [
             { "id": "d3e4f5g6", "name": "Desplante TRX", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "TRX", "imgUrl": "" } },
             { "id": "h7i8j9k1", "name": "Prensa de Pierna", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Peso integrado", "videoUrl": "", "apparatus": { "name": "Máquina de prensa", "imgUrl": "" } },
@@ -107,15 +107,15 @@ export const muscle_gain: Routine = {
             { "id": "k1l2m3n4", "name": "Aductor", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Aductores", "imgUrl": "/aductores" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Máquina o peso corporal", "imgUrl": "" } },
             { "id": "l2m3n4o5", "name": "Glúteo", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Glúteo", "imgUrl": "/gluteo" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Máquina o peso corporal", "imgUrl": "" } },
             { "id": "p6q7r8s9", "name": "Extensión de Espalda", "series": 3, "reps": 15, "time": null, "muscle": { "name": "lumbar", "imgUrl": "/lumbar" }, "zone": "Peso integrado", "videoUrl": "", "apparatus": { "name": "Máquina de extensión lumbar", "imgUrl": "" } },
-            { "id": "w4x5y6z7", "name": "Clase PE&PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpoLa", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "w4x5y6z7", "name": "Clase PE@PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpoLa", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
         },
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Clase PE&PF",
+          "focus": "Clase PE@PF",
           "exercises": [
-            { "id": "w4x5y6z7", "name": "Clase PE&PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "w4x5y6z7", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
         }
       ]

@@ -38,7 +38,7 @@ export const adaptation: Routine = {
           "name": "Día 2",
           "focus": "Cardio",
           "exercises": [
-            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, elíptica, etc.", "imgUrl": "" } }
+            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]
         },
         {
@@ -59,7 +59,7 @@ export const adaptation: Routine = {
           "name": "Día 4",
           "focus": "Circuito express",
           "exercises": [
-            { "id": "a7b3c6d9", "name": "Clase de circuito express", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "a7b3c6d9", "name": "Clase de circuito express", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Circuito Express", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
         }
       ]
@@ -97,7 +97,7 @@ export const adaptation: Routine = {
           "name": "Día 2",
           "focus": "Cardio",
           "exercises": [
-            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, elíptica, etc.", "imgUrl": "" } }
+            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]
         },
         {
@@ -116,9 +116,9 @@ export const adaptation: Routine = {
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Clase PE&PF",
+          "focus": "Clase PE@PF",
           "exercises": [
-            { "id": "e1f5a8b3", "name": "Clase PE&PF", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "e1f5a8b3", "name": "Clase PE@PF a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
         }
       ]
@@ -156,8 +156,8 @@ export const adaptation: Routine = {
           "name": "Día 2",
           "focus": "Mixto",
           "exercises": [
-            { "id": "e1f5a8b3", "name": "Clase PE&PF", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
-            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, elíptica, etc.", "imgUrl": "" } }
+            { "id": "e1f5a8b3", "name": "Clase PE@PF a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
+            { "id": "f8a9b2c7", "name": "Cardio con aparato", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]
         },
         {
@@ -176,9 +176,9 @@ export const adaptation: Routine = {
         {
           "id": 4,
           "name": "Día 4",
-          "focus": "Clase PE&PF",
+          "focus": "Clase PE@PF",
           "exercises": [
-            { "id": "e1f5a8b3", "name": "Clase PE&PF", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "e1f5a8b3", "name": "Clase PE@PF a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
         }
       ]
@@ -216,8 +216,8 @@ export const adaptation: Routine = {
           "name": "Día 2",
           "focus": "Mixto",
           "exercises": [
-            { "id": "e1f5a8b3", "name": "Clase PE&PF", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
-            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, elíptica, etc.", "imgUrl": "" } }
+            { "id": "e1f5a8b3", "name": "Clase PE@PF a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
+            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } }
           ]
         },
         {
@@ -238,7 +238,7 @@ export const adaptation: Routine = {
           "name": "Día 4",
           "focus": "Cardio",
           "exercises": [
-            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora, elíptica, etc.", "imgUrl": "" } }
+            { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]
         }
       ]
