@@ -1,10 +1,11 @@
 ---
 interface Props {
-  by: number;
+  by?: number;
   unit: string;
 }
 
 const { by, unit } = Astro.props;
+console.log({ by, unit });
 ---
 
 <!-- -translate-y-5 -->
@@ -45,6 +46,6 @@ const { by, unit } = Astro.props;
         </clipPath>
       </defs>
     </svg>
-    {by}{" "}{unit}
+    {unit === "Libre" ? unit : `${by} ${unit}`}
   </p>
 </div>
