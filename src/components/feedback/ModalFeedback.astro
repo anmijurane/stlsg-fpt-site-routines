@@ -5,43 +5,52 @@ import emojiFrown from "@assets/icons/emoji-frown.svg";
 import emojiNeutral from "@assets/icons/emoji-neutral.svg";
 import emojiSmile from "@assets/icons/emoji-smile.svg";
 import { Image } from "astro:assets";
-
+import Button from "@components/Button.astro";
 ---
 
 <Modal id="feedback" btnClose closeBy="none">
   <div class="text-center">
     <h3 class="text-3xl font-bold text-theme-primary" id="modal-title">
-      ¡Cuéntanos tu experiencia!
+      ¡TU OPINIÓN<br />NOS IMPORTA!
     </h3>
     <div class="mt-2">
-      <p class="text-md text-gray-500">
-        En esta primer etapa nos gustaría saber cómo te ha parecido.
+      <p class="text-md text-gray-500 font-semibold">
+        En esta primera etapa nos gustaría saber como ha sido tu experiencia
       </p>
     </div>
   </div>
 
   <div class="mt-8 flex flex-col items-center justify-center gap-6">
-    <button
+    <Button
+      variant="transparent"
       data-feedback="smile"
-      class="flex cursor-pointer flex-col items-center text-center opacity-80 hover:opacity-100 transition-opacity"
+      class="flex cursor-pointer justify-center items-center text-start w-full"
     >
-      <Image src={emojiSmile} alt='emojiSmile' />
-      <span class="mt-1 font-semibold text-gray-700">Bien</span>
-    </button>
-    <button
+      <div class="w-2/3 flex justify-end">
+        <Image src={emojiSmile} alt="emojiSmile" />
+      </div>
+      <span class="mt-1 w-1/2 font-semibold text-theme-primary">Buena</span>
+    </Button>
+    <Button
+      variant="transparent"
       data-feedback="neutral"
-      class="flex cursor-pointer flex-col items-center text-center opacity-80 hover:opacity-100 transition-opacity"
+      class="flex cursor-pointer justify-center items-center text-start w-full"
     >
-      <Image src={emojiNeutral} alt='emojiNeutral' />
-      <span class="mt-1 font-semibold text-gray-700">Regular</span>
-    </button>
-    <button
+      <div class="w-2/3 flex justify-end">
+        <Image src={emojiNeutral} alt="emojiNeutral" />
+      </div>
+      <span class="mt-1 w-1/2 font-semibold text-theme-primary">Regular</span>
+    </Button>
+    <Button
+      variant="transparent"
       data-feedback="frown"
-      class="flex cursor-pointer flex-col items-center text-center opacity-80 hover:opacity-100 transition-opacity"
+      class="flex cursor-pointer justify-center items-center text-start w-full"
     >
-      <Image src={emojiFrown} alt='emojiFrown' />
-      <span class="mt-1 font-semibold text-gray-700">Mal</span>
-    </button>
+      <div class="w-2/3 flex justify-end">
+        <Image src={emojiFrown} alt="emojiFrown" />
+      </div>
+      <span class="mt-1 w-1/2 font-semibold text-theme-primary">Mala</span>
+    </Button>
   </div>
 </Modal>
 
@@ -55,50 +64,53 @@ import { Image } from "astro:assets";
 
   const sendFeedbackUser = (action: string) => {
     console.log(action);
-  }
+  };
 
   const eventButtonsFeedback = () => {
-    const buttonsFeedback = document.querySelectorAll<HTMLButtonElement>('button[data-feedback]');
-    const buttonClose = document.getElementById('button-close_feedback');
+    const buttonsFeedback = document.querySelectorAll<HTMLButtonElement>(
+      "button[data-feedback]",
+    );
+    const buttonClose = document.getElementById("button-close_feedback");
 
-    buttonsFeedback.forEach(it => {
-      it.addEventListener('click', (event) => {
+    buttonsFeedback.forEach((it) => {
+      it.addEventListener("click", (event) => {
         const element = event.currentTarget as HTMLElement;
-        const feedback = element.dataset?.feedback || '';
+        const feedback = element.dataset?.feedback || "";
         sendFeedbackUser(feedback);
-        document.dispatchEvent(new Event('close-modal-feedback'));
+        document.dispatchEvent(new Event("close-modal-feedback"));
       });
     });
-    buttonClose?.addEventListener('click', () => {
-      sendFeedbackUser('closed');
-      document.dispatchEvent(new Event('close-modal-feedback'));
+    buttonClose?.addEventListener("click", () => {
+      sendFeedbackUser("closed");
+      document.dispatchEvent(new Event("close-modal-feedback"));
     });
-  }
+  };
 
   const considerOpeningModal = () => {
     const min = 5;
     const max = 8;
-    const randomButtonClicked = Math.floor(Math.random() * (max - min + 1)) + min;
+    const randomButtonClicked =
+      Math.floor(Math.random() * (max - min + 1)) + min;
     const pressOnSite = userState.buttonsClicked >= randomButtonClicked;
     const timeOnScreen = userState.screenTime > 1 * 60 * 1000;
 
     if ((pressOnSite || timeOnScreen) && !modalMostrado) {
       modalMostrado = true;
       eventButtonsFeedback();
-      document.dispatchEvent(new Event('open-modal-feedback'));
-      document.body.removeEventListener('click', handleClickEventInteractive);
+      document.dispatchEvent(new Event("open-modal-feedback"));
+      document.body.removeEventListener("click", handleClickEventInteractive);
       clearInterval(intervalValue);
     }
-  }
+  };
 
   const handleClickEventInteractive = (event: MouseEvent) => {
     const element = event.currentTarget as HTMLElement;
     if (!element) return;
     userState.buttonsClicked++;
     considerOpeningModal();
-  }
+  };
 
-  document.body.addEventListener('click', handleClickEventInteractive);
+  document.body.addEventListener("click", handleClickEventInteractive);
 
   window.onload = () => {
     intervalValue = setInterval(() => {
@@ -106,5 +118,4 @@ import { Image } from "astro:assets";
       considerOpeningModal();
     }, 1000);
   };
-
 </script>
