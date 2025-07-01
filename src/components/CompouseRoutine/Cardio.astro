@@ -8,6 +8,8 @@ interface Props {
   day: Day;
 }
 const { day } = Astro.props;
+
+day.exercises[0];
 ---
 
 <ExpandableCardDay day={day.id} id={`${day.id}`} title={day.focus}>
@@ -15,6 +17,6 @@ const { day } = Astro.props;
     class="flex flex-col gap-8 items-center bg-white px-3 py-8 rounded-b-2xl"
   >
     <ProgressRoutine />
-    <CardioCard />
+    {day.exercises.map((it) => <CardioCard {...it} />)}
   </div>
 </ExpandableCardDay>
