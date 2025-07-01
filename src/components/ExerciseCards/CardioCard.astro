@@ -1,19 +1,29 @@
 ---
+interface Props extends Partial<Exercise> {}
+
 import CheckButton from "@components/CheckButton.astro";
 import TimeChip from "@components/TimeChip.astro";
-const cardioMachines = ["Eliptica", "Escaladora", "Remadora", "Cuerda", "Otro"];
+import type { Exercise } from "@interfaces/routines";
+const { time, apparatus } = Astro.props;
+
+const cardioMachines = ["Elíptica", "Escaladora", "Remadora", "Cuerda"]
+  .filter((it) => it.toLowerCase() !== apparatus?.name.toLowerCase())
+  .concat(...[apparatus?.name || ""])
+  .reverse();
 ---
 
-<div
-  class="border border-theme-grandient rounded-[20px] w-full pb-3 bg-theme-text-light"
->
+<div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
   <div class="flex h-full justify-between px-4 pt-4 mb-2 items-center w-full">
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Cardio con aparato
     </p>
     <CheckButton />
   </div>
-  <p class="w-5/6 px-4">Usa la máquina elíptica u otro aparato de cardio.</p>
+  <p class="w-5/6 px-4">
+    Usa la máquina <strong>{apparatus?.name.toLowerCase() || ""}</strong> u otro
+    <br />
+    aparato de cardio.
+  </p>
   <div class="relative overflow-x-auto my-4 hide-scroll mask-fade-both">
     <div class="flex gap-4 p-4 py-2">
       {
@@ -28,7 +38,7 @@ const cardioMachines = ["Eliptica", "Escaladora", "Remadora", "Cuerda", "Otro"];
       <div class="shrink-0 w-3"></div>
     </div>
   </div>
-  <TimeChip by={5} unit="mins" />
+  <TimeChip by={time?.by || 30} unit={time?.unit || "mins"} />
 </div>
 
 <style>

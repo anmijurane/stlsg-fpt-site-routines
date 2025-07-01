@@ -1,12 +1,15 @@
 ---
 import CheckButton from "@components/CheckButton.astro";
 import TimeChip from "@components/TimeChip.astro";
+import type { Exercise } from "@interfaces/routines";
 const classMachines = ["Zumba", "Yoga", "Spinning", "Meditación", "Otro"];
+
+interface Props extends Partial<Exercise> {}
+
+const { time } = Astro.props;
 ---
 
-<div
-  class="border border-theme-grandient rounded-[20px] w-full pb-3 bg-theme-text-light"
->
+<div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
   <div class="flex h-full justify-between px-4 pt-4 mb-2 items-center w-full">
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Clase PE@PF a elegir
@@ -35,7 +38,7 @@ const classMachines = ["Zumba", "Yoga", "Spinning", "Meditación", "Otro"];
       <div class="shrink-0 w-3"></div>
     </div>
   </div>
-  <TimeChip by={5} unit="mins" />
+  <TimeChip by={time?.by} unit={time?.unit || "Libre"} />
 </div>
 
 <style>
