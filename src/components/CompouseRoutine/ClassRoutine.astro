@@ -16,6 +16,6 @@ const { day } = Astro.props;
     class="flex flex-col gap-8 items-center bg-white px-3 py-8 rounded-b-2xl"
   >
     <ProgressRoutine />
-    <ClassCard />
+    {day.exercises.map((it) => <ClassCard {...it} />)}
   </div>
 </ExpandableCardDay>
