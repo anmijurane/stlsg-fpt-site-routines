@@ -1,0 +1,34 @@
+---
+interface Props extends Partial<Exercise> {}
+
+import CheckButton from "@components/CheckButton.astro";
+import TimeChip from "@components/TimeChip.astro";
+import type { Exercise } from "@interfaces/routines";
+const { time } = Astro.props;
+---
+
+<div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
+  <div class="flex h-full justify-between px-4 pt-4 mb-2 items-center w-full">
+    <p class="text-theme-primary text-2xl font-semibold w-10/12">
+      Circuito Express
+    </p>
+    <CheckButton />
+  </div>
+  <div class="flex items-center px-4 gap-2">
+    <div class="w-5/12 h-full">
+      <img
+        src={`/muscles/whole_body.svg`}
+        alt={`múculo a trabajar: todo el cuerpo`}
+        class="border border-theme-primary rounded-xl w-full"
+        loading="lazy"
+      />
+    </div>
+    <div class="w-6/12 flex flex-col items-start justify-start h-full gap-1">
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere,
+        aperiam?
+      </p>
+    </div>
+  </div>
+  <TimeChip by={time?.by || 30} unit={time?.unit || "mins"} />
+</div>
