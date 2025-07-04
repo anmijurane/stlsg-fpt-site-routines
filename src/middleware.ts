@@ -3,6 +3,7 @@ import path from 'node:path';
 import { defineMiddleware } from "astro:middleware";
 import { UAParser } from "ua-parser-js";
 import { locationsGym } from "./data/location_gym";
+import { randomUUID } from 'node:crypto';
 
 const isProd = import.meta.env.PROD;
 
@@ -51,6 +52,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   const slug = url.searchParams.get('slug');
   const alreadyCookieExist = cookies.get('slug')?.value;
+  const sessionRef = cookies.get('_a')?.value;
   const skip = url.searchParams.get('skip');
 
   const parse = new UAParser();
@@ -66,6 +68,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     user_agent_device: userAgent.device.toString() || 'unknow',
     skip: !!skip,
     page: url.pathname,
+    sessionRef
   };
 
   if (slug) {
@@ -73,12 +76,14 @@ export const onRequest = defineMiddleware(async (context, next) => {
     if (isValidGym) {
       const redirectUrl = `${url.origin}${url.pathname}`;
       const expiresDate = new Date(Date.now() + 1000 * 60 * 60 * 12); // 12 horas
+      const sessionId = randomUUID();
 
-      const cookieValue = `${encodeURIComponent('slug')}=${encodeURIComponent(slug)}; Path=/; SameSite=Lax; HttpOnly; ${isProd ? 'Secure;' : ''} Expires=${expiresDate.toUTCString()}`;
-
+      const cookieSlug = `${encodeURIComponent('slug')}=${encodeURIComponent(slug)}; Path=/; SameSite=Lax; HttpOnly; ${isProd ? 'Secure;' : ''} Expires=${expiresDate.toUTCString()};`;
+      const cookieSession = `${encodeURIComponent('_a')}=${encodeURIComponent(sessionId)}; Path=/; SameSite=Lax; HttpOnly; ${isProd ? 'Secure;' : ''} Expires=${expiresDate.toUTCString()};`;
       const headers = new Headers();
-      headers.set('Location', redirectUrl);
-      headers.set('Set-Cookie', cookieValue);
+      headers.append('Location', redirectUrl);
+      headers.append('Set-Cookie', cookieSlug);
+      headers.append('Set-Cookie', cookieSession);
 
       const response = new Response(null, {
         status: 302,
