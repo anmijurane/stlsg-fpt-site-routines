@@ -145,7 +145,6 @@ const feedbackOptions = [
 
     const sendFeedbackComment = async (event: MouseEvent) => {
       event.stopPropagation();
-      console.log("ENTRO AL EVENTO SEND COMMENT");
       const feedbackId = sessionStorage.getItem("_feedback");
       if (!feedbackId || !commentTextarea) return;
       try {
