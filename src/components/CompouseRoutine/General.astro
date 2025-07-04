@@ -1,5 +1,6 @@
 ---
 import DivitionsDots from "@components/DivitionsDots.astro";
+import ClassCard from "@components/ExerciseCards/ClassCard.astro";
 import Cooling from "@components/ExerciseCards/Cooling.astro";
 import GeneralCard from "@components/ExerciseCards/GeneralCard.astro";
 import Heating from "@components/ExerciseCards/Heating.astro";
@@ -22,6 +23,9 @@ const { day } = Astro.props;
     <DivitionsDots length={15} />
     {
       day.exercises.map((it) => {
+        if (it.name === "Clase PE@PF") {
+          return <ClassCard {...it} />;
+        }
         return <GeneralCard {...it} />;
       })
     }
