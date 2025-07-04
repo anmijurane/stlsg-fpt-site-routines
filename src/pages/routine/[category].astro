@@ -13,12 +13,14 @@ import General from "@components/CompouseRoutine/General.astro";
 import Mixto from "@components/CompouseRoutine/Mixto.astro";
 
 import { routines } from "@data/index";
+import ExpressCircuit from "@components/CompouseRoutine/ExpressCircuit.astro";
 
 const TypeRoutine = {
   ["Descanso"]: Break,
   ["Mixto"]: Mixto,
   ["Cardio"]: Cardio,
   ["Clase PE@PF"]: ClassRoutine,
+  ["Circuito express"]: ExpressCircuit,
   ["Default"]: General,
 } as const;
 type RoutineKey = keyof typeof TypeRoutine;
