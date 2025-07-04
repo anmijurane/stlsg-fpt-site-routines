@@ -1,12 +1,20 @@
 ---
-interface Props extends Partial<Exercise> {}
+interface Props extends Partial<Exercise> {
+  progressControl?: string;
+}
 
-import CheckButton from "@components/CheckButton.astro";
+import { CheckButtonWithState } from "@components/react/CheckButton";
 import TimeChip from "@components/TimeChip.astro";
 import type { Exercise } from "@interfaces/routines";
-const { time, apparatus } = Astro.props;
+const { time, apparatus, progressControl = "" } = Astro.props;
 
-const cardioMachines = ["Elíptica", "Escaladora", "Remadora", "Cuerda"]
+const cardioMachines = [
+  "Eliptica",
+  "Caminadora",
+  "Escalera infinita",
+  "Remadora",
+  "bicicleta estatica",
+]
   .filter((it) => it.toLowerCase() !== apparatus?.name.toLowerCase())
   .concat(...[apparatus?.name || ""])
   .reverse();
@@ -17,7 +25,7 @@ const cardioMachines = ["Elíptica", "Escaladora", "Remadora", "Cuerda"]
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Cardio con aparato
     </p>
-    <CheckButton />
+    <CheckButtonWithState client:load progressControl={progressControl} />
   </div>
   <p class="w-5/6 px-4">
     Usa la máquina <strong>{apparatus?.name.toLowerCase() || ""}</strong> u otro

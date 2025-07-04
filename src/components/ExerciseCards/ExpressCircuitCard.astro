@@ -1,10 +1,13 @@
 ---
-interface Props extends Partial<Exercise> {}
+interface Props extends Partial<Exercise> {
+  progressControl?: string;
+}
 
 import CheckButton from "@components/CheckButton.astro";
+import { CheckButtonWithState } from "@components/react/CheckButton";
 import TimeChip from "@components/TimeChip.astro";
 import type { Exercise } from "@interfaces/routines";
-const { time } = Astro.props;
+const { time, progressControl = "" } = Astro.props;
 ---
 
 <div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
@@ -12,7 +15,7 @@ const { time } = Astro.props;
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Circuito Express
     </p>
-    <CheckButton />
+    <CheckButtonWithState client:load progressControl={progressControl} />
   </div>
   <div class="flex items-center px-4 gap-2">
     <div class="w-5/12 h-full">

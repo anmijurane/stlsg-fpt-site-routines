@@ -1,12 +1,21 @@
 ---
 import CheckButton from "@components/CheckButton.astro";
+import { CheckButtonWithState } from "@components/react/CheckButton";
 import TimeChip from "@components/TimeChip.astro";
 import type { Exercise } from "@interfaces/routines";
-const classMachines = ["Zumba", "Yoga", "Spinning", "Meditación", "Otro"];
 
-interface Props extends Partial<Exercise> {}
+const classMachines = [
+  "Quema de grasa",
+  "Fuerza ",
+  "Abdomen y glúteo",
+  "Circuito express de 30 minutos",
+];
 
-const { time } = Astro.props;
+interface Props extends Partial<Exercise> {
+  progressControl?: string;
+}
+
+const { time, progressControl = "" } = Astro.props;
 ---
 
 <div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
@@ -14,7 +23,7 @@ const { time } = Astro.props;
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Clase PE@PF a elegir
     </p>
-    <CheckButton />
+    <CheckButtonWithState client:load progressControl={progressControl} />
   </div>
   <div class="w-full px-4 flex gap-2 items-center">
     <svg width="22" height="22" class="w1/6">
