@@ -1,4 +1,10 @@
-import React, { useState, type FC } from 'react'
+import { useMemo, useState, type FC } from 'react';
+import { useStore } from '@nanostores/react';
+
+import { Routine } from '@store/routines';
+import { setDoneExerciseById } from '@store/routines.actions';
+
+import type { StateExercise } from '@interfaces/store';
 
 const ForTodoIcon = () => {
   return (
@@ -41,49 +47,43 @@ const DoneIcon = () => {
     </svg>
   )
 }
-interface Props {
-  progressControl: string;
+interface Props extends Pick<StateExercise, "id"> {
+  dayId: number;
 }
 
-export const CheckButtonWithState: FC<Props> = ({ progressControl }) => {
-  const [toggleDone, setToggleDone] = useState(false);
+export const CheckButtonWithState: FC<Props> = ({ id, dayId }) => {
+  const routine = useStore(Routine);
+
+  const actualRoutine = useMemo(() => {
+    const dayRoutine = routine[`${dayId}`];
+    if (!dayRoutine) return null;
+
+    return dayRoutine.exercises.find(exercise => exercise.id === id);
+  }, [routine]);
+
   const handleToggle = () => {
-    // 1. Encuentra el elemento de progreso. Si no existe, no hagas nada.
-    const progressElement = document.getElementById(progressControl);
-    if (!progressElement) {
-      setToggleDone(!toggleDone);
-      console.error('Elemento con id "progressControl" no encontrado.');
-      return;
-    }
-
-    // 2. Determina el cambio: +1 si se marca, -1 si se desmarca.
-    const delta = !toggleDone ? 1 : -1;
-
-    // 3. Lee los valores actuales del dataset (convirtiendo a número).
-    const total = Number(progressElement.dataset.total) || 0;
-    const currentActually = Number(progressElement.dataset.actually) || 0;
-
-    // 4. Calcula el nuevo valor "hecho".
-    const newActually = currentActually + delta;
-
-    // 5. Calcula el nuevo porcentaje.
-    const newPercentage = total === 0 ? 0 : (newActually * 100) / total;
-
-    // 6. Actualiza el DOM.
-    const svg = progressElement.querySelector('svg');
-    if (svg) {
-      svg.style.setProperty('--progress', `${newPercentage}`);
-      progressElement.dataset.actually = `${newActually}`;
-
-    }
-
-    // 7. Finalmente, actualiza el estado del propio botón.
-    setToggleDone(!toggleDone);
+    setDoneExerciseById(dayId, { id, isDone: !actualRoutine?.isDone });
   }
+
   return (
     <button
-      id={`button_${progressControl}`}
+      id={`button_${id}`}
       onClick={handleToggle}
+      className='rounded-sm transition transform active:scale-85 border opacity-80 font-bold bg-transparent border-none w-fit h-fit py-0 px-0'
+    >
+      {actualRoutine?.isDone ? <DoneIcon /> : <ForTodoIcon />}
+    </button>
+  )
+}
+
+export const CheckButton: FC<Props> = ({ id, dayId }) => {
+
+  const [toggleDone, setToggleDone] = useState(false);
+
+  return (
+    <button
+      id={`button_${id}`}
+      onClick={() => setToggleDone(!toggleDone)}
       className='rounded-sm transition transform active:scale-85 border opacity-80 font-bold bg-transparent border-none w-fit h-fit py-0 px-0'
     >
       {toggleDone ? <DoneIcon /> : <ForTodoIcon />}
