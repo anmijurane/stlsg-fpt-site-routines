@@ -1,12 +1,12 @@
 ---
 interface Props extends Partial<Exercise> {
-  progressControl?: string;
+  dayId: number;
 }
 
 import { CheckButtonWithState } from "@components/react/CheckButton";
 import TimeChip from "@components/TimeChip.astro";
 import type { Exercise } from "@interfaces/routines";
-const { time, apparatus, progressControl = "" } = Astro.props;
+const { time, apparatus, dayId, id } = Astro.props;
 
 const cardioMachines = [
   "Eliptica",
@@ -25,7 +25,7 @@ const cardioMachines = [
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Cardio con aparato
     </p>
-    <CheckButtonWithState client:load progressControl={progressControl} />
+    <CheckButtonWithState client:load id={id || ""} dayId={dayId} />
   </div>
   <p class="w-5/6 px-4">
     Usa la máquina <strong>{apparatus?.name.toLowerCase() || ""}</strong> u otro

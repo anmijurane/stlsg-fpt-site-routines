@@ -12,10 +12,10 @@ const classMachines = [
 ];
 
 interface Props extends Partial<Exercise> {
-  progressControl?: string;
+  dayId: number;
 }
 
-const { time, progressControl = "" } = Astro.props;
+const { time, id, dayId } = Astro.props;
 ---
 
 <div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
@@ -23,7 +23,7 @@ const { time, progressControl = "" } = Astro.props;
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Clase PE@PF a elegir
     </p>
-    <CheckButtonWithState client:load progressControl={progressControl} />
+    <CheckButtonWithState client:load id={id || ""} dayId={dayId} />
   </div>
   <div class="w-full px-4 flex gap-2 items-center">
     <svg width="22" height="22" class="w1/6">
