@@ -33,6 +33,9 @@
       ],
       "@interfaces/*": [
         "./src/interfaces/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
       ]
     },
     "jsx": "react-jsx",
