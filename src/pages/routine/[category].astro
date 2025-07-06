@@ -61,3 +61,19 @@ const { id, days } = currentLevel;
     </ExpandableCardGroup>
   </div>
 </MainLayout>
+
+<script>
+  import { routines } from "@data/index";
+  import type { TypeRoutine } from "@interfaces/routines";
+  import { initialStateByRoutine } from "@store/routines.actions";
+  const __initial__ = () => {
+    const url = new URL(window.location.href);
+    const category = url.pathname.split("/")[2] as TypeRoutine;
+    const isValid = Object.keys(routines).includes(category);
+    const level = Number(url.searchParams.get("level") || 0);
+    if (isValid) {
+      initialStateByRoutine(category, level);
+    }
+  };
+  document.addEventListener("astro:page-load", __initial__);
+</script>
