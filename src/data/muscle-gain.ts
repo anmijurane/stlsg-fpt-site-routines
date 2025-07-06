@@ -10,7 +10,7 @@ export const muscle_gain: Routine = {
       "name": "Nivel 1",
       "totalExercises": 12,
       "frequency": {
-        "total": 3,
+        "total": 4,
         "label": "días por semana"
       },
       "generalFocus": "Fuerza General - Torso/Pierna",
@@ -65,9 +65,9 @@ export const muscle_gain: Routine = {
     {
       "id": 2,
       "name": "Nivel 2",
-      "totalExercises": 13,
+      "totalExercises": 12,
       "frequency": {
-        "total": 2,
+        "total": 4,
         "label": "días por semana"
       },
       "generalFocus": "Volumen y Aislamiento",
@@ -125,7 +125,7 @@ export const muscle_gain: Routine = {
       "name": "Nivel 3",
       "totalExercises": 18,
       "frequency": {
-        "total": 3,
+        "total": 4,
         "label": "días por semana"
       },
       "generalFocus": "Alta Intensidad - Torso/Pierna",
@@ -187,7 +187,7 @@ export const muscle_gain: Routine = {
       "name": "Nivel 4",
       "totalExercises": 18,
       "frequency": {
-        "total": 3,
+        "total": 4,
         "label": "días por semana"
       },
       "generalFocus": "Máxima Fuerza",
