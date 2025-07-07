@@ -30,12 +30,9 @@ export const initialStateByRoutine = (category: TypeRoutine, level: number) => {
       coolHeat: day.exercises.length >= 3,
     }
     if (day.exercises.length >= 3) {
-      console.log('ENTRO!!')
-      current.exercises = [ ...current.exercises, ...coldAndHeat];
-      console.log(current)
+      current.exercises = [...current.exercises, ...coldAndHeat];
     }
     routine[day.id] = current;
   });
-  console.log(routine);
   Routine.set(routine);
 }

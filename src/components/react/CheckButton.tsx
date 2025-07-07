@@ -76,17 +76,3 @@ export const CheckButtonWithState: FC<Props> = ({ id, dayId }) => {
   )
 }
 
-export const CheckButton: FC<Props> = ({ id, dayId }) => {
-
-  const [toggleDone, setToggleDone] = useState(false);
-
-  return (
-    <button
-      id={`button_${id}`}
-      onClick={() => setToggleDone(!toggleDone)}
-      className='rounded-sm transition transform active:scale-85 border opacity-80 font-bold bg-transparent border-none w-fit h-fit py-0 px-0'
-    >
-      {toggleDone ? <DoneIcon /> : <ForTodoIcon />}
-    </button>
-  )
-}
