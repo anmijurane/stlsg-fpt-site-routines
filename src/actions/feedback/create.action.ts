@@ -12,6 +12,8 @@ export const CreateFeedback = defineAction({
   }),
   handler: async ({ emoji, comment, page_path, rejected }, { cookies, clientAddress, request }) => {
 
+    const URL_BFF = `http://localhost:${process.env.PORT}/api/feedback/emoji`;
+
     const sedeIdCookie = cookies.get('slug')?.value;
     const sessionId = cookies.get('_a')?.value;
     const userAgent = request.headers.get('User-Agent') || 'Desconocido';
@@ -41,7 +43,7 @@ export const CreateFeedback = defineAction({
 
     try {
       // TODO: Refactor global controller
-      const response = await axios.post('http://localhost:3001/api/feedback/emoji', data, { headers });
+      const response = await axios.post(URL_BFF, data, { headers });
       return response.data;
     } catch (error) {
       return { error: true }

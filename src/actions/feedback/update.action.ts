@@ -30,7 +30,7 @@ export const UpdateCommentFeedback = defineAction({
       'Content-Type': 'application/json',
     }
 
-    const pathURL = `http://localhost:3001/api/feedback/comment/${id}`;
+    const pathURL = `http://localhost:${process.env.PORT}/api/feedback/comment/${id}`;
 
     try {
       // TODO: Refactor global controller
