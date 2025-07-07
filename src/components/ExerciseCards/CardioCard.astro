@@ -9,15 +9,15 @@ import type { Exercise } from "@interfaces/routines";
 const { time, apparatus, dayId, id } = Astro.props;
 
 const cardioMachines = [
-  "Eliptica",
-  "Caminadora",
-  "Escalera infinita",
-  "Remadora",
-  "Bicicleta estatica",
-]
-  .filter((it) => it.toLowerCase() !== apparatus?.name.toLowerCase())
-  .concat(...[apparatus?.name || ""])
-  .reverse();
+  { label: "Eliptica", urlImage: '/machines/eliptica', width: '70' },
+  { label: "Caminadora", urlImage: '/machines/caminadora', width: '90' },
+  { label: "Escalera infinita", urlImage: '/machines/escalera_infinita', width: '90' },
+  { label: "Remadora", urlImage: '/machines/remadora', width: '130' },
+  { label: "Bicicleta estatica", urlImage: '/machines/bici', width: '85' },
+];
+  // .filter((it) => it.label.toLowerCase() !== apparatus?.name.toLowerCase())
+  // .concat(...[apparatus?.name || ""])
+  // .reverse();
 ---
 
 <div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
@@ -36,11 +36,14 @@ const cardioMachines = [
     <div class="flex gap-4 p-4 py-2">
       {
         cardioMachines.map((machine) => (
-          <div class="h-24 w-24 min-w-24 min-h-24 bg-theme-tertiary rounded-xl">
-            <div class="flex items-center justify-center text-center w-full h-full">
-              {machine}
+          <div class="h-40 w-36 min-w-36 bg-theme-primary rounded-xl">
+              <div class="flex items-center justify-center text-center w-full h-2/6 text-theme-text-light p-2">
+                {machine.label}
+              </div>
+              <div class="flex items-center justify-center w-full h-4/6 bg-theme-tertiary rounded-b-xl">
+                <img width={machine.width} class="img-machine" src={`${machine.urlImage}.png`} alt={`Maquina a usar : ${machine.label}`} />
+              </div>
             </div>
-          </div>
         ))
       }
       <div class="shrink-0 w-3"></div>

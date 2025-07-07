@@ -1,14 +1,17 @@
 ---
-import CheckButton from "@components/CheckButton.astro";
 import { CheckButtonWithState } from "@components/react/CheckButton";
 import TimeChip from "@components/TimeChip.astro";
 import type { Exercise } from "@interfaces/routines";
+import AbdGluteo from '@assets/icons/astro/AbdGluteo.astro';
+import ExpressCircuit from '@assets/icons/astro/ExpressCircuit.astro';
+import FatBurning from '@assets/icons/astro/FatBurning.astro';
+import Force from '@assets/icons/astro/ForceIcon.astro';
 
 const classMachines = [
-  "Quema de grasa",
-  "Fuerza ",
-  "Abdomen y glúteo",
-  "Circuito express de 30 minutos",
+  { label: "Quema de grasa", component: FatBurning },
+  { label: "Fuerza ", component: Force },
+  { label: "Abdomen y glúteo", component: AbdGluteo },
+  { label: "Circuito express de 30 minutos", component: ExpressCircuit },
 ];
 
 interface Props extends Partial<Exercise> {
@@ -36,13 +39,19 @@ const { time, id, dayId } = Astro.props;
   <div class="relative overflow-x-auto my-4 hide-scroll mask-fade-both">
     <div class="flex gap-4 p-4 py-2">
       {
-        classMachines.map((machine) => (
-          <div class="h-24 w-24 min-w-24 min-h-24 bg-theme-tertiary rounded-xl">
-            <div class="flex items-center justify-center text-center w-full h-full">
-              {machine}
+        classMachines.map((machine) => {
+          const Component = machine.component;
+          return (
+            <div class="h-40 w-36 min-w-36 bg-theme-primary rounded-xl">
+              <div class="flex items-center justify-center text-center w-full h-2/6 text-theme-text-light p-2">
+                {machine.label}
+              </div>
+              <div class="flex items-center justify-center w-full h-4/6 bg-theme-tertiary rounded-b-xl">
+                <Component />
+              </div>
             </div>
-          </div>
-        ))
+          )
+        })
       }
       <div class="shrink-0 w-3"></div>
     </div>
