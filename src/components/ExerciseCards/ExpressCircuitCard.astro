@@ -3,7 +3,6 @@ interface Props extends Partial<Exercise> {
   dayId: number;
 }
 
-import CheckButton from "@components/CheckButton.astro";
 import { CheckButtonWithState } from "@components/react/CheckButton";
 import TimeChip from "@components/TimeChip.astro";
 import type { Exercise } from "@interfaces/routines";
@@ -28,9 +27,12 @@ const { time, id, dayId } = Astro.props;
     </div>
     <div class="w-6/12 flex flex-col items-start justify-start h-full gap-1">
       <p>
-        Combina 10 máquinas de resistencia y 10 estaciones de
+        <!-- Combina 10 máquinas de resistencia y 10 estaciones de
         <strong>"step"</strong>
-        para ejercicios cardiovasculares.
+        para ejercicios cardiovasculares. -->
+        El Circuito Express de 30 Minutos de PF combina 10 máquinas de resistencia y 10 estaciones de
+        "step" para ejercicios cardiovasculares, al final de los 30 minutos, habrás completado el
+        circuito y hecho ejercicio para todo el cuerpo.
       </p>
     </div>
   </div>
