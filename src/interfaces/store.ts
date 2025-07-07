@@ -15,6 +15,6 @@ export interface StateRoutines {
   id: number;
   name: string;
   exercises: StateExercise[]
-  coolHeat?: ColdAndHeat[]
+  coolHeat: boolean
 }
 

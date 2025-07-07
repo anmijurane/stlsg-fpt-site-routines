@@ -1,6 +1,6 @@
 ---
 import Button from "@components/Button.astro";
-import { CheckButton } from "@components/react/CheckButton";
+import { CheckButton, CheckButtonWithState } from "@components/react/CheckButton";
 
 interface Props {
   dayId: number;
@@ -12,7 +12,7 @@ const { dayId, id } = Astro.props;
 <div class="bg-theme-light-card rounded-[20px] w-full">
   <div class="flex justify-between px-4 pt-4 mb-2 items-center">
     <p class="text-theme-primary text-2xl font-semibold">Calentamiento</p>
-    <CheckButton client:load id={id || ""} dayId={dayId} />
+    <CheckButtonWithState client:load id={id || ""} dayId={dayId} />
   </div>
   <div class="flex items-center px-4 gap-2">
     <div class="w-3/12 flex justify-center items-center">
