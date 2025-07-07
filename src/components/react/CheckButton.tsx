@@ -1,4 +1,4 @@
-import { useMemo, useState, type FC } from 'react';
+import { useMemo, type FC } from 'react';
 import { useStore } from '@nanostores/react';
 
 import { Routine } from '@store/routines';
