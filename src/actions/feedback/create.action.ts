@@ -43,7 +43,10 @@ export const CreateFeedback = defineAction({
 
     try {
       // TODO: Refactor global controller
+      console.log({ URL_BFF })
+      console.log(data);
       const response = await axios.post(URL_BFF, data, { headers });
+      console.log(response);
       return response.data;
     } catch (error) {
       return { error: true }
