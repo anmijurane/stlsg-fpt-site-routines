@@ -12,6 +12,7 @@ export const UpdateCommentFeedback = defineAction({
     const sedeIdCookie = cookies.get('slug')?.value;
     const sessionId = cookies.get('_a')?.value;
     const userAgent = request.headers.get('User-Agent') || 'Desconocido';
+    const PORT = 5691;
 
     if (!sedeIdCookie || !sessionId) {
       throw new ActionError({ code: 'UNAUTHORIZED' });
@@ -30,14 +31,13 @@ export const UpdateCommentFeedback = defineAction({
       'Content-Type': 'application/json',
     }
 
-    const pathURL = `http://localhost:${process.env.PORT}/api/feedback/comment/${id}`;
+    const pathURL = `http://localhost:${PORT}/api/feedback/comment/${id}`;
 
     try {
       // TODO: Refactor global controller
-      console.log({ pathURL })
-      console.log(data)
       const response = await axios.post(pathURL, data, { headers });
-      console.log(response)
+      console.log(data)
+      console.log(response.data)
       return response.data;
     } catch (error) {
       return { error: true }
