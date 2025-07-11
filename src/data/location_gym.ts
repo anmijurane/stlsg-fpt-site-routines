@@ -34,6 +34,6 @@ export const locationsGym = [
   { "slug": "9b4a5e7d13", "state": "Veracruz",    "club": "Andamar",                "active": false },
   { "slug": "c50f0f52f8", "state": "Veracruz",    "club": "Los Pinos",              "active": false },
   { "slug": "2e7d9a4c05", "state": "San Luis",    "club": "Glorieta",               "active": true  },
-  { "slug": "f1e2d3c4b5", "state": "Guadalajara", "club": "Plaza Del Angel",        "active": false },
+  { "slug": "f1e2d3c4b5", "state": "Guadalajara", "club": "Plaza Del Angel",        "active": true  },
   { "slug": "4bfa66b080", "state": "Mazatlan",    "club": "Gran Plaza Mazatlan",    "active": false }
 ];
