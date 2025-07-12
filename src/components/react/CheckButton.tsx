@@ -57,7 +57,6 @@ export const CheckButtonWithState: FC<Props> = ({ id, dayId }) => {
   const actualRoutine = useMemo(() => {
     const dayRoutine = routine[`${dayId}`];
     if (!dayRoutine) return null;
-
     return dayRoutine.exercises.find(exercise => exercise.id === id);
   }, [routine]);
 
@@ -69,10 +68,13 @@ export const CheckButtonWithState: FC<Props> = ({ id, dayId }) => {
     <button
       id={`button_${id}`}
       onClick={handleToggle}
-      className='rounded-sm transition transform active:scale-85 border opacity-80 font-bold bg-transparent border-none w-fit h-fit py-0 px-0'
+      className={`rounded-sm transition-all duration-200 ease-out active:scale-80 border font-bold bg-transparent border-none w-fit h-fit py-0 px-0 ${
+        actualRoutine?.isDone
+          ? 'opacity-100 scale-95 animate-[ping_0.45s_linear_1]'
+          : 'opacity-80 animate-pulse'
+      }`}
     >
       {actualRoutine?.isDone ? <DoneIcon /> : <ForTodoIcon />}
     </button>
   )
 }
-
