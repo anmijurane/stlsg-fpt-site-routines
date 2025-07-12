@@ -1,6 +1,12 @@
 import type { StateRoutines } from '@interfaces/store';
-import { map } from 'nanostores';
+import { setSessionValue } from '@utils/sessionStorage';
+import { atom, map } from 'nanostores';
 
+export const CurrentMount = atom('');
 export const Routine = map<Record<string, StateRoutines>>({});
+
 // TODO: Implementation write session storage
-// Routine.subscribe(it => console.log(it));
+Routine.subscribe(it => {
+  const currentRoutine = CurrentMount.get();
+  setSessionValue(currentRoutine, it);
+});
