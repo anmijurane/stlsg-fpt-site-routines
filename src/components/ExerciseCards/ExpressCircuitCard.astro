@@ -14,7 +14,7 @@ const { time, id, dayId } = Astro.props;
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Circuito Express
     </p>
-    <CheckButtonWithState client:load id={id || ""} dayId={dayId} />
+    <CheckButtonWithState client:only="react" id={id || ""} dayId={dayId} />
   </div>
   <div class="flex items-center px-4 gap-2">
     <div class="w-5/12 h-full">

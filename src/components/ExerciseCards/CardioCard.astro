@@ -25,7 +25,7 @@ const cardioMachines = [
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Cardio con aparato
     </p>
-    <CheckButtonWithState client:load id={id || ""} dayId={dayId} />
+    <CheckButtonWithState client:only="react" id={id || ""} dayId={dayId} />
   </div>
   <p class="w-5/6 px-4">
     Usa la máquina <strong>{apparatus?.name.toLowerCase() || ""}</strong> u otro
