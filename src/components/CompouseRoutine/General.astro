@@ -1,5 +1,4 @@
 ---
-import DivitionsDots from "@components/DivitionsDots.astro";
 import ClassCard from "@components/ExerciseCards/ClassCard.astro";
 import Cooling from "@components/ExerciseCards/Cooling.astro";
 import GeneralCard from "@components/ExerciseCards/GeneralCard.astro";
@@ -20,7 +19,6 @@ const { day } = Astro.props;
   >
     <ProgressIndicatorRoutine client:only="react" dayId={day.id} />
     <Heating id="heating" dayId={day.id} />
-    <DivitionsDots length={15} />
     {
       day.exercises.map((it) => {
         if (it.name === "Clase PE@PF") {
@@ -29,7 +27,6 @@ const { day } = Astro.props;
         return <GeneralCard {...it} id={it.id} dayId={day.id} />;
       })
     }
-    <DivitionsDots length={15} />
     <Cooling id="cooling" dayId={day.id} />
   </div>
 </ExpandableCardDay>

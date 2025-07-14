@@ -1,5 +1,4 @@
 ---
-import DivitionsDots from "@components/DivitionsDots.astro";
 import CardioCard from "@components/ExerciseCards/CardioCard.astro";
 import ClassCard from "@components/ExerciseCards/ClassCard.astro";
 import ExpandableCardDay from "@components/expandibleCompose/ExpandableCardDay.astro";
@@ -22,7 +21,6 @@ const classPF = day.exercises.find((it) => it.zone === "PE@PF");
   >
     <ProgressIndicatorRoutine client:only="react" dayId={day.id} />
     <CardioCard {...cardioExercise} dayId={day.id} id={cardioExercise?.id} />
-    <DivitionsDots length={15} />
     <ClassCard {...classPF} dayId={day.id} id={classPF?.id} />
   </div>
 </ExpandableCardDay>
