@@ -26,11 +26,11 @@ const { numberLevel, totalExercise, frequencyDays, to, zones } = Astro.props;
     class="rounded-t-[20px] bg-theme-primary flex justify-between items-center px-4 py-2"
   >
     <p class="text-theme-text-light text-xl font-medium">NIVEL {numberLevel}</p>
-    <div class="flex">
+    <div class="flex gap-1">
       {
-        new Array(4)
+        new Array(numberLevel)
           .fill(0)
-          .map((_, it) => <Engrane active={it < numberLevel} />)
+          .map(() => <Engrane active />)
       }
     </div>
   </div>
