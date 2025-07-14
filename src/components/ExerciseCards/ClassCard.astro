@@ -6,6 +6,7 @@ import AbdGluteo from '@assets/icons/astro/AbdGluteo.astro';
 import ExpressCircuit from '@assets/icons/astro/ExpressCircuit.astro';
 import FatBurning from '@assets/icons/astro/FatBurning.astro';
 import Force from '@assets/icons/astro/ForceIcon.astro';
+import DivitionsDots from "@components/DivitionsDots.astro";
 
 const classMachines = [
   { label: "Quema de grasa", component: FatBurning },
@@ -46,7 +47,7 @@ const { time, id, dayId } = Astro.props;
               <div class="flex items-center justify-center text-center w-full h-2/6 text-theme-text-light p-2">
                 {machine.label}
               </div>
-              <div class="flex items-center justify-center w-full h-4/6 bg-theme-tertiary rounded-b-xl">
+              <div class="flex items-center justify-center w-full h-4/6 bg-theme-primary rounded-b-xl">
                 <Component />
               </div>
             </div>
@@ -55,6 +56,13 @@ const { time, id, dayId } = Astro.props;
       }
       <div class="shrink-0 w-3"></div>
     </div>
+  </div>
+  <div class="flex justify-center gap-2">
+    {
+      new Array(classMachines.length)
+        .fill(0)
+        .map((_) => <span class="w-2 h-2 bg-theme-dots rounded-full" />)
+    }
   </div>
   <TimeChip by={time?.by} unit={time?.unit || "Libre"} />
 </div>
