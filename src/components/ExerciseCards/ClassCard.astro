@@ -2,11 +2,10 @@
 import { CheckButtonWithState } from "@components/react/CheckButton";
 import TimeChip from "@components/TimeChip.astro";
 import type { Exercise } from "@interfaces/routines";
-import AbdGluteo from '@assets/icons/astro/AbdGluteo.astro';
-import ExpressCircuit from '@assets/icons/astro/ExpressCircuit.astro';
-import FatBurning from '@assets/icons/astro/FatBurning.astro';
-import Force from '@assets/icons/astro/ForceIcon.astro';
-import DivitionsDots from "@components/DivitionsDots.astro";
+import AbdGluteo from "@assets/icons/astro/AbdGluteo.astro";
+import ExpressCircuit from "@assets/icons/astro/ExpressCircuit.astro";
+import FatBurning from "@assets/icons/astro/FatBurning.astro";
+import Force from "@assets/icons/astro/ForceIcon.astro";
 
 const classMachines = [
   { label: "Quema de grasa", component: FatBurning },
@@ -20,9 +19,14 @@ interface Props extends Partial<Exercise> {
 }
 
 const { time, id, dayId } = Astro.props;
+const idContainer = `${dayId}_${id}`;
 ---
 
-<div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
+<div
+  class="rounded-[20px] w-full pb-3 bg-theme-text-light"
+  id={idContainer}
+  data-selector={idContainer}
+>
   <div class="flex h-full justify-between px-4 pt-4 mb-2 items-center w-full">
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Clase PE@PF a elegir
@@ -37,13 +41,18 @@ const { time, id, dayId } = Astro.props;
       Consulta los horarios y la <br /> disponibilidad en la recepción del club
     </p>
   </div>
-  <div class="relative overflow-x-auto my-4 hide-scroll mask-fade-both">
+  <div
+    class="relative overflow-x-auto my-4 hide-scroll mask-fade-both card-scroll"
+  >
     <div class="flex gap-4 p-4 py-2">
       {
-        classMachines.map((machine) => {
+        classMachines.map((machine, idx) => {
           const Component = machine.component;
           return (
-            <div class="h-40 w-36 min-w-36 bg-theme-primary rounded-xl">
+            <div
+              class="h-40 w-36 min-w-36 bg-theme-primary rounded-xl card-item"
+              data-index={idx}
+            >
               <div class="flex items-center justify-center text-center w-full h-2/6 text-theme-text-light p-2">
                 {machine.label}
               </div>
@@ -51,7 +60,7 @@ const { time, id, dayId } = Astro.props;
                 <Component />
               </div>
             </div>
-          )
+          );
         })
       }
       <div class="shrink-0 w-3"></div>
@@ -61,12 +70,28 @@ const { time, id, dayId } = Astro.props;
     {
       new Array(classMachines.length)
         .fill(0)
-        .map((_) => <span class="w-2 h-2 bg-theme-dots rounded-full" />)
+        .map((_, idx) => (
+          <span
+            class="w-2 h-2 bg-theme-dots rounded-full card-dot"
+            data-index={idx}
+          />
+        ))
     }
   </div>
   <TimeChip by={time?.by} unit={time?.unit || "Libre"} />
 </div>
-
+<script>
+  import { DotsCompareActive } from "@scripts/dots-carousel";
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLDivElement>("div[data-selector]").forEach(container => {
+      if (!container) {
+        console.log("Not found id container");
+        return;
+      }
+      DotsCompareActive(container.id);
+    });
+  });
+</script>
 <style>
   .mask-fade-both {
     -webkit-mask-image: linear-gradient(
