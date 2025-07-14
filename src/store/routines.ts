@@ -5,7 +5,6 @@ import { atom, map } from 'nanostores';
 export const CurrentMount = atom('');
 export const Routine = map<Record<string, StateRoutines>>({});
 
-// TODO: Implementation write session storage
 Routine.subscribe(it => {
   const currentRoutine = CurrentMount.get();
   setSessionValue(currentRoutine, it);
