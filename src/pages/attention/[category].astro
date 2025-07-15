@@ -86,9 +86,11 @@ const level = params.get("level");
             <Button variant="secundary" onclick="history.back()">
               Regresar
             </Button>
-            <Button variant="primary">
-              <a href={`/routine/${categoryType}/?level=${level}`}>Continuar</a>
-            </Button>
+            <a href={`/routine/${categoryType}/?level=${level}`}>
+              <Button variant="primary">
+                Continuar
+              </Button>
+              </a>
           </div>
         </div>
       </div>
