@@ -15,6 +15,8 @@ interface Props {
 }
 
 const { numberLevel, totalExercise, frequencyDays, to, zones } = Astro.props;
+console.log(to)
+const textCenter = to.includes('fat_burning');
 ---
 
 <a
@@ -24,15 +26,29 @@ const { numberLevel, totalExercise, frequencyDays, to, zones } = Astro.props;
 >
   <div
     class="rounded-t-[20px] bg-theme-primary flex justify-between items-center px-4 py-2"
+    class:list={{'justify-center': textCenter}}
   >
-    <p class="text-theme-text-light text-xl font-medium">NIVEL {numberLevel}</p>
-    <div class="flex gap-1">
-      {
-        new Array(numberLevel)
-          .fill(0)
-          .map(() => <Engrane active />)
-      }
-    </div>
+    <p class="text-theme-text-light text-xl font-medium" class:list={{'text-center': textCenter}}>NIVEL {numberLevel}</p>
+    {
+      to.includes('adaptation') && (
+        <div class="flex gap-1">
+          {new Array(numberLevel).fill(0).map(() => (
+            <Engrane active />
+          ))}
+        </div>
+      )
+    }
+    {
+      to.includes('health') && (
+        <div class="flex gap-1">
+          {new Array(4).fill(0).map((_, it) => (
+            <Engrane active={it < numberLevel} />
+          ))}
+        </div>
+      )
+    }
+    {to.includes('muscle_gain') && null}
+    {to.includes('fat_burning') && null}
   </div>
 
   <div
