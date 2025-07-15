@@ -9,7 +9,7 @@ import Force from "@assets/icons/astro/ForceIcon.astro";
 
 const classMachines = [
   { label: "Quema de grasa", component: FatBurning },
-  { label: "Fuerza ", component: Force },
+  { label: "Fuerza", component: Force },
   { label: "Abdomen y glúteo", component: AbdGluteo },
   { label: "Circuito express de 30 minutos", component: ExpressCircuit },
 ];
@@ -34,10 +34,10 @@ const idContainer = `${dayId}_${id}`;
     <CheckButtonWithState client:only="react" id={id || ""} dayId={dayId} />
   </div>
   <div class="w-full px-4 flex gap-2 items-center">
-    <svg width="22" height="22" class="w1/6">
+    <svg width="22" height="22" class="w-1/12">
       <use href="/icons.svg#information"></use>
     </svg>
-    <p class="w-5/6 text-base">
+    <p class="w-11/12 text-base">
       Consulta los horarios y la <br /> disponibilidad en la recepción del club
     </p>
   </div>
@@ -56,7 +56,7 @@ const idContainer = `${dayId}_${id}`;
               <div class="flex items-center justify-center text-center w-full h-2/6 text-theme-text-light p-2">
                 {machine.label}
               </div>
-              <div class="flex items-center justify-center w-full h-4/6 bg-theme-primary rounded-b-xl">
+              <div class="flex items-center justify-center w-full h-4/6 bg-theme-dots rounded-b-xl">
                 <Component />
               </div>
             </div>
