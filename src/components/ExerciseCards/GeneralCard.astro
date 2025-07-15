@@ -28,7 +28,7 @@ const { zone, series, name, muscle, reps, active, rest, dayId, id } = Astro.prop
     </div>
     <div class="w-6/12 flex flex-col items-start justify-start h-full gap-1">
       <div class="w-fit h-1/3">
-        <ChipCategory name={zone} />
+        <ChipCategory name={zone} withLetter />
       </div>
       <div class="w-fit h-2/3 font-medium text-base">
         {series || reps ? (
