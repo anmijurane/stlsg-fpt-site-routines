@@ -2,24 +2,25 @@
 import getPathsIcon from "@utils/getPathsIcon";
 import type { TypeRoutine } from "@interfaces/routines";
 import ArrowButton from "@components/ArrowButton.astro";
-import Engrane from "@assets/icons/astro/Engrane.astro";
+import ChipCategory from "@components/ChipCategory.astro";
 
 interface Props {
   id: string;
-  level: number;
+  exerciseName: string;
   title: string;
+  zone: string;
 }
 
-const { id, level, title } = Astro.props;
+const { id, exerciseName, title, zone } = Astro.props;
 ---
 
 <div
   id={`card__${id}`}
   data-card
   transition:name={`card__${id}`}
-  class="w-full bg-theme-secondary h-20 text-theme-text-light pl-6 pr-8 flex items-center"
+  class="w-full min-h-20 bg-theme-secondary h-20 text-theme-text-light pl-6 pr-8 flex items-center"
 >
-  <div class="w-1/6 mr-12">
+  <div class="w-1/6">
     <svg width="48" height="48" transition:name={`icon_${id}`}>
       <use
         href={encodeURI(
@@ -27,18 +28,20 @@ const { id, level, title } = Astro.props;
         )}></use>
     </svg>
   </div>
-  <div class="w-5/6 flex items-center justify-start h-full">
-    <p class="text-2xl w-full font-bold" transition:name={`title_${id}`}>
+  <div class="w-4/6 flex items-center justify-start h-full">
+    <p class="text-2xl w-full font-bold text-center" transition:name={`title_${id}`}>
       {title.toUpperCase()}
     </p>
   </div>
+  <div class="w-1/6"></div>
 </div>
-<div class="flex gap-4 items-center justify-between p-4">
-  <a href="/" class="flex items-center w-1/6">
+<div class="flex gap-4 items-center justify-start p-4">
+  <a href="javascript:history.back()" class="flex items-center w-1/6" transition:name="back_btn">
     <ArrowButton position="left" />
   </a>
-  <div class="flex items-center justify-center gap-4 w-4/6">
-    <h3 class="text-theme-tertiary text-xl text-center">NIVEL {level}</h3>
+  <div class="flex items-center justify-start flex-col gap-2 w-4/6">
+    <h3 class="text-theme-tertiary text-2xl text-center">{exerciseName}</h3>
+    <ChipCategory name={zone} withLetter />
   </div>
   <div class="w-1/6"></div>
 </div>
