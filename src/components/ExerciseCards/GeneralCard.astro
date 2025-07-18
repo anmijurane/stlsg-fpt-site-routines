@@ -8,6 +8,7 @@ interface Props extends Exercise {
 }
 
 const { zone, series, name, muscle, reps, active, rest, dayId, id } = Astro.props;
+console.log({ zone, series, name, muscle, reps, active, rest, dayId, id });
 ---
 
 <div
@@ -41,11 +42,12 @@ const { zone, series, name, muscle, reps, active, rest, dayId, id } = Astro.prop
       </div>
     </div>
   </div>
-  <div class="flex items-center justify-end px-4 h-fit -translate-y-2">
+  <div class="flex items-center justify-end px-4 my-1 h-fit -translate-y-2">
     <a
       class="flex bg-theme-primary px-2 py-1 text-theme-text-light w-fit rounded-md text-xs gap-1 items-center"
+      href={`/exercise/${name.toLocaleLowerCase().normalize('NFD').replace(/\ /g, '_')}`}
       class:list={{
-        ["opacity-0"]: true,
+        ["opacity-0"]: false,
       }}
     >
       Ver ejercicio
