@@ -1,0 +1,43 @@
+---
+import { CheckButtonWithState } from "@components/react/CheckButton";
+import type { Apparatus, Day } from "@interfaces/routines";
+
+interface Props {
+  muscle: Apparatus;
+  dayId: number;
+  idExcercise: string;
+}
+
+const { muscle, dayId, idExcercise } = Astro.props;
+---
+
+<div class="bg-theme-light-card rounded-2xl w-11/12 p-6 flex">
+  <div
+    class="flex items-center justify-start flex-col w-8/12 text-theme-primary font-semibold text-xl gap-3 pt-4"
+  >
+    <div
+      class="flex bg-white w-11/12 rounded-3xl justify-between items-center px-4 py-2"
+    >
+      <p>Series</p>
+      <p>3</p>
+    </div>
+    <div
+      class="flex bg-theme-text-light w-11/12 rounded-3xl justify-between items-center px-4 py-2"
+    >
+      <p>Repeticiones</p>
+      <p>15</p>
+    </div>
+  </div>
+  <div class="w-4/12 flex flex-col gap-3">
+    <img
+      src={`/muscles${muscle.imgUrl}.svg`}
+      alt={`múculo a trabajar: ${muscle.name}`}
+      class="border border-theme-primary bg-white rounded-xl w-full"
+      loading="lazy"
+      width="100px"
+    />
+    <div class="flex justify-end w-full">
+      <CheckButtonWithState client:only="react" id={idExcercise} dayId={dayId} />
+    </div>
+  </div>
+</div>
