@@ -5,12 +5,15 @@ import GeneralCard from "@components/ExerciseCards/GeneralCard.astro";
 import Heating from "@components/ExerciseCards/Heating.astro";
 import ExpandableCardDay from "@components/expandibleCompose/ExpandableCardDay.astro";
 import { ProgressIndicatorRoutine } from "@components/react/ProgressIndicatorRoutine";
+import ToExercise from "@components/ToExercise.astro";
 import type { Day } from "@interfaces/routines";
 
 interface Props {
   day: Day;
 }
 const { day } = Astro.props;
+const level = Astro.url.searchParams.get('level');
+const { category } = Astro.params;
 ---
 
 <ExpandableCardDay day={day.id} id={`${day.id}`} title={day.focus}>
@@ -24,7 +27,11 @@ const { day } = Astro.props;
         if (it.name === "Clase PE@PF") {
           return <ClassCard {...it} id={it.id} dayId={day.id} />;
         }
-        return <GeneralCard {...it} id={it.id} dayId={day.id} />;
+        return (
+          <GeneralCard {...it} id={it.id} dayId={day.id}>
+            <ToExercise to={`/exercise/${it.id}/?level=${level}&day=${day.id}&category=${category}`} />
+          </GeneralCard>
+        );
       })
     }
     <Cooling id="cooling" dayId={day.id} />
