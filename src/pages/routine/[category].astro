@@ -15,7 +15,7 @@ import Mixto from "@components/CompouseRoutine/Mixto.astro";
 import { routines } from "@data/index";
 import ExpressCircuit from "@components/CompouseRoutine/ExpressCircuit.astro";
 
-const TypeRoutine = {
+const typeRoutine = {
   ["Descanso"]: Break,
   ["Mixto"]: Mixto,
   ["Cardio"]: Cardio,
@@ -23,7 +23,7 @@ const TypeRoutine = {
   ["Circuito express"]: ExpressCircuit,
   ["Default"]: General,
 } as const;
-type RoutineKey = keyof typeof TypeRoutine;
+type RoutineKey = keyof typeof typeRoutine;
 
 const { category } = Astro.params;
 const categoryType = category as TypeRoutine;
@@ -49,12 +49,12 @@ const { id, days } = currentLevel;
     <HeaderRoutineDays id={idRoutine} level={id} title={nameRoutine} />
     <ExpandableCardGroup
       name={`level_${id}`}
-      class="flex justify-center items-center flex-col gap-8 py-12 text-theme-primary bg-theme"
+      class="flex justify-center items-center flex-col gap-8 py-12 text-theme-primary"
     >
       {
         days.map((day) => {
           const routine = day.focus as RoutineKey;
-          const Routine = TypeRoutine[routine] || TypeRoutine["Default"];
+          const Routine = typeRoutine[routine] || typeRoutine["Default"];
           return <Routine day={day} />;
         })
       }
