@@ -10,6 +10,12 @@ export const locationsGym = [
   { "slug": "2e7d9a4c05", "state": "San Luis",    "club": "Glorieta",               "active": true  }, // MVP 2
   { "slug": "8c1029a5e7", "state": "Queretaro",   "club": "Antea",                  "active": true  }, // MVP 2
   { "slug": "f1e2d3c4b5", "state": "Guadalajara", "club": "Plaza Del Angel",        "active": true  }, // MVP 2
+  { "slug": "358829c03d", "state": "Leon",        "club": "Lindavista",             "active": true  },
+
+  { "slug": "17cf8bbf29", "state": "Monterrey",   "club": "Santa Catarina",         "active": true  },
+  { "slug": "660e5a1d8c", "state": "Monterrey",   "club": "La Estanzuela",          "active": true  },
+  { "slug": "c6232e9461", "state": "Monterrey",   "club": "Arcadia",                "active": true  },
+  { "slug": "0b0986e177", "state": "Saltillo",    "club": "Santa Isabel",           "active": true  },
 
   { "slug": "c4e220d3af", "state": "Puebla",      "club": "Torrecillas",            "active": false },
   { "slug": "aa85485a04", "state": "Cuernavaca",  "club": "Galerías Cuernavaca",    "active": false },
@@ -20,13 +26,8 @@ export const locationsGym = [
   { "slug": "54b5f8a3c2", "state": "Edo de Mex",  "club": "Valle Dorado",           "active": false },
   { "slug": "bf41e2d6ab", "state": "CDMX",        "club": "Tlatelolco",             "active": false },
   { "slug": "eac1e502d3", "state": "CDMX",        "club": "Encuentro Oceania",      "active": false },
-  { "slug": "358829c03d", "state": "Leon",        "club": "Lindavista",             "active": false },
   { "slug": "44a6932e11", "state": "Puebla",      "club": "Serviplaza Villa Verde", "active": false },
   { "slug": "b291e7d7f0", "state": "Edo de Mex",  "club": "Tollocan",               "active": false },
-  { "slug": "17cf8bbf29", "state": "Monterrey",   "club": "Santa Catarina",         "active": false },
-  { "slug": "660e5a1d8c", "state": "Monterrey",   "club": "La Estanzuela",          "active": false },
-  { "slug": "c6232e9461", "state": "Monterrey",   "club": "Arcadia",                "active": false },
-  { "slug": "0b0986e177", "state": "Saltillo",    "club": "Santa Isabel",           "active": false },
   { "slug": "5dc0a1b409", "state": "Puebla",      "club": "Angelópolis",            "active": false },
   { "slug": "7aa8f6d5c3", "state": "Edo de Mex",  "club": "Coacalco",               "active": false },
   { "slug": "15bd2f6108", "state": "CDMX",        "club": "Acueducto",              "active": false },
