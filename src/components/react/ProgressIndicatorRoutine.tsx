@@ -20,7 +20,8 @@ const confettiConfig = {
 
 export const ProgressIndicatorRoutine: FC<Props> = ({ dayId }) => {
   const routine = useStore(Routine);
-  const confetti = useRef<JSConfetti>(null)
+  const confettiRef = useRef<JSConfetti | null>(null);
+  const isInitialMount = useRef(true);
 
   const dayRoutine = useMemo(() => {
     const dayRoutine = routine[`${dayId}`];
@@ -44,13 +45,21 @@ export const ProgressIndicatorRoutine: FC<Props> = ({ dayId }) => {
   const LeyendRoutine = getLegendForProgress(dayRoutine?.percentaje || 0);
 
   useEffect(() => {
-    confetti.current = new JSConfetti();
-    if (dayRoutine?.isComplete) {
-      confetti.current.addConfetti(confettiConfig).then(() => {
-        console.log('Se disparo el confetti!')
+    confettiRef.current = new JSConfetti();
+  }, []);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    if (dayRoutine?.isComplete && confettiRef.current) {
+      confettiRef.current.addConfetti(confettiConfig).then(() => {
+        console.log('Se disparo el confetti!');
       });
     }
-  }, [confetti, dayRoutine?.isComplete])
+  }, [dayRoutine?.isComplete]);
 
   if ((dayRoutine?.totalExercise || 0) <= 1) {
     return null;
