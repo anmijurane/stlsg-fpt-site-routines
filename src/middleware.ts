@@ -1,8 +1,9 @@
-import { defineMiddleware } from "astro:middleware";
-import { locationsGym } from "./data/location_gym";
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { defineMiddleware } from "astro:middleware";
 import { UAParser } from "ua-parser-js";
+import { locationsGym } from "./data/location_gym";
+import { randomUUID } from 'node:crypto';
 
 const isProd = import.meta.env.PROD;
 
@@ -12,7 +13,11 @@ const ASSET_EXTENSIONS = [
 ];
 
 const LOGS_DIR = path.join(process.cwd(), '_logs');
-const LOGS_FILE_PATH = path.join(LOGS_DIR, 'access_log.jsonl');
+const LOGS_FILE_PATH = () => {
+  const current = new Date();
+  const nameDate = `${current.getDate()}-${current.getMonth()}-${current.getUTCFullYear()}`;
+  return path.join(LOGS_DIR, `access_log_${nameDate}.jsonl`);
+}
 
 const ensureLogDirectoryExist = async () => {
   try {
@@ -33,7 +38,7 @@ const locationsGymMap = new Map(
 
 const appendLog = async (log: string) => {
   try {
-    await fs.appendFile(LOGS_FILE_PATH, `${log},\n`, 'utf8');
+    await fs.appendFile(LOGS_FILE_PATH(), `${log}\n`, 'utf8');
   } catch (error) {
     console.log('Error a registry log', error);
   }
@@ -41,6 +46,9 @@ const appendLog = async (log: string) => {
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const { url, cookies, clientAddress, request } = context;
+  if (request.method === 'HEAD' || request.method === 'OPTIONS') {
+    return next();
+  }
   if (
     url.pathname.startsWith('/_astro/') ||
     url.pathname.startsWith('/_image') ||
@@ -51,34 +59,43 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   const slug = url.searchParams.get('slug');
   const alreadyCookieExist = cookies.get('slug')?.value;
-  const skip = url.searchParams.get('skip');
+  const sessionRef = cookies.get('_a')?.value;
 
-  const parse = new UAParser();
-  const userAgent = parse.setUA(request.headers.get('user-agent') || '').getResult();
-  const logEntry = {
-    club_name: '',
-    timestamp: new Date().toISOString(),
-    slug: slug || alreadyCookieExist,
-    withCookie: !!alreadyCookieExist,
-    client_ip: clientAddress,
-    user_agent_browser: userAgent.browser.toString() || 'unknow',
-    user_agent_os: userAgent.os.toString() || 'unknow',
-    user_agent_device: userAgent.device.toString() || 'unknow',
-    skip: !!skip,
-    page: url.pathname,
-  };
+  if (alreadyCookieExist) {
+    const parser = new UAParser();
+    const uaInfo = parser.setUA(request.headers.get('user-agent') || '').getResult();
+    const gym = locationsGymMap.get(alreadyCookieExist);
+
+    const logEntry = {
+      club_name: gym?.club || alreadyCookieExist,
+      timestamp: new Date().toISOString(),
+      slug: alreadyCookieExist,
+      withCookie: true,
+      client_ip: clientAddress,
+      user_agent_browser: uaInfo.browser.toString() || 'unknown',
+      user_agent_os: uaInfo.os.toString() || 'unknown',
+      user_agent_device: uaInfo.device.toString() || 'unknown',
+      skip: !!url.searchParams.get('skip'),
+      page: url.href.replace(`http://${url.host}`, ''),
+      sessionRef
+    };
+    appendLog(JSON.stringify(logEntry));
+    return next();
+  }
 
   if (slug) {
     const isValidGym = locationsGymMap.get(slug);
     if (isValidGym) {
       const redirectUrl = `${url.origin}${url.pathname}`;
       const expiresDate = new Date(Date.now() + 1000 * 60 * 60 * 12); // 12 horas
+      const sessionId = randomUUID();
 
-      const cookieValue = `${encodeURIComponent('slug')}=${encodeURIComponent(slug)}; Path=/; SameSite=Lax; HttpOnly; ${isProd ? 'Secure;' : ''} Expires=${expiresDate.toUTCString()}`;
-
+      const cookieSlug = `${encodeURIComponent('slug')}=${encodeURIComponent(slug)}; Path=/; SameSite=Lax; HttpOnly; ${isProd ? 'Secure;' : ''} Expires=${expiresDate.toUTCString()};`;
+      const cookieSession = `${encodeURIComponent('_a')}=${encodeURIComponent(sessionId)}; Path=/; SameSite=Lax; HttpOnly; ${isProd ? 'Secure;' : ''} Expires=${expiresDate.toUTCString()};`;
       const headers = new Headers();
-      headers.set('Location', redirectUrl);
-      headers.set('Set-Cookie', cookieValue);
+      headers.append('Location', redirectUrl);
+      headers.append('Set-Cookie', cookieSlug);
+      headers.append('Set-Cookie', cookieSession);
 
       const response = new Response(null, {
         status: 302,
@@ -88,13 +105,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-  if (alreadyCookieExist) {
-    const gym = locationsGymMap.get(alreadyCookieExist);
-    logEntry.club_name = gym?.club || alreadyCookieExist;
-    appendLog(JSON.stringify(logEntry));
-    return next();
-  }
-
   // Si no hay slug válido ni cookie, redirigimos.
-  return Response.redirect('https://planetfitness.mx', 301);
+  return Response.redirect('https://planetfitness.mx', 302);
 });

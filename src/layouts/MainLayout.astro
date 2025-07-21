@@ -1,11 +1,14 @@
 ---
 import "@styles/global.css";
 import PreventConsoleProd from "src/utils/PreventConsoleProd.astro";
+import { ClientRouter } from "astro:transitions";
+import ModalFeedback from "@components/feedback/ModalFeedback.astro";
 interface Props {
 	title: string;
+	themeColor?: string;
 }
 
-const { title } = Astro.props;
+const { title, themeColor = "#9600FA" } = Astro.props;
 const buildDate = new Date().getTime();
 ---
 
@@ -25,7 +28,7 @@ const buildDate = new Date().getTime();
 		/>
 		<meta property="og:url" content="https://routines.planet-fitness.com.mx" />
 		<meta property="og:type" content="website" />
-		<meta name="theme-color" content="#9600FA" />
+		<meta name="theme-color" content={themeColor} />
 		<meta name="mobile-web-app-capable" content="yes" />
 		<meta
 			name="apple-mobile-web-app-status-bar-style"
@@ -44,7 +47,9 @@ const buildDate = new Date().getTime();
 		<slot />
 	</body>
 </html>
+<ModalFeedback />
 <PreventConsoleProd />
+<ClientRouter />
 
 <script define:vars={{ buildDate }}>
 	console.log(`c?d¿{${buildDate}}`);

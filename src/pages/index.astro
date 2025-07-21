@@ -8,7 +8,7 @@ import ExpandableCard from "@components/expandibleCompose/ExpandableCard.astro";
 
 import { routines } from "@data/index";
 
-import ModalFeedback from "@components/feedback/ModalFeedback.astro";
+import ConsentToUse from "@components/modals/ConsentToUse.astro";
 ---
 
 <MainLayout title="Inicio">
@@ -18,11 +18,11 @@ import ModalFeedback from "@components/feedback/ModalFeedback.astro";
 			class="flex justify-center items-center flex-col gap-8 py-12"
 		>
 			<ExpandableCard
-				title={routines.adaptatio.name.toUpperCase()}
-				id={routines.adaptatio.id}
+				title={routines.adaptation.name.toUpperCase()}
+				id={routines.adaptation.id}
 			>
 				{
-					routines.adaptatio.levels.map((level) => {
+					routines.adaptation.levels.map((level) => {
 						const zones: Zone[] = level.categoriesZone.map((zone, idx) => ({
 							id: `${zone}_${idx}`,
 							name: zone,
@@ -33,7 +33,7 @@ import ModalFeedback from "@components/feedback/ModalFeedback.astro";
 								numberLevel={level.id}
 								frequencyDays={level.frequency.total}
 								totalExercise={level.totalExercises}
-								to={`${routines.adaptatio.name}/${level.id}`}
+								to={`attention/${routines.adaptation.id}/?level=${level.id}`}
 							/>
 						);
 					})
@@ -56,7 +56,7 @@ import ModalFeedback from "@components/feedback/ModalFeedback.astro";
 								numberLevel={level.id}
 								frequencyDays={level.frequency.total}
 								totalExercise={level.totalExercises}
-								to={`${routines.health.name}/${level.id}`}
+								to={`attention/${routines.health.id}/?&level=${level.id}`}
 							/>
 						);
 					})
@@ -79,7 +79,7 @@ import ModalFeedback from "@components/feedback/ModalFeedback.astro";
 								numberLevel={level.id}
 								frequencyDays={level.frequency.total}
 								totalExercise={level.totalExercises}
-								to={`${routines.muscle_gain.name}/${level.id}`}
+								to={`attention/${routines.muscle_gain.id}/?&level=${level.id}`}
 							/>
 						);
 					})
@@ -102,13 +102,13 @@ import ModalFeedback from "@components/feedback/ModalFeedback.astro";
 								numberLevel={level.id}
 								frequencyDays={level.frequency.total}
 								totalExercise={level.totalExercises}
-								to={`${routines.fat_burning.name}/${level.id}`}
+								to={`attention/${routines.fat_burning.id}/?&level=${level.id}`}
 							/>
 						);
 					})
 				}
 			</ExpandableCard>
 		</ExapandibleCardGroup>
-		<ModalFeedback />
+		<ConsentToUse />
 	</HeroLayout>
 </MainLayout>

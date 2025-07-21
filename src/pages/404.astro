@@ -1,7 +1,7 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 import HeroLayout from "@layouts/HeroLayout.astro";
-
+import Button from "@components/Button.astro";
 ---
 
 <MainLayout title="404 No Encontrado">
@@ -9,10 +9,17 @@ import HeroLayout from "@layouts/HeroLayout.astro";
     <div class="flex items-center justify-center h-2/5 flex-col gap-10">
       <h1 class="text-theme-accent text-3xl">404 - Rutinas Planet fitness</h1>
       <div class="text-center w-1/2">
-        <h2 class="text-theme-secondary text-2xl">No se encontro esta página.</h1>
-        <p class="pt-4">O no esta disponible actualmente, acercate con alguien del club si crees que este es un error.</p>
+        <h2 class="text-theme-secondary text-2xl">
+          No se encontro esta página.
+        </h2>
+        <p class="pt-4">
+          O no esta disponible actualmente, acercate con alguien del club si
+          crees que este es un error.
+        </p>
       </div>
-      <a href="javascript:history.back()" class="px-8 py-4 bg-theme-accent m-4 text-theme-primary rounded-sm">Regresar</a>
+      <Button variant="primary" onclick="javascript:history.back()"
+        >Regresar</Button
+      >
     </div>
   </HeroLayout>
 </MainLayout>

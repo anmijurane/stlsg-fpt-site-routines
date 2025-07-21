@@ -1,0 +1,26 @@
+---
+import CardioCard from "@components/ExerciseCards/CardioCard.astro";
+import ClassCard from "@components/ExerciseCards/ClassCard.astro";
+import ExpandableCardDay from "@components/expandibleCompose/ExpandableCardDay.astro";
+import { ProgressIndicatorRoutine } from "@components/react/ProgressIndicatorRoutine";
+import type { Day } from "@interfaces/routines";
+
+interface Props {
+  day: Day;
+}
+
+const { day } = Astro.props;
+
+const cardioExercise = day.exercises.find((it) => it.zone === "Cardio");
+const classPF = day.exercises.find((it) => it.zone === "PE@PF");
+---
+
+<ExpandableCardDay day={day.id} id={`${day.id}`} title="CARDIO Y CLASE">
+  <div
+    class="flex flex-col gap-8 items-center bg-white px-3 py-8 rounded-b-2xl"
+  >
+    <ProgressIndicatorRoutine client:only="react" dayId={day.id} />
+    <CardioCard {...cardioExercise} dayId={day.id} id={cardioExercise?.id} />
+    <ClassCard {...classPF} dayId={day.id} id={classPF?.id} />
+  </div>
+</ExpandableCardDay>

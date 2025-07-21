@@ -1,0 +1,24 @@
+---
+import CardioCard from "@components/ExerciseCards/CardioCard.astro";
+import ExpandableCardDay from "@components/expandibleCompose/ExpandableCardDay.astro";
+import { ProgressIndicatorRoutine } from "@components/react/ProgressIndicatorRoutine";
+import type { Day } from "@interfaces/routines";
+
+interface Props {
+  day: Day;
+}
+const { day } = Astro.props;
+---
+
+<ExpandableCardDay day={day.id} id={`${day.id}`} title={day.focus}>
+  <div
+    class="flex flex-col gap-8 items-center bg-white px-3 py-8 rounded-b-2xl"
+  >
+    <ProgressIndicatorRoutine client:only="react" dayId={day.id} />
+    {
+      day.exercises.map((it) => (
+        <CardioCard {...it} dayId={day.id} id={it.id} />
+      ))
+    }
+  </div>
+</ExpandableCardDay>

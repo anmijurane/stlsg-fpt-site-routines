@@ -1,0 +1,79 @@
+---
+import type { TypeRoutine } from "@interfaces/routines";
+
+import MainLayout from "@layouts/MainLayout.astro";
+
+import ExpandableCardGroup from "@components/expandibleCompose/ExpandableCardGroup.astro";
+import HeaderRoutineDays from "@components/global/HeaderRoutineDays.astro";
+
+import Break from "@components/CompouseRoutine/Break.astro";
+import Cardio from "@components/CompouseRoutine/Cardio.astro";
+import ClassRoutine from "@components/CompouseRoutine/ClassRoutine.astro";
+import General from "@components/CompouseRoutine/General.astro";
+import Mixto from "@components/CompouseRoutine/Mixto.astro";
+
+import { routines } from "@data/index";
+import ExpressCircuit from "@components/CompouseRoutine/ExpressCircuit.astro";
+
+const TypeRoutine = {
+  ["Descanso"]: Break,
+  ["Mixto"]: Mixto,
+  ["Cardio"]: Cardio,
+  ["Clase PE@PF"]: ClassRoutine,
+  ["Circuito express"]: ExpressCircuit,
+  ["Default"]: General,
+} as const;
+type RoutineKey = keyof typeof TypeRoutine;
+
+const { category } = Astro.params;
+const categoryType = category as TypeRoutine;
+const params = new URL(Astro.url).searchParams;
+const level = Number(params.get("level"));
+
+const isValid = Object.keys(routines).includes(categoryType);
+const { levels, name: nameRoutine, id: idRoutine } = routines[categoryType];
+
+const currentLevel = levels.find((it) => it.id === level);
+
+if (!isValid || !currentLevel) {
+  return Astro.redirect("/404");
+}
+
+const { id, days } = currentLevel;
+---
+
+<MainLayout title="Rutina dinamica Nivel 1" themeColor="#290241">
+  <div
+    class="flex flex-col w-full sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-5/12 shadow-2xl rounded-md"
+  >
+    <HeaderRoutineDays id={idRoutine} level={id} title={nameRoutine} />
+    <ExpandableCardGroup
+      name={`level_${id}`}
+      class="flex justify-center items-center flex-col gap-8 py-12 text-theme-primary bg-theme"
+    >
+      {
+        days.map((day) => {
+          const routine = day.focus as RoutineKey;
+          const Routine = TypeRoutine[routine] || TypeRoutine["Default"];
+          return <Routine day={day} />;
+        })
+      }
+    </ExpandableCardGroup>
+  </div>
+</MainLayout>
+
+<script>
+  import { routines } from "@data/index";
+  import type { TypeRoutine } from "@interfaces/routines";
+  import { initialStateByRoutine } from "@store/routines.actions";
+  const __initial__ = () => {
+    const url = new URL(window.location.href);
+    const category = url.pathname.split("/")[2] as TypeRoutine;
+    const isValid = Object.keys(routines).includes(category);
+    const level = Number(url.searchParams.get("level") || 0);
+    if (isValid) {
+      initialStateByRoutine(category, level);
+    }
+  };
+  document.addEventListener("astro:page-load", __initial__);
+</script>

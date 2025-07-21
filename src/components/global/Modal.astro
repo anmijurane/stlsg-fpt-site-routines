@@ -1,13 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import closeIcon from "@assets/icons/close.svg";
-type CloseBy = 'button' | 'backdrop' | 'all' | 'none';
+type CloseBy = "button" | "backdrop" | "all" | "none";
 interface Props {
   id: string;
   btnClose?: boolean;
   closeBy?: CloseBy;
 }
-const { id, btnClose = false, closeBy = 'all' } = Astro.props;
+const { id, btnClose = false, closeBy = "all" } = Astro.props;
 ---
 
 <div
@@ -17,23 +17,35 @@ const { id, btnClose = false, closeBy = 'all' } = Astro.props;
   role="dialog"
   aria-modal="false"
 >
-  <div class="fixed inset-0 bg-theme-secondary/40 transition-opacity backdrop-blur-xs"></div>
+  <div
+    class="fixed inset-0 bg-theme-secondary/40 transition-opacity backdrop-blur-xs"
+  >
+  </div>
 
   <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-    <div data-backdrop class="flex min-h-full items-center justify-center p-4 text-center">
+    <div
+      data-backdrop
+      class="flex min-h-full items-center justify-center p-4 text-center"
+    >
       <div
         data-panel
         class="modal-panel relative w-10/12 max-w-md rounded-2xl bg-white shadow-2xl shadow-theme-primary pt-12 pb-8 px-6"
       >
-      {btnClose && (
-        <button
-          id={`button-close_${id}`}
-          class="absolute -top-4 -right-4 flex h-12 w-12 items-center justify-center rounded-full cursor-pointer scale-120 transition-transform"
-        >
-            <span class="sr-only">Cerrar</span>
-            <Image src={closeIcon} alt='close button' class='shadow-theme-secondary/30' />
-          </button>
-        )}
+        {
+          btnClose && (
+            <button
+              id={`button-close_${id}`}
+              class="absolute -top-4 -right-4 flex h-12 w-12 items-center justify-center rounded-full cursor-pointer scale-120 transition-transform"
+            >
+              <span class="sr-only">Cerrar</span>
+              <Image
+                src={closeIcon}
+                alt="close button"
+                class="shadow-theme-secondary/30"
+              />
+            </button>
+          )
+        }
         <slot />
       </div>
     </div>
@@ -43,44 +55,46 @@ const { id, btnClose = false, closeBy = 'all' } = Astro.props;
 <script define:vars={{ id, closeBy }}>
   (() => {
     const dialog = document.getElementById(id);
-    const backdrop = dialog.querySelector('[data-backdrop]');
-    const panel = dialog.querySelector('[data-panel]');
+    const backdrop = dialog.querySelector("[data-backdrop]");
+    const panel = dialog.querySelector("[data-panel]");
     const buttonClose = document.getElementById(`button-close_${id}`);
-    if (!dialog || !buttonClose) return
+    if (!dialog) return;
 
     const handleOnCloseModal = () => {
-      panel.classList.add('closing');
-      buttonClose?.classList.remove('scale-120');
+      panel.classList.add("closing");
+      buttonClose?.classList.remove("scale-120");
       setTimeout(() => {
-        dialog.classList.add('hidden');
-        panel.classList.remove('open');
-        buttonClose?.classList.add('scale-120');
-        panel.classList.remove('closing');
-        document.body.style.overflow = '';
+        dialog.classList.add("hidden");
+        panel.classList.remove("open");
+        buttonClose?.classList.add("scale-120");
+        panel.classList.remove("closing");
+        document.body.style.overflow = "";
       }, 250);
-    }
+    };
     const handleOnOpenModal = () => {
-      if (dialog.classList.contains('hidden')) {
-        panel.classList.add('open');
-        dialog.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+      if (dialog.classList.contains("hidden")) {
+        panel.classList.add("open");
+        dialog.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
       }
-    }
+    };
 
     if (dialog && !dialog.hasAttribute("data-init")) {
       dialog.setAttribute("data-init", "true");
       document.addEventListener(`open-modal-${id}`, () => handleOnOpenModal());
-      document.addEventListener(`close-modal-${id}`, () => handleOnCloseModal());
-      if (['all', 'backdrop'].includes(closeBy)) {
+      document.addEventListener(`close-modal-${id}`, () =>
+        handleOnCloseModal(),
+      );
+      if (["all", "backdrop"].includes(closeBy)) {
         dialog.addEventListener("click", (e) => {
           if (e.target === backdrop) handleOnCloseModal();
         });
       }
-      if (['all', 'button'].includes(closeBy)) {
-      buttonClose.addEventListener('click', () => {
-        handleOnCloseModal();
-      });
-    }
+      if (["all", "button"].includes(closeBy)) {
+        buttonClose.addEventListener("click", () => {
+          handleOnCloseModal();
+        });
+      }
     }
   })();
 </script>

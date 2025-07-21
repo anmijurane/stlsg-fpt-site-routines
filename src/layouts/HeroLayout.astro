@@ -6,14 +6,10 @@ import rutinas from "@assets/routines_text.svg";
 ---
 
 <div
-  class="w-full sm:w-10/12 md:w-5/12 lg:w-2/6 xl:w-2/6 shadow-2xl rounded-md"
+  class="w-full sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-5/12 shadow-2xl rounded-md"
 >
   <div class="relative flex items-center justify-center">
-    <Image
-      src={heroImage}
-      alt="image hero"
-      class="w-full object-cover h-auto"
-    />
+    <img src={heroImage.src} alt="image hero planet fitness" class="w-full object-cover h-auto">
     <div
       class="absolute inset-0 bg-gradient-to-t from-theme-primary/100 via-theme-primary/50 to-theme-purple-medium/30 w-full"
     >
@@ -27,10 +23,9 @@ import rutinas from "@assets/routines_text.svg";
           alt="logo plannet fitness"
           width="1500"
           height="1786"
-          loading="lazy"
           decoding="async"
         />
-        <Image src={rutinas} alt="Rutinas" />
+        <img src={rutinas.src} alt="Rutinas">
       </div>
     </div>
   </div>
