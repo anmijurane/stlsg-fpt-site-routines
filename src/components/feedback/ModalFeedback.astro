@@ -1,14 +1,38 @@
 ---
+// Importaciones de componentes y assets
 import Modal from "@components/global/Modal.astro";
-
-import emojiFrown from "@assets/icons/emoji-frown.svg";
-import emojiNeutral from "@assets/icons/emoji-neutral.svg";
-import emojiSmile from "@assets/icons/emoji-smile.svg";
-import { Image } from "astro:assets";
 import Button from "@components/Button.astro";
+import { Image } from "astro:assets";
+
+// Importaciones de íconos
+import emojiFrown from "@assets/icons/emoji-sad.svg";
+import emojiNeutral from "@assets/icons/emoji-neutral.svg";
+import emojiSmile from "@assets/icons/emoji-happy.svg";
+
+// Se define una estructura de datos para los botones de feedback para evitar repetición en el template.
+const feedbackOptions = [
+  {
+    feedbackType: "happy",
+    label: "Buena",
+    icon: emojiSmile,
+    alt: "Emoji feliz",
+  },
+  {
+    feedbackType: "neutral",
+    label: "Regular",
+    icon: emojiNeutral,
+    alt: "Emoji neutral",
+  },
+  {
+    feedbackType: "sad",
+    label: "Mala",
+    icon: emojiFrown,
+    alt: "Emoji triste",
+  },
+];
 ---
 
-<Modal id="feedback" btnClose closeBy="none">
+<Modal id="feedback" closeBy="none">
   <div class="text-center">
     <h3 class="text-3xl font-bold text-theme-primary" id="modal-title">
       ¡TU OPINIÓN<br />NOS IMPORTA!
@@ -20,102 +44,231 @@ import Button from "@components/Button.astro";
     </div>
   </div>
 
-  <div class="mt-8 flex flex-col items-center justify-center gap-6">
-    <Button
-      variant="transparent"
-      data-feedback="smile"
-      class="flex cursor-pointer justify-center items-center text-start w-full"
+  <div
+    id="feedback-container"
+    class="mt-8 flex flex-col items-center justify-center gap-6"
+  >
+    {
+      feedbackOptions.map(({ feedbackType, label, icon, alt }) => (
+        <Button
+          variant="transparent"
+          data-feedback={feedbackType}
+          class="flex cursor-pointer justify-center items-center text-start w-full"
+        >
+          <div class="w-2/3 flex justify-end">
+            <Image src={icon} alt={alt} />
+          </div>
+          <span class="mt-1 ml-1 w-1/2 font-semibold text-theme-primary">
+            {label}
+          </span>
+        </Button>
+      ))
+    }
+
+    <div
+      class="flex flex-col gap-6 items-center hidden w-full"
+      id="comment_feedback"
     >
-      <div class="w-2/3 flex justify-end">
-        <Image src={emojiSmile} alt="emojiSmile" />
-      </div>
-      <span class="mt-1 w-1/2 font-semibold text-theme-primary">Buena</span>
-    </Button>
-    <Button
-      variant="transparent"
-      data-feedback="neutral"
-      class="flex cursor-pointer justify-center items-center text-start w-full"
-    >
-      <div class="w-2/3 flex justify-end">
-        <Image src={emojiNeutral} alt="emojiNeutral" />
-      </div>
-      <span class="mt-1 w-1/2 font-semibold text-theme-primary">Regular</span>
-    </Button>
-    <Button
-      variant="transparent"
-      data-feedback="frown"
-      class="flex cursor-pointer justify-center items-center text-start w-full"
-    >
-      <div class="w-2/3 flex justify-end">
-        <Image src={emojiFrown} alt="emojiFrown" />
-      </div>
-      <span class="mt-1 w-1/2 font-semibold text-theme-primary">Mala</span>
-    </Button>
+      <span class="text-base text-gray-500 font-semibold"
+        >Cuéntanos tu experiencia</span
+      >
+      <textarea
+        name="comment"
+        id="comment"
+        class="resize-none w-full h-52 border border-theme-primary rounded-md active:border-2 focus:border-2 focus:border-theme-primary p-4 text-xs"
+      ></textarea>
+      <Button variant="primary" id="sendComment" class="w-4/6"> Enviar </Button>
+    </div>
   </div>
 </Modal>
 
 <script>
-  let modalMostrado = false;
-  let intervalValue: NodeJS.Timeout;
-  const userState = {
-    buttonsClicked: 0,
-    screenTime: 0,
+  import { actions } from "astro:actions";
+  import type { Emoji } from "@interfaces/common";
+
+  // --- ESTADO GLOBAL Y CONTROLADORES ---
+  const session = {
+    state: {
+      modalHasBeenShown: false,
+      screenTimeSeconds: 0,
+      clicks: 0,
+    },
+    intervalId: null as NodeJS.Timeout | null,
+    // Controlador para limpiar listeners al cambiar de página
+    pageUnloadController: null as AbortController | null,
   };
 
-  const sendFeedbackUser = (action: string) => {
-    console.log(action);
-  };
-
-  const eventButtonsFeedback = () => {
-    const buttonsFeedback = document.querySelectorAll<HTMLButtonElement>(
-      "button[data-feedback]",
-    );
-    const buttonClose = document.getElementById("button-close_feedback");
-
-    buttonsFeedback.forEach((it) => {
-      it.addEventListener("click", (event) => {
-        const element = event.currentTarget as HTMLElement;
-        const feedback = element.dataset?.feedback || "";
-        sendFeedbackUser(feedback);
-        document.dispatchEvent(new Event("close-modal-feedback"));
-      });
-    });
-    buttonClose?.addEventListener("click", () => {
-      sendFeedbackUser("closed");
-      document.dispatchEvent(new Event("close-modal-feedback"));
-    });
-  };
-
-  const considerOpeningModal = () => {
-    const min = 5;
-    const max = 8;
-    const randomButtonClicked =
-      Math.floor(Math.random() * (max - min + 1)) + min;
-    const pressOnSite = userState.buttonsClicked >= randomButtonClicked;
-    const timeOnScreen = userState.screenTime > 1 * 60 * 1000;
-
-    if ((pressOnSite || timeOnScreen) && !modalMostrado) {
-      modalMostrado = true;
-      eventButtonsFeedback();
-      document.dispatchEvent(new Event("open-modal-feedback"));
-      document.body.removeEventListener("click", handleClickEventInteractive);
-      clearInterval(intervalValue);
+  const loadState = () => {
+    const storedState = sessionStorage.getItem("_feedbackState");
+    if (storedState) {
+      session.state = { ...session.state, ...JSON.parse(storedState) };
     }
   };
 
-  const handleClickEventInteractive = (event: MouseEvent) => {
-    const element = event.currentTarget as HTMLElement;
-    if (!element) return;
-    userState.buttonsClicked++;
-    considerOpeningModal();
+  const saveState = () => {
+    sessionStorage.setItem("_feedbackState", JSON.stringify(session.state));
   };
 
-  document.body.addEventListener("click", handleClickEventInteractive);
+  const initializeFeedbackSystem = () => {
+    loadState();
+    session.pageUnloadController = new AbortController();
+    const pageSignal = session.pageUnloadController.signal;
 
-  window.onload = () => {
-    intervalValue = setInterval(() => {
-      userState.screenTime++;
+    if (sessionStorage.getItem("_feedback") || session.state.modalHasBeenShown)
+      return;
+
+    // Controlador específico para los listeners que activan el modal
+    const triggerController = new AbortController();
+    const triggerSignal = triggerController.signal;
+
+    const feedbackContainer = document.getElementById("feedback-container");
+    const commentFeedbackContent = document.getElementById("comment_feedback");
+    const sendCommentButton = document.getElementById("sendComment");
+    const commentTextarea =
+      document.querySelector<HTMLTextAreaElement>("#comment");
+
+    const sendInitialFeedback = async (type: Emoji) => {
+      if (sessionStorage.getItem("_feedback")) return;
+      try {
+        const result = await actions.CreateFeedback({
+          emoji: type,
+          comment: "N/A",
+          page_path: document.location.pathname,
+          rejected: type === "closed",
+        });
+        sessionStorage.setItem("_feedback", result.data.id);
+      } catch (error) {
+        console.error("Error al crear el feedback:", error);
+      }
+    };
+
+    const sendFeedbackComment = async (event: MouseEvent) => {
+      event.stopPropagation();
+      const feedbackId = sessionStorage.getItem("_feedback");
+      if (!feedbackId || !commentTextarea) return;
+      try {
+        await actions.UpdateCommentFeedback({
+          id: feedbackId,
+          comment: commentTextarea.value,
+        });
+        const modalDialog = document.getElementById(
+          "feedback",
+        ) as HTMLDivElement;
+        const panel = modalDialog?.querySelector("[data-panel]");
+        if (!modalDialog || !panel) return;
+        panel.classList.add("closing");
+        setTimeout(() => {
+          modalDialog.classList.add("hidden");
+          panel.classList.remove("open");
+          panel.classList.remove("closing");
+          document.body.style.overflow = "";
+        }, 250);
+        document.dispatchEvent(new Event("close-modal-feedback"));
+      } catch (error) {
+        console.error("Error al actualizar el comentario:", error);
+      }
+    };
+
+    const considerOpeningModal = () => {
+      const MIN_CLICKS = 30;
+      const MAX_CLICKS = 45;
+      const TIME_IN_SECONDS_TO_SHOW = 300; // 5 min
+
+      const randomClickTarget =
+        Math.floor(Math.random() * (MAX_CLICKS - MIN_CLICKS + 1)) + MIN_CLICKS;
+
+      const hasEnoughClicks = session.state.clicks >= randomClickTarget;
+      const hasEnoughTime =
+        session.state.screenTimeSeconds > TIME_IN_SECONDS_TO_SHOW;
+
+      if (
+        (hasEnoughClicks || hasEnoughTime) &&
+        !session.state.modalHasBeenShown
+      ) {
+        session.state.modalHasBeenShown = true;
+        saveState();
+
+        const modalDialog = document.getElementById(
+          "feedback",
+        ) as HTMLDivElement | null;
+        const panel = modalDialog?.querySelector("[data-panel]");
+        if (!modalDialog || !panel) return;
+        setTimeout(() => {
+          panel?.classList.add("open");
+          modalDialog?.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        }, 0);
+
+        triggerController.abort();
+        if (session.intervalId) clearInterval(session.intervalId);
+      }
+    };
+
+    const handleFeedbackButtonClick = (event: MouseEvent) => {
+      // Se detiene la propagación para que el clic no se cuente como un "clic global".
+      event.stopPropagation();
+
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
+        "button[data-feedback]",
+      );
+      if (!button) return;
+
+      const feedbackType = (button.dataset.feedback || "closed") as Emoji;
+      sendInitialFeedback(feedbackType);
+
+      const allFeedbackButtons =
+        feedbackContainer?.querySelectorAll<HTMLButtonElement>(
+          "button[data-feedback]",
+        );
+      allFeedbackButtons?.forEach((btn) => {
+        if (btn !== button) btn.style.display = "none";
+        btn.setAttribute("disabled", "true");
+      });
+      commentFeedbackContent?.classList.remove("hidden");
+    };
+
+    const handleCloseButtonClick = () => {
+      sendInitialFeedback("closed");
+      document.dispatchEvent(new Event("close-modal-feedback"));
+    };
+
+    const handleGlobalClick = () => {
+      session.state.clicks++;
+      saveState();
+      considerOpeningModal();
+    };
+
+    // Listeners que activan el modal (usan triggerSignal)
+    document.body.addEventListener("click", handleGlobalClick, {
+      signal: triggerSignal,
+    });
+
+    // Listeners de interacción del modal (usan pageSignal)
+    feedbackContainer?.addEventListener("click", handleFeedbackButtonClick, {
+      signal: pageSignal,
+    });
+    // buttonClose?.addEventListener("click", handleCloseButtonClick, {
+    //   signal: pageSignal,
+    // });
+    sendCommentButton?.addEventListener("click", sendFeedbackComment, {
+      signal: pageSignal,
+    });
+
+    session.intervalId = setInterval(() => {
+      session.state.screenTimeSeconds++;
+      saveState();
       considerOpeningModal();
     }, 1000);
   };
+
+  document.addEventListener("astro:page-load", initializeFeedbackSystem);
+
+  document.addEventListener("astro:before-swap", () => {
+    // Se aborta el controlador principal para limpiar los listeners del modal
+    session.pageUnloadController?.abort();
+    // Y se limpia el intervalo por si acaso
+    if (session.intervalId) {
+      clearInterval(session.intervalId);
+    }
+  });
 </script>

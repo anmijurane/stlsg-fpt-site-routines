@@ -2,6 +2,7 @@
 import "@styles/global.css";
 import PreventConsoleProd from "src/utils/PreventConsoleProd.astro";
 import { ClientRouter } from "astro:transitions";
+import ModalFeedback from "@components/feedback/ModalFeedback.astro";
 interface Props {
 	title: string;
 	themeColor?: string;
@@ -46,6 +47,7 @@ const buildDate = new Date().getTime();
 		<slot />
 	</body>
 </html>
+<ModalFeedback />
 <PreventConsoleProd />
 <ClientRouter />
 

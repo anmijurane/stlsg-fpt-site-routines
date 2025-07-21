@@ -3,6 +3,11 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import node from '@astrojs/node';
+import dotenv from 'dotenv';
+
+import react from '@astrojs/react';
+
+dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,5 +19,7 @@ export default defineConfig({
 
   adapter: node({
     mode: 'standalone'
-  })
+  }),
+
+  integrations: [react()]
 });

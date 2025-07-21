@@ -1,36 +1,76 @@
 ---
-interface Props extends Partial<Exercise> {}
+interface Props extends Partial<Exercise> {
+  dayId: number;
+}
 
-import CheckButton from "@components/CheckButton.astro";
+import { CheckButtonWithState } from "@components/react/CheckButton";
 import TimeChip from "@components/TimeChip.astro";
 import type { Exercise } from "@interfaces/routines";
-const { time, apparatus } = Astro.props;
+const { time, apparatus, dayId, id } = Astro.props;
+const idContainer = `${dayId}_${id}`;
 
-const cardioMachines = ["Elíptica", "Escaladora", "Remadora", "Cuerda"]
-  .filter((it) => it.toLowerCase() !== apparatus?.name.toLowerCase())
-  .concat(...[apparatus?.name || ""])
-  .reverse();
+const baseMachines = [
+  { label: "Elíptica", urlImage: "/machines/eliptica", width: "70" },
+  { label: "Caminadora", urlImage: "/machines/caminadora", width: "90" },
+  {
+    label: "Escalera infinita",
+    urlImage: "/machines/escalera_infinita",
+    width: "90",
+  },
+  { label: "Remadora", urlImage: "/machines/remadora", width: "130" },
+  { label: "Bicicleta estática", urlImage: "/machines/bici", width: "85" },
+];
+
+const cardioMachines = (() => {
+  if (!apparatus?.name) return baseMachines;
+
+  const selected = baseMachines.find(
+    (m) => m.label.toLowerCase() === apparatus.name.toLowerCase(),
+  );
+  const others = baseMachines.filter(
+    (m) => m.label.toLowerCase() !== apparatus.name.toLowerCase(),
+  );
+
+  return selected ? [selected, ...others] : baseMachines;
+})();
 ---
 
-<div class="rounded-[20px] w-full pb-3 bg-theme-text-light">
+<div
+  class="rounded-[20px] w-full pb-3 bg-theme-text-light"
+  id={idContainer}
+  data-selector={idContainer}
+>
   <div class="flex h-full justify-between px-4 pt-4 mb-2 items-center w-full">
     <p class="text-theme-primary text-2xl font-semibold w-10/12">
       Cardio con aparato
     </p>
-    <CheckButton />
+    <CheckButtonWithState client:only="react" id={id || ""} dayId={dayId} />
   </div>
   <p class="w-5/6 px-4">
     Usa la máquina <strong>{apparatus?.name.toLowerCase() || ""}</strong> u otro
     <br />
     aparato de cardio.
   </p>
-  <div class="relative overflow-x-auto my-4 hide-scroll mask-fade-both">
+  <div
+    class="relative overflow-x-auto my-4 hide-scroll mask-fade-both card-scroll"
+  >
     <div class="flex gap-4 p-4 py-2">
       {
-        cardioMachines.map((machine) => (
-          <div class="h-24 w-24 min-w-24 min-h-24 bg-theme-tertiary rounded-xl">
-            <div class="flex items-center justify-center w-full h-full">
-              {machine}
+        cardioMachines.map((machine, idx) => (
+          <div
+            class="h-40 w-36 min-w-36 bg-theme-primary rounded-xl card-item"
+            data-index={idx}
+          >
+            <div class="flex items-center justify-center text-center w-full h-2/6 text-theme-text-light p-2">
+              {machine.label}
+            </div>
+            <div class="flex items-center justify-center w-full h-4/6 bg-theme-dots rounded-b-xl">
+              <img
+                width={machine.width}
+                class="img-machine"
+                src={`${machine.urlImage}.png`}
+                alt={`Maquina a usar : ${machine.label}`}
+              />
             </div>
           </div>
         ))
@@ -38,9 +78,34 @@ const cardioMachines = ["Elíptica", "Escaladora", "Remadora", "Cuerda"]
       <div class="shrink-0 w-3"></div>
     </div>
   </div>
+  <div class="flex justify-center gap-2">
+    {
+      new Array(cardioMachines.length)
+        .fill(0)
+        .map((_, idx) => (
+          <span
+            class="w-2 h-2 bg-theme-dots rounded-full card-dot"
+            data-index={idx}
+          />
+        ))
+    }
+  </div>
   <TimeChip by={time?.by || 30} unit={time?.unit || "mins"} />
 </div>
-
+<script>
+  import { DotsCompareActive } from "@scripts/dots-carousel";
+  document.addEventListener("astro:page-load", () => {
+    document
+      .querySelectorAll<HTMLDivElement>("div[data-selector]")
+      .forEach((container) => {
+        if (!container) {
+          console.log("Not found id container");
+          return;
+        }
+        DotsCompareActive(container.id);
+      });
+  });
+</script>
 <style>
   .mask-fade-both {
     -webkit-mask-image: linear-gradient(

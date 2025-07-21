@@ -23,13 +23,13 @@ const { title, id, day } = Astro.props;
       class="bg-theme-tertiary h-20 rounded-md data-open:rounded-b-lg text-theme-primary pl-6 pr-8 flex items-center scroll-mt-30"
     >
       <div class="w-3/12 mr-4">
-        <p class="text-2xl w-full font-semibold">
+        <p class="w-full font-semibold text-adapter">
           DÍA {day}
         </p>
       </div>
       <div class="w-7/12 flex items-center justify-start h-full">
         <p
-          class="text-2xl w-full font-semibold"
+          class="w-full font-semibold text-adapter"
           transition:name={`title_${id}`}
         >
           {title.toUpperCase()}
@@ -66,5 +66,8 @@ const { title, id, day } = Astro.props;
     transition-timing-function: ease-in-out;
     transition-duration: 400ms;
     box-shadow: 0 5px 5px 0px #0000002b;
+  }
+  .text-adapter {
+    font-size: clamp(1.4rem, 1vw - 0.5rem, 1.7rem);
   }
 </style>

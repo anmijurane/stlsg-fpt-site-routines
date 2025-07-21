@@ -1,11 +1,13 @@
 ---
-import CheckButton from "@components/CheckButton.astro";
 import ChipCategory from "@components/ChipCategory.astro";
+import { CheckButtonWithState } from "@components/react/CheckButton";
 import type { Exercise } from "@interfaces/routines";
 
-interface Props extends Exercise {}
+interface Props extends Exercise {
+  dayId: number;
+}
 
-const { zone, series, name, muscle, reps, active, rest } = Astro.props;
+const { zone, series, name, muscle, reps, active, rest, dayId, id } = Astro.props;
 ---
 
 <div
@@ -13,7 +15,7 @@ const { zone, series, name, muscle, reps, active, rest } = Astro.props;
 >
   <div class="flex h-full justify-between px-2 pt-4 mb-2 items-center w-full">
     <p class="text-theme-primary text-2xl font-semibold w-10/12">{name}</p>
-    <CheckButton />
+    <CheckButtonWithState client:only="react" id={id || ""} dayId={dayId} />
   </div>
   <div class="flex items-center px-4 gap-2">
     <div class="w-5/12 h-full">
@@ -26,7 +28,7 @@ const { zone, series, name, muscle, reps, active, rest } = Astro.props;
     </div>
     <div class="w-6/12 flex flex-col items-start justify-start h-full gap-1">
       <div class="w-fit h-1/3">
-        <ChipCategory name={zone} />
+        <ChipCategory name={zone} withLetter />
       </div>
       <div class="w-fit h-2/3 font-medium text-base">
         {series || reps ? (

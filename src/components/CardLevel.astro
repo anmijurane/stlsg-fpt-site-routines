@@ -15,6 +15,7 @@ interface Props {
 }
 
 const { numberLevel, totalExercise, frequencyDays, to, zones } = Astro.props;
+console.log(to)
 ---
 
 <a
@@ -23,16 +24,9 @@ const { numberLevel, totalExercise, frequencyDays, to, zones } = Astro.props;
   href={to}
 >
   <div
-    class="rounded-t-[20px] bg-theme-primary flex justify-between items-center px-4 py-2"
+    class="rounded-t-[20px] bg-theme-primary flex items-center justify-center px-4 py-2"
   >
-    <p class="text-theme-text-light text-xl font-medium">NIVEL {numberLevel}</p>
-    <div class="flex">
-      {
-        new Array(4)
-          .fill(0)
-          .map((_, it) => <Engrane active={it < numberLevel} />)
-      }
-    </div>
+    <p class="text-theme-text-light text-[22px] font-medium text-center">NIVEL {numberLevel}</p>
   </div>
 
   <div

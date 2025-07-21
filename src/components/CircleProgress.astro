@@ -1,8 +1,19 @@
 ---
-
+interface Props {
+  id: string;
+  total: number;
+  actually?: number;
+}
+const { id, actually = 0, total } = Astro.props;
 ---
 
-<div data-progress class="flex justify-center items-center w-fit h-fit">
+<div
+  id={id}
+  data-progress
+  class="flex justify-center items-center w-fit h-fit"
+  data-actually={actually}
+  data-total={total}
+>
   <svg
     width="78"
     height="78"

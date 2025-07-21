@@ -13,12 +13,14 @@ import General from "@components/CompouseRoutine/General.astro";
 import Mixto from "@components/CompouseRoutine/Mixto.astro";
 
 import { routines } from "@data/index";
+import ExpressCircuit from "@components/CompouseRoutine/ExpressCircuit.astro";
 
 const TypeRoutine = {
   ["Descanso"]: Break,
   ["Mixto"]: Mixto,
   ["Cardio"]: Cardio,
   ["Clase PE@PF"]: ClassRoutine,
+  ["Circuito express"]: ExpressCircuit,
   ["Default"]: General,
 } as const;
 type RoutineKey = keyof typeof TypeRoutine;
@@ -59,3 +61,19 @@ const { id, days } = currentLevel;
     </ExpandableCardGroup>
   </div>
 </MainLayout>
+
+<script>
+  import { routines } from "@data/index";
+  import type { TypeRoutine } from "@interfaces/routines";
+  import { initialStateByRoutine } from "@store/routines.actions";
+  const __initial__ = () => {
+    const url = new URL(window.location.href);
+    const category = url.pathname.split("/")[2] as TypeRoutine;
+    const isValid = Object.keys(routines).includes(category);
+    const level = Number(url.searchParams.get("level") || 0);
+    if (isValid) {
+      initialStateByRoutine(category, level);
+    }
+  };
+  document.addEventListener("astro:page-load", __initial__);
+</script>
