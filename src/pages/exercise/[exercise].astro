@@ -5,7 +5,7 @@ import { routines } from "@data/index";
 import HeaderExercise from "@components/global/HeaderExercise.astro";
 import type { TypeRoutine } from "@interfaces/routines";
 import MainLayout from "@layouts/MainLayout.astro";
-import ExerciseMediaCard from '@components/ExerciseRoutine/ExerciseMediaCard.astro'
+import ExerciseMediaCard from '@components/ExerciseRoutine/ExerciseMediaCard.astro';
 import ExerciseStatsCard from "@components/ExerciseRoutine/ExerciseStatsCard.astro";
 import likeIcon from "@assets/icons/like.svg";
 
@@ -39,7 +39,7 @@ if (!exerciseRoutine) return Astro.redirect("/404");
       zone={exerciseRoutine.zone}
     />
     <div class="flex justify-center items-center flex-col gap-4 w-full py-8">
-      <ExerciseMediaCard urlImg="/machines/Tijeras_frontales_en_tapete.jpg" />
+      <ExerciseMediaCard urlImg={`/detail_machines/${exerciseRoutine.apparatus.imgUrl.replaceAll('_', '')}`} />
       <ExerciseStatsCard muscle={exerciseRoutine.muscle} dayId={day} idExcercise={idExercise} />
       <div class="w-10/12 bg-theme-tertiary rounded-xl text-theme-primary p-3 flex items-center justify-center">
         <div class="flex gap-4 items-center justify-center w-10/12">
