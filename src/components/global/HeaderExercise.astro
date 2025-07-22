@@ -9,9 +9,11 @@ interface Props {
   exerciseName: string;
   title: string;
   zone: string;
+  level: number;
 }
 
-const { id, exerciseName, title, zone } = Astro.props;
+const { id, exerciseName, title, zone, level } = Astro.props;
+const to = `/routine/${id}/?level=${level}`;
 ---
 
 <div
@@ -29,18 +31,18 @@ const { id, exerciseName, title, zone } = Astro.props;
     </svg>
   </div>
   <div class="w-4/6 flex items-center justify-start h-full">
-    <p class="text-2xl w-full font-bold text-center" transition:name={`title_${id}`}>
+    <p class="text-2xl w-full font-bold text-center">
       {title.toUpperCase()}
     </p>
   </div>
   <div class="w-1/6"></div>
 </div>
-<div class="flex gap-4 items-center justify-start p-4">
-  <a href="javascript:history.back()" class="flex items-center w-1/6" transition:name="back_btn">
+<div class="flex gap-4 items-start justify-start p-4">
+  <a href={to} class="flex items-start w-1/6" transition:name="back_btn">
     <ArrowButton position="left" />
   </a>
   <div class="flex items-center justify-start flex-col gap-2 w-4/6">
-    <h3 class="text-theme-tertiary text-2xl text-center">{exerciseName}</h3>
+    <h3 class="text-theme-tertiary text-3xl text-center">{exerciseName}</h3>
     <ChipCategory name={zone} withLetter />
   </div>
   <div class="w-1/6"></div>
