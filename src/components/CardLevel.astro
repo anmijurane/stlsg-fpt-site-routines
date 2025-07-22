@@ -15,7 +15,6 @@ interface Props {
 }
 
 const { numberLevel, totalExercise, frequencyDays, to, zones } = Astro.props;
-console.log(to)
 ---
 
 <a
@@ -26,7 +25,9 @@ console.log(to)
   <div
     class="rounded-t-[20px] bg-theme-primary flex items-center justify-center px-4 py-2"
   >
-    <p class="text-theme-text-light text-[22px] font-medium text-center">NIVEL {numberLevel}</p>
+    <p class="text-theme-text-light text-[22px] font-medium text-center">
+      NIVEL {numberLevel}
+    </p>
   </div>
 
   <div

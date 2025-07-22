@@ -1,5 +1,4 @@
 export const DotsCompareActive = (idContainer: string) => {
-  console.log('container :: ', idContainer);
   const container = document.getElementById(idContainer) as HTMLDivElement;
   if (!container) {
     console.log('Not found container :: ', idContainer);
