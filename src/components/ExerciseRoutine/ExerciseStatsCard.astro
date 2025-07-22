@@ -1,31 +1,46 @@
 ---
 import { CheckButtonWithState } from "@components/react/CheckButton";
-import type { Apparatus, Day } from "@interfaces/routines";
+import type { Apparatus } from "@interfaces/routines";
 
 interface Props {
   muscle: Apparatus;
   dayId: number;
   idExcercise: string;
+  isFatBurning: boolean;
+  first: string;
+  second: string;
+  rounds?: number | null;
 }
 
-const { muscle, dayId, idExcercise } = Astro.props;
+const { muscle, dayId, idExcercise, isFatBurning, first, second, rounds } =
+  Astro.props;
 ---
 
-<div class="bg-theme-light-card rounded-2xl w-11/12 p-6 flex">
+<div class="bg-gradient-purple-light rounded-2xl w-11/12 p-6 flex">
   <div
-    class="flex items-center justify-start flex-col w-8/12 text-theme-primary font-semibold text-xl gap-3 pt-4"
+    class="flex justify-start flex-col w-8/12 text-theme-primary font-semibold text-xl gap-3"
+    class:list={{
+      "pt-4": !isFatBurning,
+    }}
   >
+    {
+      isFatBurning && (
+        <div class="flex bg-gradient-purple w-11/12 rounded-3xl justify-center items-center px-4 py-2 text-white text-2xl">
+          {rounds} rondas
+        </div>
+      )
+    }
     <div
-      class="flex bg-white w-11/12 rounded-3xl justify-between items-center px-4 py-2"
+      class="flex bg-white w-11/12 rounded-3xl justify-between items-center px-4 py-2 text-xl border border-theme-primary"
     >
-      <p>Series</p>
-      <p>3</p>
+      <p>{isFatBurning ? "Activo" : "Series"}</p>
+      <p>{first}</p>
     </div>
     <div
-      class="flex bg-theme-text-light w-11/12 rounded-3xl justify-between items-center px-4 py-2"
+      class="flex bg-theme-text-light w-11/12 rounded-3xl justify-between items-center px-4 py-2 text-xl border border-theme-primary"
     >
-      <p>Repeticiones</p>
-      <p>15</p>
+      <p>{isFatBurning ? "Descanso" : "Repeticiones"}</p>
+      <p>{second}</p>
     </div>
   </div>
   <div class="w-4/12 flex flex-col gap-3">
@@ -37,7 +52,11 @@ const { muscle, dayId, idExcercise } = Astro.props;
       width="100px"
     />
     <div class="flex justify-end w-full">
-      <CheckButtonWithState client:only="react" id={idExcercise} dayId={dayId} />
+      <CheckButtonWithState
+        client:only="react"
+        id={idExcercise}
+        dayId={dayId}
+      />
     </div>
   </div>
 </div>

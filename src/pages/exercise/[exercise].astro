@@ -38,15 +38,24 @@ if (!exerciseRoutine) return Astro.redirect("/404");
       exerciseName={exerciseRoutine.name}
       title={routine.name}
       zone={exerciseRoutine.zone}
+      level={level}
     />
     <div class="flex justify-center items-center flex-col gap-4 w-full py-8">
       <ExerciseMediaCard
-        urlImg={`/detail_machines${exerciseRoutine.apparatus.imgUrl.replaceAll("_", "")}`}
+        urlImg={`/details/images${exerciseRoutine.apparatus.imgUrl.replaceAll("_", "")}`}
       />
       <ExerciseStatsCard
         muscle={exerciseRoutine.muscle}
         dayId={day}
         idExcercise={idExercise}
+        isFatBurning={categoryType === "fat_burning"}
+        first={categoryType === "fat_burning"
+          ? `${exerciseRoutine.active?.by} ${exerciseRoutine.active?.unit}`
+          : `${exerciseRoutine.series}`.padStart(2, "0")}
+        second={categoryType === "fat_burning"
+          ? `${exerciseRoutine.rest?.by} ${exerciseRoutine.rest?.unit}`
+          : `${exerciseRoutine.reps}`.padStart(2, "0")}
+        rounds={exerciseRoutine.rounds}
       />
       <div
         class="w-10/12 bg-theme-tertiary rounded-xl text-theme-primary p-3 flex items-center justify-center"
