@@ -10,7 +10,7 @@ interface Props {
 const { title, id, day } = Astro.props;
 ---
 
-<div class="w-11/12" data-collapsable-item>
+<div class="w-11/12" data-collapsable-item data-type-card="day">
   <button
     class="bg-white w-full text-start cursor-pointer rounded-md data-[open=false]:rounded-b-md data-[open=true]:rounded-b-none"
     id={`chevron__${id}`}
