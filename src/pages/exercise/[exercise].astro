@@ -42,7 +42,9 @@ if (!exerciseRoutine) return Astro.redirect("/404");
     />
     <div class="flex justify-center items-center flex-col gap-4 w-full py-8">
       <ExerciseMediaCard
-        urlImg={`/details/images${exerciseRoutine.apparatus.imgUrl.replaceAll("_", "")}`}
+        imgUrl={`/details/images${exerciseRoutine.apparatus.imgUrl}`}
+        videoUrl={`/details/videos${exerciseRoutine.videoUrl}`}
+        alt={exerciseRoutine.apparatus.name}
       />
       <ExerciseStatsCard
         muscle={exerciseRoutine.muscle}
