@@ -24,6 +24,10 @@ export const health: Routine = {
           "id": 1,
           "name": "Día 1",
           "focus": "Tren superior",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de todo el cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "h1a8f6e8", "name": "Sentadilla TRX", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "/sentadilla_trx.mp4", "apparatus": { "name": "TRX", "imgUrl": "/sentadilla_trx.jpg" } },
             { "id": "h9b3d2a4", "name": "Marcha alternando estático", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Cuádriceps/glúteo", "imgUrl": "/cuadricep_gluteo" }, "zone": "Funcional", "videoUrl": "/marcha_alternada_estatica.mp4", "apparatus": { "name": "Peso corporal", "imgUrl": "/marcha_alternada_estatica.jpg" } },
@@ -36,6 +40,10 @@ export const health: Routine = {
           "id": 2,
           "name": "Día 2",
           "focus": "Cardio",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "h4e6f8a2", "name": "Elíptica", "series": null, "reps": 1, "time": { "by": 20, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } },
             { "id": "hc1a2b38", "name": "Caminadora", "series": null, "reps": 1, "time": { "by": 20, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
@@ -62,6 +70,10 @@ export const health: Routine = {
           "id": 1,
           "name": "Día 1",
           "focus": "Todo el cuerpo",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de todo el cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "i7y8z9a1", "name": "Sentadilla trx con salto", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Cuádriceps/glúteos/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "/sentadilla_trx_con_salto.mp4", "apparatus": { "name": "TRX", "imgUrl": "/sentadilla_trx_con_salto.jpg" } },
             { "id": "ia1b2c3d", "name": "Talones alternados al glúteo", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Cuádriceps/glúteo", "imgUrl": "/cuadricep_gluteo" }, "zone": "Funcional", "videoUrl": "/talones_alternados_al_gluteo.mp4", "apparatus": { "name": "Peso corporal", "imgUrl": "/talones_alternados_al_gluteo.png" } },
@@ -74,6 +86,10 @@ export const health: Routine = {
           "id": 2,
           "name": "Día 2",
           "focus": "Cardio",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "h4e6f8a2", "name": "Elíptica", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } },
             { "id": "hc1a2b38", "name": "Caminadora", "series": null, "reps": 1, "time": { "by": 15, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
@@ -83,6 +99,10 @@ export const health: Routine = {
           "id": 3,
           "name": "Día 3",
           "focus": "Circuito express",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "ij1k2l3m", "name": "Circuito Express", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Circuito Express", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -91,9 +111,13 @@ export const health: Routine = {
           "id": 4,
           "name": "Día 4",
           "focus": "Cardio",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
-            { "id": "im4n5o6p", "name": "Cardio a elegir", "series": null, "reps": 1, "time": { "by": 15, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } },
-            { "id": "hc1a2b38", "name": "Caminadora", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
+            { "id": "", "name": "Cardio a elegir", "series": null, "reps": 1, "time": { "by": 15, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } },
+            { "id": "", "name": "Caminadora", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]
         }
       ]
@@ -117,6 +141,10 @@ export const health: Routine = {
           "id": 1,
           "name": "Día 1",
           "focus": "Tren inferior",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de la parte inferior del cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "j1k2l3m4", "name": "Extensión de cuadricep", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Cuádriceps", "imgUrl": "/cuadriceps" }, "zone": "Peso integrado", "videoUrl": "/extension_de_cuadriceps.mp4", "apparatus": { "name": "Máquina de extensiones", "imgUrl": "/extension_de_cuadriceps.jpg" } },
             { "id": "j5n6o7p8", "name": "Curl de pierna sentado", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Femoral", "imgUrl": "/femoral" }, "zone": "Peso integrado", "videoUrl": "/curl_de_pierna_sentado.mp4", "apparatus": { "name": "Máquina de curl femoral", "imgUrl": "/curl_de_pierna_sentado.jpg" } },
@@ -129,6 +157,10 @@ export const health: Routine = {
           "id": 2,
           "name": "Día 2",
           "focus": "Mixto",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "jx7y8z9a", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
             { "id": "im4n5o6p", "name": "Cardio a elegir", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } }
@@ -138,6 +170,10 @@ export const health: Routine = {
           "id": 3,
           "name": "Día 3",
           "focus": "Clase PE@PF",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "jb1c2d3e", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -146,6 +182,10 @@ export const health: Routine = {
           "id": 4,
           "name": "Día 4",
           "focus": "Cardio",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "im4n5o6p", "name": "Cardio a elegir", "series": null, "reps": 1, "time": { "by": 45, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]
@@ -171,6 +211,10 @@ export const health: Routine = {
           "id": 1,
           "name": "Día 1",
           "focus": "Todo el cuerpo",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de todo el cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "i7y8z9a1", "name": "Sentadilla TRX con salto", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Cuádriceps/glúteos/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "/sentadilla_trx_con_salto.mp4", "apparatus": { "name": "TRX", "imgUrl": "/sentadilla_trx_con_salto.jpg" } },
             { "id": "k1l2m3n4", "name": "Desplante alternado con salto", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Cuádriceps/glúteos/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "/desplante_alternado_con_salto.mp4", "apparatus": { "name": "TRX", "imgUrl": "/desplante_alternado_con_salto.jpg" } },
@@ -183,6 +227,10 @@ export const health: Routine = {
           "id": 2,
           "name": "Día 2",
           "focus": "Mixto",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "jx7y8z9a", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
             { "id": "im4n5o6p", "name": "Cardio a elegir", "series": null, "reps": 1, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
@@ -192,6 +240,10 @@ export const health: Routine = {
           "id": 3,
           "name": "Día 3",
           "focus": "Clase PE@PF",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "ky7z8a9b", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Glúteo/Abdomen", "imgUrl": "/abdomen_gluteo" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -200,6 +252,10 @@ export const health: Routine = {
           "id": 4,
           "name": "Día 4",
           "focus": "Tren superior",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de la parte superior del cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "h8a9b3d5", "name": "Abdominal crunch", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Abdomen", "imgUrl": "/abdomen" }, "zone": "Peso integrado", "videoUrl": "/abdominal_crunch.mp4", "apparatus": { "name": "Máquina de crunch", "imgUrl": "/abdominal_crunch.jpg" } },
             { "id": "ku4v5w6x", "name": "Extensión de espalda", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Espalda (sin lumbar)", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/extension_de_espalda.mp4", "apparatus": { "name": "Máquina de extensión lumbar", "imgUrl": "/extension_de_espalda.jpg" } },

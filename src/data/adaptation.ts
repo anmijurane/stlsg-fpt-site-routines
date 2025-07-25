@@ -24,6 +24,10 @@ export const adaptation: Routine = {
           "id": 1,
           "name": "Día 1",
           "focus": "Todo el cuerpo",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de todo el cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "f3b9a1e8", "name": "Press de hombro", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Hombros", "imgUrl": "/hombros_frontal_lateral" }, "zone": "Peso integrado", "videoUrl": "/press_de_hombro.mp4", "apparatus": { "name": "Máquina de press de hombro", "imgUrl": "/press_de_hombro.jpg" } },
             { "id": "c7d2e4f6", "name": "Press de Pecho", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/press_de_pecho.mp4", "apparatus": { "name": "Máquina de press de pecho", "imgUrl": "/press_de_pecho.jpg" } },
@@ -37,6 +41,10 @@ export const adaptation: Routine = {
           "id": 2,
           "name": "Día 2",
           "focus": "Cardio",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]
@@ -45,6 +53,10 @@ export const adaptation: Routine = {
           "id": 3,
           "name": "Día 3",
           "focus": "Todo el cuerpo",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de todo el cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "a9b1c5d8", "name": "Remo sentado", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Espalda", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/remo_sentado.mp4", "apparatus": { "name": "Máquina de remo", "imgUrl": "/remo_sentado.jpg" } },
             { "id": "d8e2f6a1", "name": "Press de triceps", "series": 3, "reps": 10, "time": null, "muscle": { "name": "Triceps", "imgUrl": "/triceps" }, "zone": "Peso integrado", "videoUrl": "/press_de_triceps.mp4", "apparatus": { "name": "Máquina o polea", "imgUrl": "/press_de_triceps.jpg" } },
@@ -58,6 +70,10 @@ export const adaptation: Routine = {
           "id": 4,
           "name": "Día 4",
           "focus": "Circuito express",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "a7b3c6d9", "name": "Clase de circuito express", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Circuito Express", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -83,6 +99,10 @@ export const adaptation: Routine = {
           "id": 1,
           "name": "Día 1",
           "focus": "Todo el cuerpo",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de todo el cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "f3b9a1e8", "name": "Press de hombro", "series": 3, "reps": 12, "time": null, "muscle": { "name": "Hombros", "imgUrl": "/hombros_frontal_lateral" }, "zone": "Peso integrado", "videoUrl": "/press_de_hombro.mp4", "apparatus": { "name": "Máquina de press de hombro", "imgUrl": "/press_de_hombro.jpg" } },
             { "id": "c7d2e4f6", "name": "Press de pecho", "series": 3, "reps": 12, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/press_de_pecho.mp4", "apparatus": { "name": "Máquina de press de pecho", "imgUrl": "/press_de_pecho.jpg" } },
@@ -96,6 +116,10 @@ export const adaptation: Routine = {
           "id": 2,
           "name": "Día 2",
           "focus": "Cardio",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]
@@ -104,6 +128,10 @@ export const adaptation: Routine = {
           "id": 3,
           "name": "Día 3",
           "focus": "Todo el cuerpo",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de todo el cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "a9b1c5d8", "name": "Remo Sentado", "series": 3, "reps": 12, "time": null, "muscle": { "name": "Espalda", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/remo_sentado.mp4", "apparatus": { "name": "Máquina de remo", "imgUrl": "/remo_sentado.jpg" } },
             { "id": "e2f6a1b8", "name": "Jalón al pecho", "series": 3, "reps": 12, "time": null, "muscle": { "name": "Espalda", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/jalon_al_pecho.mp4", "apparatus": { "name": "Máquina de jalón al pecho", "imgUrl": "/jalon_al_pecho.jpg" } },
@@ -117,6 +145,10 @@ export const adaptation: Routine = {
           "id": 4,
           "name": "Día 4",
           "focus": "Clase PE@PF",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "e1f5a8b3", "name": "Clase PE@PF a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -142,6 +174,10 @@ export const adaptation: Routine = {
           "id": 1,
           "name": "Día 1",
           "focus": "Tren superior",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de la parte superior del cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "f5a8b3c7", "name": "Hammer Strength Chest Press", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/hammers_trength_chest_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammers_trength_chest_press.jpg" } },
             { "id": "a8b3c7d1", "name": "Hammer Strength Shoulder Press", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Hombros", "imgUrl": "/hombros_frontal_lateral" }, "zone": "Peso integrado", "videoUrl": "/hammer_strength_shoulder_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammer_strength_shoulder_press.jpg" } },
@@ -155,6 +191,10 @@ export const adaptation: Routine = {
           "id": 2,
           "name": "Día 2",
           "focus": "Mixto",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "e1f5a8b3", "name": "Clase PE@PF a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
             { "id": "f8a9b2c7", "name": "Cardio con aparato", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
@@ -164,6 +204,10 @@ export const adaptation: Routine = {
           "id": 3,
           "name": "Día 3",
           "focus": "Tren inferior",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de la parte inferior del cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "e9f2a7b4", "name": "Sentadilla TRX con salto", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "sentadilla_trx_con_salto.mp4", "apparatus": { "name": "TRX", "imgUrl": "/sentadilla_trx_con_salto.jpg" } },
             { "id": "a3b8c1d6", "name": "Sentadillas", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "/sentadilla.mov", "apparatus": { "name": "Peso corporal o barra", "imgUrl": "/sentadilla.png" } },
@@ -177,6 +221,10 @@ export const adaptation: Routine = {
           "id": 4,
           "name": "Día 4",
           "focus": "Clase PE@PF",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "e1f5a8b3", "name": "Clase PE@PF a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
           ]
@@ -202,6 +250,10 @@ export const adaptation: Routine = {
           "id": 1,
           "name": "Día 1",
           "focus": "Tren superior",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de la parte superior del cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "g1h5i2j6", "name": "Hammer Strength Incline Chest Press", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/hammers_trength_incline_chest_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammers_trength_incline_chest_press.jpg" } },
             { "id": "h5i2j6k3", "name": "Hammer strength mts Remo", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Espalda", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/hummer_strength_mts_remo.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hummer_strength_mts_remo.png" } },
@@ -215,6 +267,10 @@ export const adaptation: Routine = {
           "id": 2,
           "name": "Día 2",
           "focus": "Mixto",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "e1f5a8b3", "name": "Clase PE@PF a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
             { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Elíptica", "imgUrl": "" } }
@@ -224,6 +280,10 @@ export const adaptation: Routine = {
           "id": 3,
           "name": "Día 3",
           "focus": "Tren inferior",
+          "indicationsPreRoutine": {
+            "heating": "Estiramientos de la parte superior del cuerpo.",
+            "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
+          },
           "exercises": [
             { "id": "l7m4n8o5", "name": "Prensa de piernas", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Peso integrado", "videoUrl": "/prensa_de_pierna.mp4", "apparatus": { "name": "Máquina de prensa", "imgUrl": "/prensa_de_pierna.jpg" } },
             { "id": "m4n8o5p9", "name": "Extensión de cuadricep", "series": 4, "reps": 15, "time": null, "muscle": { "name": "Cuádriceps", "imgUrl": "/cuadriceps" }, "zone": "Peso integrado", "videoUrl": "/extension_de_cuadriceps.mp4", "apparatus": { "name": "Máquina de extensiones", "imgUrl": "/extension_de_cuadriceps.jpg" } },
@@ -237,6 +297,10 @@ export const adaptation: Routine = {
           "id": 4,
           "name": "Día 4",
           "focus": "Cardio",
+          "indicationsPreRoutine": {
+            "heating": "",
+            "cooling": "",
+          },
           "exercises": [
             { "id": "f8a9b2c7", "name": "Cardio a elegir", "series": null, "reps": null, "time": { "by": 30, "unit": "min" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Cardio", "videoUrl": "", "apparatus": { "name": "Caminadora", "imgUrl": "" } }
           ]

@@ -26,10 +26,16 @@ export interface Level {
 //   PesoIntegrado = "Peso integrado",
 // }
 
+interface IndicationsPreRoutine {
+  cooling: string;
+  heating: string;
+}
+
 export interface Day {
   id: number;
   name: string;
   focus: string;
+  indicationsPreRoutine: IndicationsPreRoutine;
   exercises: Exercise[];
 }
 
