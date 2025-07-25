@@ -4,8 +4,9 @@ import { CheckButtonWithState } from "@components/react/CheckButton";
 interface Props {
   id?: string;
   dayId: number;
+  leyend: string;
 }
-const { id, dayId } = Astro.props;
+const { id, dayId, leyend } = Astro.props;
 ---
 
 <div class="bg-theme-light-card rounded-[20px] w-full">
@@ -46,7 +47,7 @@ const { id, dayId } = Astro.props;
       </svg>
     </div>
     <p class="w-7/12 font-normal space-0.5">
-      Usa la máquina elíptica u otro aparato del área de cardio.
+      {leyend}
     </p>
   </div>
   <div class="flex items-center justify-end px-4 h-fit -translate-y-5">

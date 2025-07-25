@@ -12,7 +12,7 @@ interface Props {
   day: Day;
 }
 const { day } = Astro.props;
-const level = Astro.url.searchParams.get('level');
+const level = Astro.url.searchParams.get("level");
 const { category } = Astro.params;
 ---
 
@@ -21,7 +21,11 @@ const { category } = Astro.params;
     class="flex flex-col gap-8 items-center bg-white px-3 py-8 rounded-b-2xl"
   >
     <ProgressIndicatorRoutine client:only="react" dayId={day.id} />
-    <Heating id="heating" dayId={day.id} />
+    <Heating
+      id="heating"
+      dayId={day.id}
+      leyend={day.indicationsPreRoutine.heating}
+    />
     {
       day.exercises.map((it) => {
         if (it.name === "Clase PE@PF") {
@@ -29,11 +33,17 @@ const { category } = Astro.params;
         }
         return (
           <GeneralCard {...it} id={it.id} dayId={day.id}>
-            <ToExercise to={`/exercise/${it.id}/?level=${level}&day=${day.id}&category=${category}`} />
+            <ToExercise
+              to={`/exercise/${it.id}/?level=${level}&day=${day.id}&category=${category}`}
+            />
           </GeneralCard>
         );
       })
     }
-    <Cooling id="cooling" dayId={day.id} />
+    <Cooling
+      id="cooling"
+      dayId={day.id}
+      leyend={day.indicationsPreRoutine.cooling}
+    />
   </div>
 </ExpandableCardDay>
