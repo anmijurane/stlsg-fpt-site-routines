@@ -209,7 +209,7 @@ export const adaptation: Routine = {
             "cooling": "Usa la máquina elíptica u otro aparato del área de cardio.",
           },
           "exercises": [
-            { "id": "e9f2a7b4", "name": "Sentadilla TRX con salto", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "sentadilla_trx_con_salto.mp4", "apparatus": { "name": "TRX", "imgUrl": "/sentadilla_trx_con_salto.jpg" } },
+            { "id": "e9f2a7b4", "name": "Sentadilla TRX con salto", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "/sentadilla_trx_con_salto.mp4", "apparatus": { "name": "TRX", "imgUrl": "/sentadilla_trx_con_salto.jpg" } },
             { "id": "a3b8c1d6", "name": "Sentadillas", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Cuádriceps/glúteo/femoral", "imgUrl": "/cuadricep_gluteo_femoral" }, "zone": "Funcional", "videoUrl": "/sentadilla.mov", "apparatus": { "name": "Peso corporal o barra", "imgUrl": "/sentadilla.png" } },
             { "id": "f2a7b4c8", "name": "Aductor", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Aductores", "imgUrl": "/aductores" }, "zone": "Peso integrado", "videoUrl": "/aductor.mp4", "apparatus": { "name": "Máquina de aductores", "imgUrl": "/aductor.jpg" } },
             { "id": "a7b4c8d1", "name": "Abductor", "series": 4, "reps": 12, "time": null, "muscle": { "name": "Glúteo", "imgUrl": "/gluteo" }, "zone": "Peso integrado", "videoUrl": "/abductor.mp4", "apparatus": { "name": "Máquina de abductores", "imgUrl": "/abductor.jpg" } },
