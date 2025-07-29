@@ -112,3 +112,16 @@ import ConsentToUse from "@components/modals/ConsentToUse.astro";
 		<ConsentToUse />
 	</HeroLayout>
 </MainLayout>
+
+<script>
+	import { dayOpen } from "@store/expandableUI";
+	document.addEventListener(
+		"astro:page-load",
+		() => {
+			if (window.location.pathname === "/") {
+				dayOpen.set(null);
+			}
+		},
+		{ passive: true },
+	);
+</script>
