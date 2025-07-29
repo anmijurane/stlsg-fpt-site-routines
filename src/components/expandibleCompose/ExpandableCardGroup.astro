@@ -12,6 +12,8 @@ const { class: classList, name: id } = Astro.props;
 </section>
 
 <script>
+  import { persitOpenCard, removeOpenCard } from "@store/expandableUI.actions";
+  import { categoryOpen, dayOpen } from "@store/expandableUI";
   const __init__ = () => {
     const id =
       document.querySelector<HTMLMetaElement>("meta[data-id]")?.dataset.id;
@@ -21,13 +23,25 @@ const { class: classList, name: id } = Astro.props;
       console.warn(`Accordion container with id #${id} not found.`);
       return;
     }
+    let currentOpen = null;
 
     const items = Array.from<HTMLDivElement>(
       container.querySelectorAll("div[data-collapsable-item]"),
     );
+    const cardType = items.reduce(
+      (_acc, it) => it.dataset?.typeCard || _acc,
+      "",
+    ) as unknown as "category" | "day";
     if (items.length === 0) {
       console.log("No collapsable items found in this group.");
       return;
+    }
+
+    if (cardType === "category") {
+      currentOpen = categoryOpen.get();
+    }
+    if (cardType === "day") {
+      currentOpen = dayOpen.get();
     }
 
     /**
@@ -47,13 +61,14 @@ const { class: classList, name: id } = Astro.props;
       card.removeAttribute("data-open");
       chevronIcon.classList.remove("rotate-180");
       content.classList.remove("is-open");
+      removeOpenCard(cardType);
     };
 
     /**
      * Open a element of acorideon.
      * @param {HTMLElement} item
      */
-    const openItem = (item: HTMLDivElement) => {
+    const openItem = (item: HTMLDivElement, idx: number) => {
       const button = item.querySelector("button");
       const content = item.querySelector("[data-content]");
       const card = item.querySelector("[data-card]");
@@ -66,11 +81,16 @@ const { class: classList, name: id } = Astro.props;
       card.setAttribute("data-open", "true");
       chevronIcon.classList.add("rotate-180");
       content.classList.add("is-open");
+      persitOpenCard(cardType, idx);
     };
 
-    items.forEach((item) => {
+    items.forEach((item, idx) => {
       const button = item.querySelector("button");
       if (!button) return;
+
+      if (currentOpen !== null && currentOpen === idx) {
+        openItem(item, currentOpen);
+      }
 
       button.addEventListener("click", () => {
         const isCurrentlyOpen = item.getAttribute("data-open") === "true";
@@ -85,7 +105,7 @@ const { class: classList, name: id } = Astro.props;
           closeItem(currentOpenItem as HTMLDivElement);
         }
 
-        openItem(item);
+        openItem(item, idx);
 
         const content = item.querySelector("[data-content]");
         if (content) {

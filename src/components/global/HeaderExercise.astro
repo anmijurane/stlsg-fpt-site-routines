@@ -1,0 +1,49 @@
+---
+import getPathsIcon from "@utils/getPathsIcon";
+import type { TypeRoutine } from "@interfaces/routines";
+import ArrowButton from "@components/ArrowButton.astro";
+import ChipCategory from "@components/ChipCategory.astro";
+
+interface Props {
+  id: string;
+  exerciseName: string;
+  title: string;
+  zone: string;
+  level: number;
+}
+
+const { id, exerciseName, title, zone, level } = Astro.props;
+const to = `/routine/${id}/?level=${level}`;
+---
+
+<div
+  id={`card__${id}`}
+  data-card
+  transition:name={`card__${id}`}
+  class="w-full min-h-20 bg-theme-secondary h-20 text-theme-text-light pl-6 pr-8 flex items-center"
+>
+  <div class="w-1/6">
+    <svg width="48" height="48" transition:name={`icon_${id}`}>
+      <use
+        href={encodeURI(
+          `/icons_routines.svg#${getPathsIcon(id as TypeRoutine)}`,
+        )}></use>
+    </svg>
+  </div>
+  <div class="w-4/6 flex items-center justify-start h-full">
+    <p class="text-2xl w-full font-bold text-center">
+      {title.toUpperCase()}
+    </p>
+  </div>
+  <div class="w-1/6"></div>
+</div>
+<div class="flex gap-4 items-start justify-start p-4">
+  <a href={to} class="flex items-start w-1/6" transition:name="back_btn">
+    <ArrowButton position="left" />
+  </a>
+  <div class="flex items-center justify-start flex-col gap-2 w-4/6">
+    <h3 class="text-theme-tertiary text-3xl text-center">{exerciseName}</h3>
+    <ChipCategory name={zone} withLetter />
+  </div>
+  <div class="w-1/6"></div>
+</div>

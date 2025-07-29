@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+
+import { routines } from "@data/index";
+import HeaderExercise from "@components/global/HeaderExercise.astro";
+import type { TypeRoutine } from "@interfaces/routines";
+import MainLayout from "@layouts/MainLayout.astro";
+import ExerciseMediaCard from "@components/ExerciseRoutine/ExerciseMediaCard.astro";
+import ExerciseStatsCard from "@components/ExerciseRoutine/ExerciseStatsCard.astro";
+import likeIcon from "@assets/icons/like.svg";
+
+const { exercise: idExercise } = Astro.params;
+const searchParams = Astro.url.searchParams;
+const level = Number(searchParams.get("level"));
+const day = Number(searchParams.get("day"));
+const category = searchParams.get("category");
+const categoryType = category as TypeRoutine;
+
+if (!idExercise || !categoryType) return Astro.redirect("/404");
+
+const routine = routines[categoryType];
+const exerciseRoutine = routine.levels
+  .findLast((levelItem) => levelItem.id === level)
+  ?.days.findLast((dayItem) =>
+    dayItem.exercises.some((ex) => ex.id === idExercise),
+  )
+  ?.exercises.find((ex) => ex.id === idExercise);
+
+if (!exerciseRoutine) return Astro.redirect("/404");
+---
+
+<MainLayout title={exerciseRoutine.name} themeColor="#290241">
+  <div
+    class="flex flex-col w-full sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-5/12 shadow-2xl rounded-md"
+  >
+    <HeaderExercise
+      id={routine.id}
+      exerciseName={exerciseRoutine.name}
+      title={routine.name}
+      zone={exerciseRoutine.zone}
+      level={level}
+    />
+    <div class="flex justify-center items-center flex-col gap-4 w-full py-8">
+      <ExerciseMediaCard
+        imgUrl={`/details/images${exerciseRoutine.apparatus.imgUrl}`}
+        videoUrl={`/details/videos${exerciseRoutine.videoUrl}`}
+        alt={exerciseRoutine.apparatus.name}
+      />
+      <ExerciseStatsCard
+        muscle={exerciseRoutine.muscle}
+        dayId={day}
+        idExcercise={idExercise}
+        isFatBurning={categoryType === "fat_burning"}
+        first={categoryType === "fat_burning"
+          ? `${exerciseRoutine.active?.by} ${exerciseRoutine.active?.unit}`
+          : `${exerciseRoutine.series}`.padStart(2, "0")}
+        second={categoryType === "fat_burning"
+          ? `${exerciseRoutine.rest?.by} ${exerciseRoutine.rest?.unit}`
+          : `${exerciseRoutine.reps}`.padStart(2, "0")}
+        rounds={exerciseRoutine.rounds}
+      />
+      <div
+        class="w-10/12 bg-theme-tertiary rounded-xl text-theme-primary p-3 flex items-center justify-center"
+      >
+        <div class="flex gap-4 items-center justify-center w-10/12">
+          <div class="w-2/12">
+            <Image src={likeIcon} alt="like" width={45} />
+          </div>
+          <p
+            class="font-medium text-base w-10/12 text-center leading-tight text-wrap"
+          >
+            Si tienes alguna duda,<br />consulta a un entrenador
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

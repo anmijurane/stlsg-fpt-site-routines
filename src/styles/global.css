@@ -48,4 +48,8 @@
   .bg-gradient-purple {
     background-image: linear-gradient(245deg, #9600FA 45%, #AE00FF 100%);
   }
+
+  .bg-gradient-purple-light {
+    background-image: linear-gradient(180deg, #FFFFFF 45%, #E7DCF9 100%);
+  }
 }

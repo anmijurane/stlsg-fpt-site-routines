@@ -11,7 +11,7 @@ interface Props {
 const { title, id } = Astro.props;
 ---
 
-<div class="w-11/12" data-collapsable-item>
+<div class="w-11/12" data-collapsable-item data-type-card="category">
   <button
     class="border-0 bg-transparent w-full text-start cursor-pointer"
     id={`chevron__${id}`}
@@ -20,7 +20,7 @@ const { title, id } = Astro.props;
       id={`card__${id}`}
       data-card
       transition:name={`card__${id}`}
-      class="bg-theme-secondary h-20 rounded-md data-open:rounded-b-none text-theme-text-light pl-6 pr-8 flex items-center scroll-mt-30"
+      class="bg-theme-secondary h-20 rounded-md data-open:rounded-b-none text-theme-text-light pl-6 pr-8 flex items-center scroll-mt-36"
     >
       <div class="w-1/6 mr-4">
         <svg width="48" height="48" transition:name={`icon_${id}`}>

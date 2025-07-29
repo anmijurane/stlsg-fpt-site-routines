@@ -2,7 +2,7 @@
 import MainLayout from "@layouts/MainLayout.astro";
 
 import CardLevel, { type Zone } from "@components/CardLevel.astro";
-import ExapandibleCardGroup from "@components/expandibleCompose/ExpandableCardGroup.astro";
+import ExapandableCardGroup from "@components/expandibleCompose/ExpandableCardGroup.astro";
 import HeroLayout from "@layouts/HeroLayout.astro";
 import ExpandableCard from "@components/expandibleCompose/ExpandableCard.astro";
 
@@ -13,7 +13,7 @@ import ConsentToUse from "@components/modals/ConsentToUse.astro";
 
 <MainLayout title="Inicio">
 	<HeroLayout>
-		<ExapandibleCardGroup
+		<ExapandableCardGroup
 			name="levels"
 			class="flex justify-center items-center flex-col gap-8 py-12"
 		>
@@ -108,7 +108,20 @@ import ConsentToUse from "@components/modals/ConsentToUse.astro";
 					})
 				}
 			</ExpandableCard>
-		</ExapandibleCardGroup>
+		</ExapandableCardGroup>
 		<ConsentToUse />
 	</HeroLayout>
 </MainLayout>
+
+<script>
+	import { dayOpen } from "@store/expandableUI";
+	document.addEventListener(
+		"astro:page-load",
+		() => {
+			if (window.location.pathname === "/") {
+				dayOpen.set(null);
+			}
+		},
+		{ passive: true },
+	);
+</script>

@@ -10,7 +10,7 @@ interface Props {
 const { title, id, day } = Astro.props;
 ---
 
-<div class="w-11/12" data-collapsable-item>
+<div class="w-11/12" data-collapsable-item data-type-card="day">
   <button
     class="bg-white w-full text-start cursor-pointer rounded-md data-[open=false]:rounded-b-md data-[open=true]:rounded-b-none"
     id={`chevron__${id}`}
@@ -20,7 +20,7 @@ const { title, id, day } = Astro.props;
       trounded-t-lg
       data-card
       transition:name={`card__${id}`}
-      class="bg-theme-tertiary h-20 rounded-md data-open:rounded-b-lg text-theme-primary pl-6 pr-8 flex items-center scroll-mt-30"
+      class="bg-theme-tertiary h-20 rounded-md data-open:rounded-b-lg text-theme-primary pl-6 pr-8 flex items-center scroll-mt-36"
     >
       <div class="w-3/12 mr-4">
         <p class="w-full font-semibold text-adapter">

@@ -10,12 +10,12 @@ export const locationsGym = [
   { "slug": "2e7d9a4c05", "state": "San Luis",    "club": "Glorieta",               "active": true  }, // MVP 2
   { "slug": "8c1029a5e7", "state": "Queretaro",   "club": "Antea",                  "active": true  }, // MVP 2
   { "slug": "f1e2d3c4b5", "state": "Guadalajara", "club": "Plaza Del Angel",        "active": true  }, // MVP 2
-  { "slug": "358829c03d", "state": "Leon",        "club": "Lindavista",             "active": true  },
 
-  { "slug": "17cf8bbf29", "state": "Monterrey",   "club": "Santa Catarina",         "active": true  },
-  { "slug": "660e5a1d8c", "state": "Monterrey",   "club": "La Estanzuela",          "active": true  },
-  { "slug": "c6232e9461", "state": "Monterrey",   "club": "Arcadia",                "active": true  },
-  { "slug": "0b0986e177", "state": "Saltillo",    "club": "Santa Isabel",           "active": true  },
+  { "slug": "358829c03d", "state": "Leon",        "club": "Lindavista",             "active": true  }, // MVP 3
+  { "slug": "17cf8bbf29", "state": "Monterrey",   "club": "Santa Catarina",         "active": true  }, // MVP 3
+  { "slug": "660e5a1d8c", "state": "Monterrey",   "club": "La Estanzuela",          "active": true  }, // MVP 3
+  { "slug": "c6232e9461", "state": "Monterrey",   "club": "Arcadia",                "active": true  }, // MVP 3
+  { "slug": "0b0986e177", "state": "Saltillo",    "club": "Santa Isabel",           "active": true  }, // MVP 3
 
   { "slug": "c4e220d3af", "state": "Puebla",      "club": "Torrecillas",            "active": false },
   { "slug": "aa85485a04", "state": "Cuernavaca",  "club": "Galerías Cuernavaca",    "active": false },

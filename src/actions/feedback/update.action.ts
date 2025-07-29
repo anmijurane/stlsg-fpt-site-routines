@@ -36,8 +36,6 @@ export const UpdateCommentFeedback = defineAction({
     try {
       // TODO: Refactor global controller
       const response = await axios.post(pathURL, data, { headers });
-      console.log(data)
-      console.log(response.data)
       return response.data;
     } catch (error) {
       return { error: true }

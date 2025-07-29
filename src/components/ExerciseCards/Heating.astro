@@ -5,8 +5,9 @@ import { CheckButtonWithState } from "@components/react/CheckButton";
 interface Props {
   dayId: number;
   id: string;
+  leyend: string;
 }
-const { dayId, id } = Astro.props;
+const { dayId, id, leyend } = Astro.props;
 ---
 
 <div class="bg-theme-light-card rounded-[20px] w-full">
@@ -38,9 +39,7 @@ const { dayId, id } = Astro.props;
         </defs>
       </svg>
     </div>
-    <p class="w-7/12 font-normal space-0.5">
-      Estiramientos de toda la parte superior del cuerpo
-    </p>
+    <p class="w-7/12 font-normal space-0.5">{leyend}</p>
   </div>
   <div class="flex items-center justify-end px-4 h-fit -translate-y-5">
     <p

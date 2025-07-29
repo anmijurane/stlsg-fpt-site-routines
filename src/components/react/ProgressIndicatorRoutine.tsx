@@ -20,7 +20,9 @@ const confettiConfig = {
 
 export const ProgressIndicatorRoutine: FC<Props> = ({ dayId }) => {
   const routine = useStore(Routine);
-  const confetti = useRef<JSConfetti>(null)
+  const confettiRef = useRef<JSConfetti | null>(null);
+  const isInitialMount = useRef(true);
+  const containerProgress = useRef<HTMLDivElement>(null);
 
   const dayRoutine = useMemo(() => {
     const dayRoutine = routine[`${dayId}`];
@@ -44,20 +46,32 @@ export const ProgressIndicatorRoutine: FC<Props> = ({ dayId }) => {
   const LeyendRoutine = getLegendForProgress(dayRoutine?.percentaje || 0);
 
   useEffect(() => {
-    confetti.current = new JSConfetti();
-    if (dayRoutine?.isComplete) {
-      confetti.current.addConfetti(confettiConfig).then(() => {
-        console.log('Se disparo el confetti!')
-      });
+    confettiRef.current = new JSConfetti();
+  }, []);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
     }
-  }, [confetti, dayRoutine?.isComplete])
+
+    if (dayRoutine?.isComplete && confettiRef.current) {
+      confettiRef.current.addConfetti(confettiConfig);
+      setTimeout(() => {
+        containerProgress.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 800);
+    }
+  }, [dayRoutine?.isComplete]);
 
   if ((dayRoutine?.totalExercise || 0) <= 1) {
     return null;
   }
 
   return (
-    <div className="w-full h-36 flex gap-6 items-center justify-center">
+    <div id={`progress_${dayId}`} className="w-full h-36 flex gap-6 items-center justify-center scroll-mt-40" ref={containerProgress}>
       <div className="w-2/6 flex items-center justify-center">
         <ProgressCircleWithCompletion progress={dayRoutine?.percentaje || 0} />
       </div>
