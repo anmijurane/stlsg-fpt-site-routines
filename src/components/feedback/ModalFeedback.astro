@@ -78,7 +78,7 @@ const feedbackOptions = [
         class="resize-none w-full h-52 border border-theme-primary rounded-md active:border-2 focus:border-2 focus:border-theme-primary p-4 text-xs"
       ></textarea>
       <span id="error" class="text-red-500 text-sm w-full text-start opacity-0">
-        Por ahora, este campo es requerido.
+        Escribe un texto valido, sin empezar con espacios ni usar solo símbolos.
       </span>
       <Button variant="primary" id="sendComment" class="w-4/6"> Enviar </Button>
     </div>
@@ -91,6 +91,8 @@ const feedbackOptions = [
 
   const sanitizeRegExp =
     /(?:\r\n|\r|\n)+|<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>|<[^>]*>/gi;
+  const regExpText: RegExp =
+    /^(?=.*\p{L}{2})[\p{L}\p{M}\d\s.,;:¡!¿?\-()"'/%+@#&]+$/u;
 
   // --- ESTADO GLOBAL Y CONTROLADORES ---
   const session = {
@@ -159,8 +161,9 @@ const feedbackOptions = [
         return;
       }
       if (!commentTextarea) return;
-      const valueComment = commentTextarea.value;
-      if (valueComment.length >= 0) {
+      const valueComment = commentTextarea.value.trim();
+      const isValidText = regExpText.test(valueComment);
+      if (valueComment.length > 0 && isValidText) {
         errorSpan?.classList.add("opacity-0");
         try {
           const sanitizeText = valueComment
