@@ -198,9 +198,9 @@ const feedbackOptions = [
     };
 
     const considerOpeningModal = () => {
-      const MIN_CLICKS = 15; // OLD 30
-      const MAX_CLICKS = 25; // OLD 45
-      const TIME_IN_SECONDS_TO_SHOW = 180; // 3 min OLD 300
+      const MIN_CLICKS = 30;
+      const MAX_CLICKS = 45;
+      const TIME_IN_SECONDS_TO_SHOW = 600; // = 10hrs * 60 min
 
       const randomClickTarget =
         Math.floor(Math.random() * (MAX_CLICKS - MIN_CLICKS + 1)) + MIN_CLICKS;
