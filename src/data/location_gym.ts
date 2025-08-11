@@ -17,26 +17,30 @@ export const locationsGym = [
   { "slug": "c6232e9461", "state": "Monterrey",   "club": "Arcadia",                "active": true  }, // MVP 3
   { "slug": "0b0986e177", "state": "Saltillo",    "club": "Santa Isabel",           "active": true  }, // MVP 3
 
-  { "slug": "c4e220d3af", "state": "Puebla",      "club": "Torrecillas",            "active": true },
-  { "slug": "aa85485a04", "state": "Cuernavaca",  "club": "Galerías Cuernavaca",    "active": true },
-  { "slug": "6a2052d8f9", "state": "CDMX",        "club": "Paseo Acoxpa",           "active": true },
-  { "slug": "9e4f35b27c", "state": "Edo de Mex",  "club": "Satelite",               "active": true },
-  { "slug": "8932ff1b6e", "state": "Edo de Mex",  "club": "San Marcos",             "active": true },
-  { "slug": "d7b69c1f80", "state": "Puebla",      "club": "La Paz Puebla",          "active": true },
-  { "slug": "54b5f8a3c2", "state": "Edo de Mex",  "club": "Valle Dorado",           "active": true },
-  { "slug": "bf41e2d6ab", "state": "CDMX",        "club": "Tlatelolco",             "active": true },
-  { "slug": "eac1e502d3", "state": "CDMX",        "club": "Encuentro Oceania",      "active": true },
-  { "slug": "44a6932e11", "state": "Puebla",      "club": "Serviplaza Villa Verde", "active": true },
-  { "slug": "b291e7d7f0", "state": "Edo de Mex",  "club": "Tollocan",               "active": true },
-  { "slug": "5dc0a1b409", "state": "Puebla",      "club": "Angelópolis",            "active": true },
-  { "slug": "7aa8f6d5c3", "state": "Edo de Mex",  "club": "Coacalco",               "active": true },
-  { "slug": "15bd2f6108", "state": "CDMX",        "club": "Acueducto",              "active": true },
-  { "slug": "b70f4e2d6a", "state": "VER",         "club": "Jardines Xalapa",        "active": true },
-  { "slug": "257d3e6a8b", "state": "Veracruz",    "club": "Center Plazas",          "active": true },
-  { "slug": "a49d5f73c4", "state": "CDMX",        "club": "Mixcoac",                "active": true },
-  { "slug": "31b8e2a04f", "state": "CDMX",        "club": "Cumbres 1188",           "active": true },
-  { "slug": "3d207a9c12", "state": "Edo de Mex",  "club": "Centro Las Americas",    "active": true },
-  { "slug": "9b4a5e7d13", "state": "Veracruz",    "club": "Andamar",                "active": true },
-  { "slug": "c50f0f52f8", "state": "Veracruz",    "club": "Los Pinos",              "active": true },
-  { "slug": "4bfa66b080", "state": "Mazatlan",    "club": "Gran Plaza Mazatlan",    "active": true }
+  { "slug": "c4e220d3af", "state": "Puebla",      "club": "Torrecillas",            "active": true },  // QR_PUE_TORRECILLAS
+  { "slug": "aa85485a04", "state": "Cuernavaca",  "club": "Galerías Cuernavaca",    "active": true },  // QR_MOR_GALERIAS-CUERNAVACA
+  { "slug": "6a2052d8f9", "state": "CDMX",        "club": "Paseo Acoxpa",           "active": true },  // QR_CMX_PASEO-ACOXPA
+  { "slug": "9e4f35b27c", "state": "Edo de Mex",  "club": "Satelite",               "active": true },  // QR_MEX_SATELITE
+  { "slug": "8932ff1b6e", "state": "Edo de Mex",  "club": "San Marcos",             "active": true },  // QR_MEX_SAN-MARCOS
+
+  { "slug": "d7b69c1f80", "state": "Puebla",      "club": "La Paz Puebla",          "active": true },  // QR_PUE_LA-PAZ-PUEBLA
+  { "slug": "54b5f8a3c2", "state": "Edo de Mex",  "club": "Valle Dorado",           "active": true },  // QR_MEX_VALLE-DORADO
+  { "slug": "bf41e2d6ab", "state": "CDMX",        "club": "Tlatelolco",             "active": true },  // QR_CMX_TLATELOLCO
+  { "slug": "eac1e502d3", "state": "CDMX",        "club": "Encuentro Oceania",      "active": true },  // QR_CMX_ENCUENTRO-OCEANIA
+  { "slug": "44a6932e11", "state": "Puebla",      "club": "Serviplaza Villa Verde", "active": true },  // QR_PUE_SERVIPLAZA-VILLA-VERDE
+
+  { "slug": "b291e7d7f0", "state": "Edo de Mex",  "club": "Tollocan",               "active": true },  // QR_MEX_TOLLOCAN
+  { "slug": "5dc0a1b409", "state": "Puebla",      "club": "Angelópolis",            "active": true },  // QR_PUE_ANGELOPOLIS
+  { "slug": "7aa8f6d5c3", "state": "Edo de Mex",  "club": "Coacalco",               "active": true },  // QR_MEX_COACALCO
+  { "slug": "15bd2f6108", "state": "CDMX",        "club": "Acueducto",              "active": true },  // QR_CMX_ACUEDUCTO
+  { "slug": "b70f4e2d6a", "state": "VER",         "club": "Jardines Xalapa",        "active": true },  // QR_VER_JARDINES-XALAPA
+
+  { "slug": "257d3e6a8b", "state": "Veracruz",    "club": "Center Plazas",          "active": true },  // QR_VER_CENTER-PLAZAS
+  { "slug": "a49d5f73c4", "state": "CDMX",        "club": "Mixcoac",                "active": true },  // QR_CMX_MIXCOAC
+  { "slug": "31b8e2a04f", "state": "CDMX",        "club": "Cumbres 1188",           "active": true },  // QR_CMX_CUMBRES-1188
+  { "slug": "3d207a9c12", "state": "Edo de Mex",  "club": "Centro Las Americas",    "active": true },  // QR_MEX_CENTRO-LAS-AMERICAS
+  { "slug": "9b4a5e7d13", "state": "Veracruz",    "club": "Andamar",                "active": true },  // QR_VER_ANDAMAR
+
+  { "slug": "c50f0f52f8", "state": "Veracruz",    "club": "Los Pinos",              "active": true },  // QR_VER_LOS-PINOS
+  { "slug": "4bfa66b080", "state": "Mazatlan",    "club": "Gran Plaza Mazatlan",    "active": true }   // QR_SIN_GRAN-PLAZA-MAZATLAN
 ];
