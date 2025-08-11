@@ -9,6 +9,8 @@ import react from '@astrojs/react';
 
 dotenv.config();
 
+const PORT = Number(process.env.PORT) || 4321;
+
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
@@ -21,5 +23,9 @@ export default defineConfig({
     mode: 'standalone'
   }),
 
-  integrations: [react()]
+  integrations: [react()],
+
+  server: {
+    port: PORT
+  }
 });
