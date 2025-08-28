@@ -21,8 +21,12 @@ const isValid = Object.keys(routines).includes(categoryType);
 if (!isValid) {
   return Astro.redirect("/404");
 }
-const { id, name, description } = routines[categoryType];
-const level = params.get("level");
+const { id, name, description, levels } = routines[categoryType];
+const level = Number(params.get("level"));
+console.log({ level })
+if (isNaN(level) || level < 0 || level > 4) {
+  return Astro.redirect("/404");
+}
 ---
 
 <MainLayout title={name}>
@@ -83,14 +87,12 @@ const level = params.get("level");
             </div>
           </div>
           <div class="w-full flex items-center justify-around">
-            <Button variant="secundary" onclick="history.back()">
-              Regresar
-            </Button>
+            <a href="/">
+              <Button variant="secundary"> Regresar </Button>
+            </a>
             <a href={`/routine/${categoryType}/?level=${level}`}>
-              <Button variant="primary">
-                Continuar
-              </Button>
-              </a>
+              <Button variant="primary"> Continuar </Button>
+            </a>
           </div>
         </div>
       </div>
