@@ -42,5 +42,17 @@ export const locationsGym = [
   { "slug": "9b4a5e7d13", "state": "Veracruz",    "club": "Andamar",                "active": true },  // QR_VER_ANDAMAR
 
   { "slug": "c50f0f52f8", "state": "Veracruz",    "club": "Los Pinos",              "active": true },  // QR_VER_LOS-PINOS
-  { "slug": "4bfa66b080", "state": "Mazatlan",    "club": "Gran Plaza Mazatlan",    "active": true }   // QR_SIN_GRAN-PLAZA-MAZATLAN
+  { "slug": "4bfa66b080", "state": "Mazatlan",    "club": "Gran Plaza Mazatlan",    "active": true },  // QR_SIN_GRAN-PLAZA-MAZATLAN
+
+  { "slug": "8173b8366a", "state": "CDMX",        "club": "Altolivo",               "active": false },  // QR_CMX_ALTOLIVO
+  { "slug": "3d90a85839", "state": "Guadalajara", "club": "Celta Guadalajara",      "active": false },  // QR_GDL_CELTA-GUADALAJARA
+  { "slug": "1e3a0ef22e", "state": "Mérida",      "club": "Harbor Mérida",          "active": false },  // QR_MER_HARBOR-MERIDA
+  { "slug": "c45c1a9f19", "state": "Guadalajara", "club": "Estadio Gdl",            "active": false },  // QR_GDL_ESTADIO-GDL
+  { "slug": "7fc28ff6a1", "state": "Culiacán",    "club": "Zapata Culiacan",        "active": false },  // QR_QLC_ZAPATA-CULIACAN
+  { "slug": "d37333456f", "state": "Cancún",      "club": "Malecón Las Américas",   "active": false },  // QR_CUN_MALECÓN-LAS-AMÉRICAS
+  { "slug": "61b395fb2b", "state": "León",        "club": "Parque Vértice",         "active": false },  // QR_LEN_PARQUE-VÉRTICE
+  { "slug": "49fa0060c3", "state": "Guadalajara", "club": "Galerias Guadalajara",   "active": false },  // QR_GDL_GALERIAS-GUADALAJARA
+  { "slug": "5fdc64fa8d", "state": "Guadalajara", "club": "Punto Sur",              "active": false },  // QR_GDL_PUNTO-SUR
+
+  { "slug": "98f1370821", "state": "EEUU",        "club": "USA",                    "active": true }   // QR_USA
 ];
