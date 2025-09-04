@@ -44,7 +44,7 @@ export const locationsGym = [
   { "slug": "c50f0f52f8", "state": "Veracruz",    "club": "Los Pinos",              "active": true },  // QR_VER_LOS-PINOS
   { "slug": "4bfa66b080", "state": "Mazatlan",    "club": "Gran Plaza Mazatlan",    "active": true },  // QR_SIN_GRAN-PLAZA-MAZATLAN
 
-  { "slug": "8173b8366a", "state": "CDMX",        "club": "Altolivo",               "active": false },  // QR_CMX_ALTOLIVO
+  { "slug": "8173b8366a", "state": "CDMX",        "club": "Altolivo",               "active": true },  // QR_CMX_ALTOLIVO
   { "slug": "3d90a85839", "state": "Guadalajara", "club": "Celta Guadalajara",      "active": false },  // QR_GDL_CELTA-GUADALAJARA
   { "slug": "1e3a0ef22e", "state": "Mérida",      "club": "Harbor Mérida",          "active": false },  // QR_MER_HARBOR-MERIDA
   { "slug": "c45c1a9f19", "state": "Guadalajara", "club": "Estadio Gdl",            "active": false },  // QR_GDL_ESTADIO-GDL
