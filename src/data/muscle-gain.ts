@@ -34,7 +34,7 @@ export const muscle_gain: Routine = {
             { "id": "i9j1k2l3", "name": "Curl de Bíceps", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Biceps", "imgUrl": "/biceps" }, "zone": "Peso integrado", "videoUrl": "/curl_de_biceps.mp4", "apparatus": { "name": "Mancuernas o máquina", "imgUrl": "/curl_de_biceps.jpg" } },
             { "id": "m4n5o6p7", "name": "Press de Triceps", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Triceps", "imgUrl": "/triceps" }, "zone": "Peso integrado", "videoUrl": "/press_de_triceps.mp4", "apparatus": { "name": "Máquina o polea", "imgUrl": "/press_de_triceps.jpg" } },
             { "id": "q8r9s1t2", "name": "Remo Sentado", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Espalda (sin lumbar)", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/remo_sentado.mp4", "apparatus": { "name": "Máquina de remo", "imgUrl": "/remo_sentado.jpg" } },
-            { "id": "u3v4w5x6", "name": "Abdominal crunch", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Abdomen", "imgUrl": "/abdomen" }, "zone": "Peso integrado", "videoUrl": "/abdominal_crunch.mp4", "apparatus": { "name": "Máquina de crunch", "imgUrl": "/abdominal_crunch.jpg" } }
+            { "id": "u3v4w5x6", "name": "Abdominal crunch", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Abdomen", "imgUrl": "/abdomen" }, "zone": "Peso integrado", "videoUrl": "/abdominal_crunch.mp4", "apparatus": { "name": "Máquina de crunch", "imgUrl": "/abdominal_crunch.jpg" } },
           ]
         },
         {
@@ -61,7 +61,7 @@ export const muscle_gain: Routine = {
             { "id": "g6h7i8j9", "name": "Curl de Piernas Sentado", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Femoral", "imgUrl": "/femoral" }, "zone": "Peso integrado", "videoUrl": "/curl_de_pierna_sentado.mp4", "apparatus": { "name": "Máquina de curl femoral", "imgUrl": "/curl_de_pierna_sentado.jpg" } },
             { "id": "k1l2m3n4", "name": "Aductor", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Aductores", "imgUrl": "/aductores" }, "zone": "Funcional", "videoUrl": "/aductor.mp4", "apparatus": { "name": "Máquina o peso corporal", "imgUrl": "/aductor.jpg" } },
             { "id": "o5p6q7r8", "name": "Abductor", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Glúteo", "imgUrl": "/gluteo" }, "zone": "Funcional", "videoUrl": "/abductor.mp4", "apparatus": { "name": "Máquina o peso corporal", "imgUrl": "/abductor.jpg" } },
-            { "id": "s9t1u2v3", "name": "Extensión de Gemelos", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Pantorrilla", "imgUrl": "/pantorrilla" }, "zone": "Peso integrado", "videoUrl": "/extension_de_gemelos.mp4", "apparatus": { "name": "Máquina para pantorrillas", "imgUrl": "/extension_de_gemelos.jpg" } }
+            { "id": "s9t1u2v3", "name": "Extensión de Gemelos", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Pantorrilla", "imgUrl": "/pantorrilla" }, "zone": "Peso integrado", "videoUrl": "/extension_de_gemelos.mp4", "apparatus": { "name": "Máquina para pantorrillas", "imgUrl": "/extension_de_gemelos.jpg" } },
           ]
         },
         {
@@ -73,7 +73,7 @@ export const muscle_gain: Routine = {
             "cooling": "",
           },
           "exercises": [
-            { "id": "w4x5y6z7", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "w4x5y6z7", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
           ]
         }
       ]
@@ -107,7 +107,7 @@ export const muscle_gain: Routine = {
             { "id": "i9j1k2l3", "name": "Curl de Bíceps", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Biceps", "imgUrl": "/biceps" }, "zone": "Peso integrado", "videoUrl": "/curl_de_biceps.mp4", "apparatus": { "name": "Mancuernas o máquina", "imgUrl": "/curl_de_biceps.jpg" } },
             { "id": "m4n5o6p7", "name": "Press de Triceps", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Triceps", "imgUrl": "/triceps" }, "zone": "Peso integrado", "videoUrl": "/press_de_triceps.mp4", "apparatus": { "name": "Máquina o polea", "imgUrl": "/press_de_triceps.jpg" } },
             { "id": "z8a9b1c2", "name": "Jalón al Pecho", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Espalda (sin lumbar)", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/jalon_al_pecho.mp4", "apparatus": { "name": "Máquina de jalón al pecho", "imgUrl": "/jalon_al_pecho.jpg" } },
-            { "id": "u3v4w5x6", "name": "Abdominal crunch", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Abdomen", "imgUrl": "/abdomen" }, "zone": "Peso integrado", "videoUrl": "/abdominal_crunch.mp4", "apparatus": { "name": "Máquina de crunch", "imgUrl": "/abdominal_crunch.jpg" } }
+            { "id": "u3v4w5x6", "name": "Abdominal crunch", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Abdomen", "imgUrl": "/abdomen" }, "zone": "Peso integrado", "videoUrl": "/abdominal_crunch.mp4", "apparatus": { "name": "Máquina de crunch", "imgUrl": "/abdominal_crunch.jpg" } },
           ]
         },
         {
@@ -135,7 +135,7 @@ export const muscle_gain: Routine = {
             { "id": "k1l2m3n4", "name": "Aductor", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Aductores", "imgUrl": "/aductores" }, "zone": "Funcional", "videoUrl": "/aductor.mp4", "apparatus": { "name": "Máquina o peso corporal", "imgUrl": "/aductor.jpg" } },
             { "id": "l2m3n4o5", "name": "Glúteo", "series": 3, "reps": 15, "time": null, "muscle": { "name": "Glúteo", "imgUrl": "/gluteo" }, "zone": "Funcional", "videoUrl": "/gluteo.mp4", "apparatus": { "name": "Máquina o peso corporal", "imgUrl": "/gluteo.jpg" } },
             { "id": "p6q7r8s9", "name": "Extensión de Espalda", "series": 3, "reps": 15, "time": null, "muscle": { "name": "lumbar", "imgUrl": "/lumbar" }, "zone": "Peso integrado", "videoUrl": "/extension_de_espalda.mp4", "apparatus": { "name": "Máquina de extensión lumbar", "imgUrl": "/extension_de_espalda.jpg" } },
-            { "id": "w4x5y6z7", "name": "Clase PE@PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "w4x5y6z7", "name": "Clase PE@PF", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "Funcional", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
           ]
         },
         {
@@ -147,7 +147,7 @@ export const muscle_gain: Routine = {
             "cooling": "",
           },
           "exercises": [
-            { "id": "w4x5y6z7", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } }
+            { "id": "w4x5y6z7", "name": "Clase PE@PF a elegir", "series": null, "reps": 1, "time": { "by": 0, "unit": "Libre" }, "muscle": { "name": "Todo el cuerpo", "imgUrl": "/whole_body" }, "zone": "PE@PF", "videoUrl": "", "apparatus": { "name": "Clase grupal", "imgUrl": "" } },
           ]
         }
       ]
@@ -177,9 +177,9 @@ export const muscle_gain: Routine = {
           },
           "exercises": [
             { "id": "a1b2c3d4", "name": "Press de Hombro", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Hombros (frontal y lateral)", "imgUrl": "/hombros_frontal_lateral" }, "zone": "Peso integrado", "videoUrl": "/press_de_hombro.mp4", "apparatus": { "name": "Máquina o mancuernas", "imgUrl": "/press_de_hombro.jpg" } },
-            { "id": "t2u3v4w5", "name": "Hammer Strength Shoulder Press", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Hombros (frontal y lateral)", "imgUrl": "/hombros_frontal_lateral" }, "zone": "Peso integrado", "videoUrl": "/hammer_strength_shoulder_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammer_strength_shoulder_press.png" } },
+            { "id": "t2u3v4w5", "name": "Hammer Strength Shoulder Press", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Hombros (frontal y lateral)", "imgUrl": "/hombros_frontal_lateral" }, "zone": "Peso integrado", "videoUrl": "/hammer_strength_shoulder_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammer_strength_shoulder_press.jpg" } },
             { "id": "x6y7z8a9", "name": "Hammer Strength Chest Press", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/hammers_trength_chest_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammers_trength_chest_press.jpg" } },
-            { "id": "b1c2d3e4", "name": "Hammer Strength incline Chest", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/hammers_trength_incline_chest_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammers_trength_incline_chest_press.png" } },
+            { "id": "b1c2d3e4", "name": "Hammer Strength incline Chest", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/hammers_trength_incline_chest_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammers_trength_incline_chest_press.jpg" } },
             { "id": "f5g6h7i8", "name": "Curl de Bíceps", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Biceps", "imgUrl": "/biceps" }, "zone": "Peso integrado", "videoUrl": "/curl_de_bicep_predicador.mp4", "apparatus": { "name": "Banco predicador", "imgUrl": "/curl_de_bicep_predicador.jpg" } },
             { "id": "i9j1k2l3", "name": "Curl de Bíceps", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Biceps", "imgUrl": "/biceps" }, "zone": "Peso integrado", "videoUrl": "/curl_de_biceps.mp4", "apparatus": { "name": "Mancuernas o máquina", "imgUrl": "/curl_de_biceps.jpg" } },
           ]
@@ -198,7 +198,7 @@ export const muscle_gain: Routine = {
             { "id": "c2d3e4f5", "name": "Extensión de Cuádriceps", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Cuádriceps", "imgUrl": "/cuadriceps" }, "zone": "Peso integrado", "videoUrl": "/extension_de_cuadriceps.mp4", "apparatus": { "name": "Máquina de extensiones", "imgUrl": "/extension_de_cuadriceps.jpg" } },
             { "id": "k1l2m3n4", "name": "Aductor", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Aductores", "imgUrl": "/aductores" }, "zone": "Funcional", "videoUrl": "/aductor.mp4", "apparatus": { "name": "Máquina o peso corporal", "imgUrl": "/aductor.jpg" } },
             { "id": "g6h7i8j9", "name": "Curl de Piernas Sentado", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Femoral", "imgUrl": "/femoral" }, "zone": "Peso integrado", "videoUrl": "/curl_de_pierna_sentado.mp4", "apparatus": { "name": "Máquina de curl femoral", "imgUrl": "/curl_de_pierna_sentado.jpg" } },
-            { "id": "s9t1u2v3", "name": "Extensión de Gemelos", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Pantorrilla", "imgUrl": "/pantorrilla" }, "zone": "Peso integrado", "videoUrl": "/extension_de_gemelos.mp4", "apparatus": { "name": "Máquina para pantorrillas", "imgUrl": "/extension_de_gemelos.jpg" } }
+            { "id": "s9t1u2v3", "name": "Extensión de Gemelos", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Pantorrilla", "imgUrl": "/pantorrilla" }, "zone": "Peso integrado", "videoUrl": "/extension_de_gemelos.mp4", "apparatus": { "name": "Máquina para pantorrillas", "imgUrl": "/extension_de_gemelos.jpg" } },
           ]
         },
         {
@@ -225,7 +225,7 @@ export const muscle_gain: Routine = {
             { "id": "p6q7r8s9", "name": "Extensión de Espalda", "series": 4, "reps": 10, "time": null, "muscle": { "name": "lumbar", "imgUrl": "/lumbar" }, "zone": "Peso integrado", "videoUrl": "/extension_de_espalda.mp4", "apparatus": { "name": "Máquina de extensión lumbar", "imgUrl": "/extension_de_espalda.jpg" } },
             { "id": "m4n5o6p7", "name": "Press de triceps", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Triceps", "imgUrl": "/triceps" }, "zone": "Peso integrado", "videoUrl": "/press_de_triceps.mp4", "apparatus": { "name": "Máquina o polea", "imgUrl": "/press_de_triceps.jpg" } },
             { "id": "n5o6p7q8", "name": "Extensión de Triceps en Polea", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Triceps", "imgUrl": "/triceps" }, "zone": "Peso integrado", "videoUrl": "/extension_de_triceps_en_polea.mp4", "apparatus": { "name": "Máquina de poleas", "imgUrl": "/extension_de_triceps_en_polea.png" } },
-            { "id": "r9s1t2u3", "name": "Plancha con flexión y extensión de codos", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Abdomen", "imgUrl": "/abdomen" }, "zone": "Funcional", "videoUrl": "/plancha_con_flexion_de_codos.mp4", "apparatus": { "name": "Tapete", "imgUrl": "/plancha_con_flexion_de_codos.jpg" } }
+            { "id": "r9s1t2u3", "name": "Plancha con flexión y extensión de codos", "series": 4, "reps": 10, "time": null, "muscle": { "name": "Abdomen", "imgUrl": "/abdomen" }, "zone": "Funcional", "videoUrl": "/plancha_con_flexion_de_codos.mp4", "apparatus": { "name": "Tapete", "imgUrl": "/plancha_con_flexion_de_codos.jpg" } },
           ]
         }
       ]
@@ -258,7 +258,7 @@ export const muscle_gain: Routine = {
             { "id": "x6y7z8a9", "name": "Hammer Strength Chest Press", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/hammers_trength_chest_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammers_trength_chest_press.jpg" } },
             { "id": "b1c2d3e4", "name": "Hammer Strength incline Chest", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Pectoral", "imgUrl": "/pectoral" }, "zone": "Peso integrado", "videoUrl": "/hammers_trength_incline_chest_press.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammers_trength_incline_chest_press.jpg" } },
             { "id": "f5g6h7i8", "name": "Curl de Bicep Predicador", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Biceps", "imgUrl": "/biceps" }, "zone": "Peso integrado", "videoUrl": "/curl_de_bicep_predicador.mp4", "apparatus": { "name": "Banco predicador", "imgUrl": "/curl_de_bicep_predicador.jpg" } },
-            { "id": "i9j1k2l3", "name": "Curl de Bicep", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Biceps", "imgUrl": "/biceps" }, "zone": "Peso integrado", "videoUrl": "/curl_de_biceps.mp4", "apparatus": { "name": "Mancuernas o máquina", "imgUrl": "/curl_de_biceps.jpg" } }
+            { "id": "i9j1k2l3", "name": "Curl de Bicep", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Biceps", "imgUrl": "/biceps" }, "zone": "Peso integrado", "videoUrl": "/curl_de_biceps.mp4", "apparatus": { "name": "Mancuernas o máquina", "imgUrl": "/curl_de_biceps.jpg" } },
           ]
         },
         {
@@ -275,7 +275,7 @@ export const muscle_gain: Routine = {
             { "id": "c2d3e4f5", "name": "Extensión de Cuádriceps", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Cuádriceps", "imgUrl": "/cuadriceps" }, "zone": "Peso integrado", "videoUrl": "/extension_de_cuadriceps.mp4", "apparatus": { "name": "Máquina de extensiones", "imgUrl": "/extension_de_cuadriceps.jpg" } },
             { "id": "k1l2m3n4", "name": "Aductor", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Aductores", "imgUrl": "/aductores" }, "zone": "Peso integrado", "videoUrl": "/aductor.mp4", "apparatus": { "name": "Máquina de aductores", "imgUrl": "/aductor.jpg" } },
             { "id": "o5p6q7r8", "name": "Abductor", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Glúteo", "imgUrl": "/gluteo" }, "zone": "Peso integrado", "videoUrl": "/abductor.mp4", "apparatus": { "name": "Máquina de abductores", "imgUrl": "/abductor.jpg" } },
-            { "id": "s9t1u2v3", "name": "Extensión de Gemelos", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Pantorrilla", "imgUrl": "/pantorrilla" }, "zone": "Peso integrado", "videoUrl": "/extension_de_gemelos.mp4", "apparatus": { "name": "Máquina para pantorrillas", "imgUrl": "/extension_de_gemelos.jpg" } }
+            { "id": "s9t1u2v3", "name": "Extensión de Gemelos", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Pantorrilla", "imgUrl": "/pantorrilla" }, "zone": "Peso integrado", "videoUrl": "/extension_de_gemelos.mp4", "apparatus": { "name": "Máquina para pantorrillas", "imgUrl": "/extension_de_gemelos.jpg" } },
           ]
         },
         {
@@ -302,7 +302,7 @@ export const muscle_gain: Routine = {
             { "id": "v3w4x5y6", "name": "Hammer Strength mts remo", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Espalda (sin lumbar)", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/hummer_strength_mts_remo.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hummer_strength_mts_remo.png" } },
             { "id": "z7a8b9c1", "name": "Hammer Strength Mts front Pulldown", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Espalda (sin lumbar)", "imgUrl": "/espalda" }, "zone": "Peso integrado", "videoUrl": "/hammer_strength_mts_front_pulldown.mp4", "apparatus": { "name": "Hammer Strength", "imgUrl": "/hammer_strength_mts_front_pulldown.png" } },
             { "id": "m4n5o6p7", "name": "Press de Triceps", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Triceps", "imgUrl": "/triceps" }, "zone": "Peso integrado", "videoUrl": "/press_de_triceps.mp4", "apparatus": { "name": "Máquina o polea", "imgUrl": "/press_de_triceps.jpg" } },
-            { "id": "d2e3f4g5", "name": "Extensión de Triceps", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Triceps", "imgUrl": "/triceps" }, "zone": "Peso integrado", "videoUrl": "/extension_de_triceps.mp4", "apparatus": { "name": "Máquina o polea", "imgUrl": "/extension_de_triceps.jpg" } }
+            { "id": "d2e3f4g5", "name": "Extensión de Triceps", "series": 4, "reps": 8, "time": null, "muscle": { "name": "Triceps", "imgUrl": "/triceps" }, "zone": "Peso integrado", "videoUrl": "/extension_de_triceps.mp4", "apparatus": { "name": "Máquina o polea", "imgUrl": "/extension_de_triceps.jpg" } },
           ]
         }
       ]
