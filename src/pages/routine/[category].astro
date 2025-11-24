@@ -31,11 +31,14 @@ const params = new URL(Astro.url).searchParams;
 const level = Number(params.get("level"));
 
 const isValid = Object.keys(routines).includes(categoryType);
+if (!isValid || isNaN(level) || level < 0 || level > 4) {
+  return Astro.redirect("/404");
+}
 const { levels, name: nameRoutine, id: idRoutine } = routines[categoryType];
 
 const currentLevel = levels.find((it) => it.id === level);
 
-if (!isValid || !currentLevel) {
+if (!currentLevel) {
   return Astro.redirect("/404");
 }
 

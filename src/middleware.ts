@@ -9,7 +9,7 @@ const isProd = import.meta.env.PROD;
 
 const ASSET_EXTENSIONS = [
   '.js', '.css', '.json', '.png', '.jpg', '.jpeg',
-  '.svg', '.gif', '.webp', '.ico', '.woff', '.woff2', '.map'
+  '.svg', '.gif', '.webp', '.ico', '.woff', '.woff2', '.map', '.txt'
 ];
 
 const LOGS_DIR = path.join(process.cwd(), '_logs');
