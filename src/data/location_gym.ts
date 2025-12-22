@@ -54,5 +54,10 @@ export const locationsGym = [
   { "slug": "49fa0060c3", "state": "Guadalajara", "club": "Galerias Guadalajara",   "active": true },  // QR_GDL_GALERIAS-GUADALAJARA
   { "slug": "5fdc64fa8d", "state": "Guadalajara", "club": "Punto Sur",              "active": true },  // QR_GDL_PUNTO-SUR
 
-  { "slug": "98f1370821", "state": "EEUU",        "club": "USA",                    "active": true }   // QR_USA
+  { "slug": "98f1370821", "state": "EEUU",        "club": "USA",                    "active": true },   // QR_USA
+
+  { "slug": "61480e707c", "state": "CDMX",        "club": "Gran Sur",               "active": true },   // QR_CDMX_Gran-Sur
+  { "slug": "66dab86bf2", "state": "Acapulco",    "club": "Multiplaza las Palmas",  "active": true },   // QR_ACA_MULTIPLAZA-LAS-PALMAS
+  { "slug": "216428d3f9", "state": "Edo de Mex",  "club": "Cuatro Caminos",         "active": true },   // QR_MEX_CUATRO-CAMINOS
+  { "slug": "d6830a6ee4", "state": "Mérida",      "club": "Canek",                  "active": true },   // QR_MER_CANEK
 ];
