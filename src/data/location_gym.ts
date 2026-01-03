@@ -45,14 +45,19 @@ export const locationsGym = [
   { "slug": "4bfa66b080", "state": "Mazatlan",    "club": "Gran Plaza Mazatlan",    "active": true },  // QR_SIN_GRAN-PLAZA-MAZATLAN
 
   { "slug": "8173b8366a", "state": "CDMX",        "club": "Altolivo",               "active": true },  // QR_CMX_ALTOLIVO
-  { "slug": "3d90a85839", "state": "Guadalajara", "club": "Celta Guadalajara",      "active": false },  // QR_GDL_CELTA-GUADALAJARA
-  { "slug": "1e3a0ef22e", "state": "Mérida",      "club": "Harbor Mérida",          "active": false },  // QR_MER_HARBOR-MERIDA
-  { "slug": "c45c1a9f19", "state": "Guadalajara", "club": "Estadio Gdl",            "active": false },  // QR_GDL_ESTADIO-GDL
-  { "slug": "7fc28ff6a1", "state": "Culiacán",    "club": "Zapata Culiacan",        "active": false },  // QR_QLC_ZAPATA-CULIACAN
-  { "slug": "d37333456f", "state": "Cancún",      "club": "Malecón Las Américas",   "active": false },  // QR_CUN_MALECÓN-LAS-AMÉRICAS
-  { "slug": "61b395fb2b", "state": "León",        "club": "Parque Vértice",         "active": false },  // QR_LEN_PARQUE-VÉRTICE
-  { "slug": "49fa0060c3", "state": "Guadalajara", "club": "Galerias Guadalajara",   "active": false },  // QR_GDL_GALERIAS-GUADALAJARA
-  { "slug": "5fdc64fa8d", "state": "Guadalajara", "club": "Punto Sur",              "active": false },  // QR_GDL_PUNTO-SUR
+  { "slug": "3d90a85839", "state": "Guadalajara", "club": "Celta Guadalajara",      "active": true },  // QR_GDL_CELTA-GUADALAJARA
+  { "slug": "1e3a0ef22e", "state": "Mérida",      "club": "Harbor Mérida",          "active": true },  // QR_MER_HARBOR-MERIDA
+  { "slug": "c45c1a9f19", "state": "Guadalajara", "club": "Estadio Gdl",            "active": true },  // QR_GDL_ESTADIO-GDL
+  { "slug": "7fc28ff6a1", "state": "Culiacán",    "club": "Zapata Culiacan",        "active": true },  // QR_QLC_ZAPATA-CULIACAN
+  { "slug": "d37333456f", "state": "Cancún",      "club": "Malecón Las Américas",   "active": true },  // QR_CUN_MALECÓN-LAS-AMÉRICAS
+  { "slug": "61b395fb2b", "state": "León",        "club": "Parque Vértice",         "active": true },  // QR_LEN_PARQUE-VÉRTICE
+  { "slug": "49fa0060c3", "state": "Guadalajara", "club": "Galerias Guadalajara",   "active": true },  // QR_GDL_GALERIAS-GUADALAJARA
+  { "slug": "5fdc64fa8d", "state": "Guadalajara", "club": "Punto Sur",              "active": true },  // QR_GDL_PUNTO-SUR
 
-  { "slug": "98f1370821", "state": "EEUU",        "club": "USA",                    "active": true }   // QR_USA
+  { "slug": "98f1370821", "state": "EEUU",        "club": "USA",                    "active": true },   // QR_USA
+
+  { "slug": "61480e707c", "state": "CDMX",        "club": "Gran Sur",               "active": true },   // QR_CDMX_Gran-Sur
+  { "slug": "66dab86bf2", "state": "Acapulco",    "club": "Multiplaza las Palmas",  "active": true },   // QR_ACA_MULTIPLAZA-LAS-PALMAS
+  { "slug": "216428d3f9", "state": "Edo de Mex",  "club": "Cuatro Caminos",         "active": true },   // QR_MEX_CUATRO-CAMINOS
+  { "slug": "d6830a6ee4", "state": "Mérida",      "club": "Canek",                  "active": true },   // QR_MER_CANEK
 ];
