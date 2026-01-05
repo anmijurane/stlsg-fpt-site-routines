@@ -12,7 +12,9 @@ export const UpdateCommentFeedback = defineAction({
     const sedeIdCookie = cookies.get('slug')?.value;
     const sessionId = cookies.get('_a')?.value;
     const userAgent = request.headers.get('User-Agent') || 'Desconocido';
-    const PORT = 5691;
+    const API_URL = process.env.API_URL;
+    const API_KEY = process.env.API_KEY;
+    const API_USER = process.env.API_USER;
 
     if (!sedeIdCookie || !sessionId) {
       throw new ActionError({ code: 'UNAUTHORIZED' });
@@ -29,9 +31,10 @@ export const UpdateCommentFeedback = defineAction({
     const headers = {
       'user-context': Buffer.from(JSON.stringify(userContext), 'utf-8').toString('base64'),
       'Content-Type': 'application/json',
+      'api-key': `${API_USER}${API_KEY}`
     }
 
-    const pathURL = `http://localhost:${PORT}/api/feedback/comment/${id}`;
+    const pathURL = `${API_URL}/api/feedback/comment/${id}`;
 
     try {
       // TODO: Refactor global controller

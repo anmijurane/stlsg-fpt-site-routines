@@ -71,9 +71,9 @@ const saveLogInDataBaseWithAPI = async (body: LogEntry) => {
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const { url, cookies, clientAddress, request } = context;
-  if (import.meta.env.MODE === 'development') {
-    return next();
-  }
+  // if (import.meta.env.MODE === 'development') {
+  //   return next();
+  // }
 
   if (request.method === 'HEAD' || request.method === 'OPTIONS') return next();
 

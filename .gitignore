@@ -26,3 +26,5 @@ pnpm-debug.log*
 _logs/
 
 public/details
+
+playwright/
