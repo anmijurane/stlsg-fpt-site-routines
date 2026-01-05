@@ -23,7 +23,6 @@ if (!isValid) {
 }
 const { id, name, description, levels } = routines[categoryType];
 const level = Number(params.get("level"));
-console.log({ level })
 if (isNaN(level) || level < 0 || level > 4) {
   return Astro.redirect("/404");
 }
