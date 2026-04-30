@@ -4,11 +4,13 @@ import { defineMiddleware } from "astro:middleware";
 import { UAParser } from "ua-parser-js";
 import { locationsGym } from "./data/location_gym";
 import { randomUUID } from 'node:crypto';
+import type { LogEntry } from '@interfaces/LogEntry';
+import axios from 'axios';
 
 const isProd = import.meta.env.PROD;
 
 const ASSET_EXTENSIONS = [
-  '.js', '.css', '.json', '.png', '.jpg', '.jpeg',
+  '.js', '.css', '.json', '.png', '.jpg', '.jpeg', '.mp4', '.webm', '.mp3', '.wav',
   '.svg', '.gif', '.webp', '.ico', '.woff', '.woff2', '.map', '.txt'
 ];
 
@@ -28,7 +30,7 @@ const ensureLogDirectoryExist = async () => {
   }
 }
 
-ensureLogDirectoryExist();
+// ensureLogDirectoryExist();
 
 const locationsGymMap = new Map(
   locationsGym
@@ -44,46 +46,66 @@ const appendLog = async (log: string) => {
   }
 }
 
+const saveLogInDataBaseWithAPI = async (body: LogEntry) => {
+  const apiUrl = process.env.API_URL;
+  const apiKey = process.env.API_KEY;
+  const apiUser = process.env.API_USER;
+  const apiPath = process.env.API_PATH;
+
+  try {
+    const response = await axios.post(
+      `${apiUrl}${apiPath}`,
+      body,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': `${apiUser}${apiKey}`
+        }
+      }
+    );
+    console.log('Log saved in database:', response.data);
+  } catch (error) {
+    console.error('Error a registry log', error);
+  }
+}
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const { url, cookies, clientAddress, request } = context;
-  if (import.meta.env.MODE === 'development') {
-    return next();
-  }
+  // if (import.meta.env.MODE === 'development') {
+  //   return next();
+  // }
 
-  if (request.method === 'HEAD' || request.method === 'OPTIONS') {
-    return next();
-  }
+  if (request.method === 'HEAD' || request.method === 'OPTIONS') return next();
+
   if (
     url.pathname.startsWith('/_astro/') ||
     url.pathname.startsWith('/_image') ||
     ASSET_EXTENSIONS.some(ext => url.pathname.endsWith(ext))
-  ) {
-    return next();
-  }
+  ) return next();
 
   const slug = url.searchParams.get('slug');
   const alreadyCookieExist = cookies.get('slug')?.value;
-  const sessionRef = cookies.get('_a')?.value;
+  const sessionRef = cookies.get('_a')?.value || '00000000-0000-0000-0000-000000000000';
 
   if (alreadyCookieExist) {
     const parser = new UAParser();
     const uaInfo = parser.setUA(request.headers.get('user-agent') || '').getResult();
-    const gym = locationsGymMap.get(alreadyCookieExist);
 
-    const logEntry = {
-      club_name: gym?.club || alreadyCookieExist,
-      timestamp: new Date().toISOString(),
-      slug: alreadyCookieExist,
-      withCookie: true,
-      client_ip: clientAddress,
-      user_agent_browser: uaInfo.browser.toString() || 'unknown',
-      user_agent_os: uaInfo.os.toString() || 'unknown',
-      user_agent_device: uaInfo.device.toString() || 'unknown',
-      skip: !!url.searchParams.get('skip'),
-      page: url.href.replace(`http://${url.host}`, ''),
-      sessionRef
+    const logEntry: LogEntry = {
+      session_ref: sessionRef,
+      club_id: alreadyCookieExist,
+      client: {
+        ip: clientAddress,
+        browser: uaInfo.browser.toString() || 'unknown',
+        os: uaInfo.os.toString() || 'unknown',
+        device: uaInfo.device.toString() || 'unknown'
+      },
+      page: {
+        path: url.pathname,
+        query_string: url.search.replace('?', ''),
+      }
     };
-    appendLog(JSON.stringify(logEntry));
+    saveLogInDataBaseWithAPI(logEntry);
     return next();
   }
 

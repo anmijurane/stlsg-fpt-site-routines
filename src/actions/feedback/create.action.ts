@@ -12,8 +12,10 @@ export const CreateFeedback = defineAction({
   }),
   handler: async ({ emoji, comment, page_path, rejected }, { cookies, clientAddress, request }) => {
 
-    const PORT = 5691;
-    const URL_BFF = `http://localhost:${PORT}/api/feedback/emoji`;
+    const API_URL = process.env.API_URL;
+    const API_KEY = process.env.API_KEY;
+    const API_USER = process.env.API_USER;
+    const URL_BFF = `${API_URL}/api/feedback/emoji`;
 
     const sedeIdCookie = cookies.get('slug')?.value;
     const sessionId = cookies.get('_a')?.value;
@@ -40,6 +42,7 @@ export const CreateFeedback = defineAction({
     const headers = {
       'user-context': Buffer.from(JSON.stringify(userContext), 'utf-8').toString('base64'),
       'Content-Type': 'application/json',
+      'api-key': `${API_USER}${API_KEY}`
     }
 
     try {
