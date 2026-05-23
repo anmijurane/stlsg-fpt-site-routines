@@ -42,6 +42,9 @@ const { muscle, dayId, idExcercise, isFatBurning, first, second, rounds } =
       <p>{isFatBurning ? "Descanso" : "Repeticiones"}</p>
       <p>{second}</p>
     </div>
+    <p class="font-medium text-base w-10/12 text-start leading-tight text-wrap pl-0.5">
+      Si tienes alguna duda,<br />consulta a un entrenador
+    </p>
   </div>
   <div class="w-4/12 flex flex-col gap-3">
     <img
@@ -51,7 +54,7 @@ const { muscle, dayId, idExcercise, isFatBurning, first, second, rounds } =
       loading="lazy"
       width="100px"
     />
-    <div class="flex justify-end w-full">
+    <div class="flex justify-end w-full h-full items-end">
       <CheckButtonWithState
         client:only="react"
         id={idExcercise}

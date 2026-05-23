@@ -8,6 +8,7 @@ import MainLayout from "@layouts/MainLayout.astro";
 import ExerciseMediaCard from "@components/ExerciseRoutine/ExerciseMediaCard.astro";
 import ExerciseStatsCard from "@components/ExerciseRoutine/ExerciseStatsCard.astro";
 import likeIcon from "@assets/icons/like.svg";
+import { RoutineExerciceFeedback } from "@components/react/RoutineExerciceFeedback";
 
 const { exercise: idExercise } = Astro.params;
 const searchParams = Astro.url.searchParams;
@@ -59,19 +60,14 @@ if (!exerciseRoutine) return Astro.redirect("/404");
           : `${exerciseRoutine.reps}`.padStart(2, "0")}
         rounds={exerciseRoutine.rounds}
       />
-      <div
-        class="w-10/12 bg-theme-tertiary rounded-xl text-theme-primary p-3 flex items-center justify-center"
-      >
-        <div class="flex gap-4 items-center justify-center w-10/12">
-          <div class="w-2/12">
-            <Image src={likeIcon} alt="like" width={45} />
-          </div>
-          <p
-            class="font-medium text-base w-10/12 text-center leading-tight text-wrap"
-          >
-            Si tienes alguna duda,<br />consulta a un entrenador
-          </p>
-        </div>
+      <div class="w-full px-4">
+        <RoutineExerciceFeedback
+          client:only="react"
+          day={day}
+          category={category || ''}
+          level={level}
+          exercise={idExercise}
+        />
       </div>
     </div>
   </div>
