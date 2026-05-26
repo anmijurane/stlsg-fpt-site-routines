@@ -1,0 +1,27 @@
+---
+import errorRoundedIcon from "@assets/icons/form/error-rounded.png";
+import { Image } from "astro:assets";
+
+interface Props {
+  name: string;
+  placeholder?: string;
+}
+
+const { name, placeholder } = Astro.props;
+---
+
+<div class="flex w-full flex-col">
+  <input
+    type="text"
+    id={name}
+    name={name}
+    placeholder={placeholder}
+    class="border-b-2 h-16 rounded-lg bg-theme-light-card border-theme-purple-gray p-2"
+  />
+  <span class="items-center gap-2 h-8 hidden" id={`${name}_error`}>
+    <Image src={errorRoundedIcon} alt="error icon" class="w-4" />
+    <span class="text-red-500 text-sm"
+      >Existe un error con el correo ingresado</span
+    >
+  </span>
+</div>

@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  label: string;
+  forLabel: string;
+  icon: ImageMetadata;
+}
+
+const { forLabel, label, icon } = Astro.props;
+---
+
+<section class="w-full p-4 flex flex-col gap-4">
+  <div class="w-full flex items-center justify-start gap-4">
+    <div class="w-1/12">
+      <Image src={icon} alt={`${label} icon`} class="w-20" />
+    </div>
+    <label for={forLabel}>
+      <span class="tracking-widest">{label}</span>
+    </label>
+  </div>
+  <slot />
+</section>
