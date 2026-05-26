@@ -1,0 +1,130 @@
+---
+import Button from "@components/Button.astro";
+import Modal from "@components/global/Modal.astro";
+import weightIcon from "@assets/icons/weight.svg";
+import { Image } from "astro:assets";
+import SectionLabelForm from "@components/FormulariesCompouse/SectionLabelForm.astro";
+
+import genderIcon from "@assets/icons/form/gender.png";
+import calendarIcon from "@assets/icons/form/calendar.png";
+import guestIcon from "@assets/icons/form/guest.svg";
+import info_fillIcon from "@assets/icons/form/info_fill.png";
+import medalStarIcon from "@assets/icons/form/medalStar.svg";
+import starIcon from "@assets/icons/form/star.svg";
+import tagIcon from "@assets/icons/form/tag.png";
+import GridButtonsForm from "@components/FormulariesCompouse/GridButtonsForm.astro";
+import RadioForm from "@components/FormulariesCompouse/RadioForm.astro";
+import InputForm from "@components/FormulariesCompouse/InputForm.astro";
+---
+
+<Modal id="DemographicForm" closeBy="none" withOutPadding>
+  <div class="flex flex-col w-[min(90vw, 320px)] max-h-fit bg-white rounded-xl">
+    <div
+      class="relative flex items-end justify-start h-28 w-full min-w-10/12 bg-theme-light-card rounded-t-xl px-4 pb-2 border-b-2 border-theme-primary"
+    >
+      <Image
+        src={weightIcon}
+        alt="weight icon"
+        class="absolute right-0 -bottom-2 w-20"
+      />
+      <h2
+        class="uppercase text-theme-primary font-bold text-2xl tracking-wide text-left z-10"
+      >
+        COMPLETA TU PERFIL
+      </h2>
+    </div>
+    <div class="h-6"></div>
+    <SectionLabelForm
+      label="SELECCIONA GÉNERO"
+      forLabel="gender"
+      icon={genderIcon}
+    >
+      <GridButtonsForm
+        name="gender"
+        items={[
+          { label: "Masculino", value: "male", id: "gender_masculino" },
+          { label: "Femenino", value: "female", id: "gender_femenino" },
+          { label: "Otro", value: "other", id: "gender_otro" },
+        ]}
+        spanLastOddItem
+      />
+    </SectionLabelForm>
+    <SectionLabelForm
+      label="RANGO DE EDAD"
+      forLabel="range"
+      icon={calendarIcon}
+    >
+      <GridButtonsForm
+        name="range"
+        items={[
+          { label: "< 18", value: "<18", id: "range_18" },
+          { label: "18-24", value: "18-24", id: "range_18-24" },
+          { label: "25-34", value: "25-34", id: "range_25-34" },
+          { label: "35-44", value: "35-44", id: "range_35-44" },
+          { label: "45-54", value: "45-54", id: "range_45-54" },
+          { label: "55-64", value: "55-64", id: "range_55-64" },
+          { label: "65 +", value: "65+", id: "range_65" },
+        ]}
+      />
+    </SectionLabelForm>
+    <SectionLabelForm
+      label="TIPO DE MEMBRESÍA"
+      forLabel="membership"
+      icon={tagIcon}
+    >
+      <RadioForm
+        name="membership"
+        items={[
+          {
+            label: "Classic Card",
+            value: "classic-card",
+            id: "membership_classic_card",
+            icon: starIcon,
+          },
+          {
+            label: "PF Black Card  ®",
+            value: "pf-black-card",
+            id: "membership_pf_black_card",
+            icon: medalStarIcon,
+          },
+          {
+            label: "Invitado",
+            value: "invite",
+            id: "membership_invite",
+            icon: guestIcon,
+          },
+        ]}
+      />
+    </SectionLabelForm>
+    <SectionLabelForm
+      label="EMAIL O TELÉFONO"
+      forLabel="contact"
+      icon={info_fillIcon}
+    >
+      <InputForm name="contact" placeholder="Ingresa los detalles..." />
+    </SectionLabelForm>
+    <div class="h-12"></div>
+    <div class="w-full flex items-center justify-around p-4 flex-col gap-4">
+      <Button
+        variant="primary"
+        size="large"
+        id="accept_demographic_form"
+        class="tracking-widest">ENVIAR</Button
+      >
+    </div>
+  </div>
+</Modal>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      document.dispatchEvent(new Event("open-modal-DemographicForm"));
+    }, 0);
+
+    const acceptButton = document.getElementById("accept_demographic_form");
+    const eventCloseModal = () => {
+      document.dispatchEvent(new Event("close-modal-DemographicForm"));
+    };
+    acceptButton?.addEventListener("click", eventCloseModal);
+  });
+</script>
