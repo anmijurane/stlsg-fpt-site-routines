@@ -5,9 +5,10 @@ interface Props {
   label: string;
   forLabel: string;
   icon: ImageMetadata;
+  initialRequired?: boolean;
 }
 
-const { forLabel, label, icon } = Astro.props;
+const { forLabel, label, icon, initialRequired = false } = Astro.props;
 ---
 
 <section class="w-full p-4 flex flex-col gap-4">
@@ -17,6 +18,7 @@ const { forLabel, label, icon } = Astro.props;
     </div>
     <label for={forLabel}>
       <span class="tracking-widest">{label}</span>
+      <span class="text-red-500" hidden={!initialRequired}>*</span>
     </label>
   </div>
   <slot />

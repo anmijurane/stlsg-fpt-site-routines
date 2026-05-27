@@ -16,7 +16,7 @@ const { name, placeholder } = Astro.props;
     id={name}
     name={name}
     placeholder={placeholder}
-    class="border-b-2 h-16 rounded-lg bg-theme-light-card border-theme-purple-gray p-2"
+    class="border-b-2 h-16 rounded-lg bg-theme-light-card p-2"
   />
   <span class="items-center gap-2 h-8 hidden" id={`${name}_error`}>
     <Image src={errorRoundedIcon} alt="error icon" class="w-4" />
