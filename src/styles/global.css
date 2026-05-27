@@ -16,7 +16,11 @@
   --color-purple-light-bg: #DEBBFF;
   /* Morado Claro - Fondo de las cards */
   --color-purple-light-text: #FAEEFF;
-  /* Morado Claro - Textos de titulos */
+  /* Morado Gris Claro - Textos de titulos */
+  --color-purple-gray: #D5C9E8;
+
+  /* Morado dark */
+  --color-purple-dark-fpt: #582A84;
 
   --color-yellow-accent: #FFDC00;
   /* Amarillo de Acento - Etiquetas de zona y puntos de nivel seleccionados */
@@ -39,6 +43,8 @@
   --color-theme-text-light: var(--color-purple-light-text, #FAEEFF);
   --color-theme-disable: var(--color-light-gray-dots, #DEBBFF);
   --color-theme-purple-medium: var(--color-purple-medium, #AE00FF);
+  --color-theme-purple-dark: var(--color-purple-dark-fpt, #582A84);
+  --color-theme-purple-gray: var(--color-purple-gray, #D5C9E8);
   --color-theme-grandient: linear-gradient(245deg, #9600FA 45%, #AE00FF 100%);
   --color-theme-light-card: var(--color-purple-light-bg-card, #E7DCF9);
   --color-theme-dots: var(--color-light-gray-dots, #DEBBFF);
