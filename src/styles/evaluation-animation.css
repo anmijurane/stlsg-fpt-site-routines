@@ -1,0 +1,81 @@
+/* ── Bounce: icon dips down then springs back up ── */
+@keyframes reaction-bounce {
+  0%   { transform: translateY(0) scale(1); }
+  25%  { transform: translateY(6px) scale(0.92); }
+  50%  { transform: translateY(-4px) scale(1.08); }
+  70%  { transform: translateY(1px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ── Sparkle particle burst outward and fade ── */
+@keyframes sparkle-burst {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: var(--sparkle-translate) scale(0); }
+}
+
+/* ── Bounce animation class ── */
+.reaction-bounce {
+  animation: reaction-bounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── Sparkle container (positioned relative to the button) ── */
+.sparkle-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ── Individual sparkle particle ── */
+.sparkle-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle-burst 0.5s ease-out forwards;
+}
+
+/* Each particle gets a direction via CSS custom property --sparkle-translate */
+.sparkle-particle:nth-child(1) {
+  --sparkle-translate: translate(-16px, -18px);
+  background: #FFD700;
+  animation-delay: 0.30s;
+}
+.sparkle-particle:nth-child(2) {
+  --sparkle-translate: translate(16px, -16px);
+  background: #FF6B6B;
+  animation-delay: 0.32s;
+}
+.sparkle-particle:nth-child(3) {
+  --sparkle-translate: translate(-18px, 14px);
+  background: #4ECDC4;
+  animation-delay: 0.34s;
+}
+.sparkle-particle:nth-child(4) {
+  --sparkle-translate: translate(18px, 16px);
+  background: #A78BFA;
+  animation-delay: 0.33s;
+}
+.sparkle-particle:nth-child(5) {
+  --sparkle-translate: translate(0px, -22px);
+  background: #FBBF24;
+  animation-delay: 0.31s;
+}
+.sparkle-particle:nth-child(6) {
+  --sparkle-translate: translate(0px, 20px);
+  background: #F472B6;
+  animation-delay: 0.35s;
+}
+.sparkle-particle:nth-child(7) {
+  --sparkle-translate: translate(-20px, 0px);
+  background: #34D399;
+  animation-delay: 0.33s;
+}
+.sparkle-particle:nth-child(8) {
+  --sparkle-translate: translate(20px, 0px);
+  background: #FB923C;
+  animation-delay: 0.34s;
+}

@@ -58,7 +58,7 @@ const { id, days } = currentLevel;
         days.map((day) => {
           const routine = day.focus as RoutineKey;
           const Routine = typeRoutine[routine] || typeRoutine["Default"];
-          return <Routine day={day} />;
+          return <Routine day={day} category={categoryType} level={level} />;
         })
       }
     </ExpandableCardGroup>
