@@ -199,8 +199,8 @@ const feedbackOptions = [
     // Inicializar el disparador de modal con la utilidad compartida
     modalTriggerInstance = initModalTrigger({
       storageKey: "_feedbackState",
-      minClicks: 10,
-      maxClicks: 15,
+      minClicks: 20,
+      maxClicks: 25,
       timeThresholdSeconds: 600,
       preConditions: () => {
         const hasFeedback = sessionStorage.getItem("_feedback");
@@ -222,7 +222,10 @@ const feedbackOptions = [
     });
   };
 
-  document.addEventListener("astro:page-load", initializeFeedbackSystem);
+  document.addEventListener(
+    "initialize-feedback-system",
+    initializeFeedbackSystem,
+  );
 
   document.addEventListener("astro:before-swap", () => {
     // Se aborta el controlador principal para limpiar los listeners de interacción del modal
