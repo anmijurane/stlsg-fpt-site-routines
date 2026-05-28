@@ -63,8 +63,6 @@ export const initModalTrigger = (config: ModalTriggerConfig) => {
     const hasEnoughTime = state.screenTimeSeconds > timeThresholdSeconds;
     const hasEnoughPreConditions = preConditions();
 
-    console.log({ hasEnoughClicks, hasEnoughTime, hasEnoughPreConditions, randomClickTarget });
-
     if ((hasEnoughClicks || hasEnoughTime) && hasEnoughPreConditions) {
       state.modalHasBeenShown = true;
       saveState();
