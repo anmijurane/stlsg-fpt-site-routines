@@ -39,8 +39,6 @@ export const RoutineExerciceFeedback: FC<Props> = ({ day, level, category, exerc
 
   const promptText = exercise ? `¿Te gusta este ejercicio?` : '¿Te gusta esta rutina?';
 
-  console.log({ day, level, category, exercise, reaction });
-
   return (
     <div className="flex bg-theme-tertiary rounded-xl w-full h-28">
       <div className="w-1/2 flex justify-center items-center">

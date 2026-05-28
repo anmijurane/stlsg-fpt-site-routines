@@ -331,7 +331,6 @@ import InputForm from "@components/FormulariesCompouse/InputForm.astro";
   let modalTriggerInstance: ReturnType<typeof initModalTrigger> | null = null;
 
   const initializeModalTrigger = () => {
-    console.log("INIT MODAL TRIGGER");
     const modalState = getSessionValue<ModalTriggerState>(
       "_demographicModalShowed",
       {
@@ -346,12 +345,10 @@ import InputForm from "@components/FormulariesCompouse/InputForm.astro";
     }
     modalTriggerInstance = initModalTrigger({
       storageKey: "_demographicModalShowed",
-      minClicks: 2,
-      maxClicks: 3,
-      timeThresholdSeconds: 10,
-      preConditions: () => {
-        return true;
-      },
+      minClicks: 20,
+      maxClicks: 25,
+      timeThresholdSeconds: 600,
+      preConditions: () => true,
       onTrigger: () => {
         initializeDemographicForm();
       },
