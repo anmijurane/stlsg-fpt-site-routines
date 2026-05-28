@@ -350,6 +350,14 @@ import InputForm from "@components/FormulariesCompouse/InputForm.astro";
       timeThresholdSeconds: 600,
       preConditions: () => true,
       onTrigger: () => {
+        setTimeout(() => {
+          const dialog = document.getElementById("DemographicFormModal");
+          const panel = dialog?.querySelector("[data-panel]");
+          if (!dialog || !panel) return;
+          panel.classList.add("open");
+          dialog.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        }, 800);
         initializeDemographicForm();
       },
     });

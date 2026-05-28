@@ -8,7 +8,12 @@ interface Props {
   closeBy?: CloseBy;
   withOutPadding?: boolean;
 }
-const { id, btnClose = false, closeBy = "all", withOutPadding = false } = Astro.props;
+const {
+  id,
+  btnClose = false,
+  closeBy = "all",
+  withOutPadding = false,
+} = Astro.props;
 ---
 
 <div
@@ -75,9 +80,11 @@ const { id, btnClose = false, closeBy = "all", withOutPadding = false } = Astro.
     };
     const handleOnOpenModal = () => {
       if (dialog.classList.contains("hidden")) {
-        panel.classList.add("open");
-        dialog.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
+        setTimeout(() => {
+          panel.classList.add("open");
+          dialog.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        }, 500);
       }
     };
 
