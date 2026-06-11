@@ -61,50 +61,97 @@ const {
 
 <script define:vars={{ id, closeBy }}>
   (() => {
-    const dialog = document.getElementById(id);
-    const backdrop = dialog.querySelector("[data-backdrop]");
-    const panel = dialog.querySelector("[data-panel]");
-    const buttonClose = document.getElementById(`button-close_${id}`);
-    if (!dialog) return;
+    let openTimeout;
+    let closeTimeout;
+    const modalControllers = (window.__modalEventControllers ??= {});
+    modalControllers[id]?.abort();
+
+    const modalController = new AbortController();
+    const modalSignal = modalController.signal;
+    modalControllers[id] = modalController;
+
+    const getModalElements = () => {
+      const dialog = document.getElementById(id);
+      const panel = dialog?.querySelector("[data-panel]");
+      const backdrop = dialog?.querySelector("[data-backdrop]");
+      const buttonClose = document.getElementById(`button-close_${id}`);
+
+      return { dialog, panel, backdrop, buttonClose };
+    };
 
     const handleOnCloseModal = () => {
+      const { dialog, panel, buttonClose } = getModalElements();
+      if (!dialog || !panel) return;
+
+      clearTimeout(openTimeout);
+      clearTimeout(closeTimeout);
       panel.classList.add("closing");
       buttonClose?.classList.remove("scale-120");
-      setTimeout(() => {
+      closeTimeout = setTimeout(() => {
         dialog.classList.add("hidden");
         panel.classList.remove("open");
         buttonClose?.classList.add("scale-120");
         panel.classList.remove("closing");
         document.body.style.overflow = "";
+        dialog.setAttribute("aria-modal", "false");
       }, 250);
     };
     const handleOnOpenModal = () => {
+      const { dialog, panel } = getModalElements();
+      if (!dialog || !panel) return;
+
       if (dialog.classList.contains("hidden")) {
-        setTimeout(() => {
+        clearTimeout(closeTimeout);
+        clearTimeout(openTimeout);
+        openTimeout = setTimeout(() => {
+          panel.classList.remove("closing");
           panel.classList.add("open");
           dialog.classList.remove("hidden");
           document.body.style.overflow = "hidden";
+          dialog.setAttribute("aria-modal", "true");
         }, 500);
       }
     };
 
-    if (dialog && !dialog.hasAttribute("data-init")) {
-      dialog.setAttribute("data-init", "true");
-      document.addEventListener(`open-modal-${id}`, () => handleOnOpenModal());
-      document.addEventListener(`close-modal-${id}`, () =>
-        handleOnCloseModal(),
-      );
-      if (["all", "backdrop"].includes(closeBy)) {
-        dialog.addEventListener("click", (e) => {
-          if (e.target === backdrop) handleOnCloseModal();
-        });
-      }
-      if (["all", "button"].includes(closeBy)) {
-        buttonClose.addEventListener("click", () => {
+    document.addEventListener(`open-modal-${id}`, handleOnOpenModal, {
+      signal: modalSignal,
+    });
+    document.addEventListener(`close-modal-${id}`, handleOnCloseModal, {
+      signal: modalSignal,
+    });
+    document.addEventListener(
+      "click",
+      (event) => {
+        const { dialog, backdrop, buttonClose } = getModalElements();
+        if (!dialog || !dialog.contains(event.target)) return;
+
+        if (
+          ["all", "backdrop"].includes(closeBy) &&
+          event.target === backdrop
+        ) {
           handleOnCloseModal();
-        });
-      }
-    }
+          return;
+        }
+
+        if (
+          ["all", "button"].includes(closeBy) &&
+          buttonClose?.contains(event.target)
+        ) {
+          handleOnCloseModal();
+        }
+      },
+      { signal: modalSignal },
+    );
+
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        clearTimeout(openTimeout);
+        clearTimeout(closeTimeout);
+        document.body.style.overflow = "";
+      },
+      { signal: modalSignal },
+    );
   })();
 </script>
 
