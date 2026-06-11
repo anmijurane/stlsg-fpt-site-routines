@@ -6,8 +6,14 @@ interface Props {
   id: string;
   btnClose?: boolean;
   closeBy?: CloseBy;
+  withOutPadding?: boolean;
 }
-const { id, btnClose = false, closeBy = "all" } = Astro.props;
+const {
+  id,
+  btnClose = false,
+  closeBy = "all",
+  withOutPadding = false,
+} = Astro.props;
 ---
 
 <div
@@ -29,7 +35,8 @@ const { id, btnClose = false, closeBy = "all" } = Astro.props;
     >
       <div
         data-panel
-        class="modal-panel relative w-10/12 max-w-md rounded-2xl bg-white shadow-2xl shadow-theme-primary pt-12 pb-8 px-6"
+        class="modal-panel relative w-10/12 max-w-md rounded-2xl bg-white shadow-2xl shadow-theme-primary"
+        class:list={{ "pt-12 pb-8 px-6": !withOutPadding }}
       >
         {
           btnClose && (
@@ -73,9 +80,11 @@ const { id, btnClose = false, closeBy = "all" } = Astro.props;
     };
     const handleOnOpenModal = () => {
       if (dialog.classList.contains("hidden")) {
-        panel.classList.add("open");
-        dialog.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
+        setTimeout(() => {
+          panel.classList.add("open");
+          dialog.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        }, 500);
       }
     };
 

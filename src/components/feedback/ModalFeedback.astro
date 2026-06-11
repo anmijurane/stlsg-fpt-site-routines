@@ -39,7 +39,7 @@ const feedbackOptions = [
     </h3>
     <div class="mt-2">
       <p class="text-md text-gray-500 font-semibold">
-        En esta primera etapa nos gustaría saber como ha sido tu experiencia
+        Nos gustaría saber cómo ha sido tu experiencia
       </p>
     </div>
   </div>
@@ -88,46 +88,22 @@ const feedbackOptions = [
 <script>
   import { actions } from "astro:actions";
   import type { Emoji } from "@interfaces/common";
+  import { initModalTrigger } from "@utils/modalTrigger";
 
   const sanitizeRegExp =
     /(?:\r\n|\r|\n)+|<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>|<[^>]*>/gi;
   const regExpText: RegExp =
     /^(?=.*\p{L}{2})[\p{L}\p{M}\d\s.,;:¡!¿?\-()"'/%+@#&]+$/u;
 
-  // --- ESTADO GLOBAL Y CONTROLADORES ---
-  const session = {
-    state: {
-      modalHasBeenShown: false,
-      screenTimeSeconds: 0,
-      clicks: 0,
-    },
-    intervalId: null as NodeJS.Timeout | null,
-    // Controlador para limpiar listeners al cambiar de página
-    pageUnloadController: null as AbortController | null,
-  };
-
-  const loadState = () => {
-    const storedState = sessionStorage.getItem("_feedbackState");
-    if (storedState) {
-      session.state = { ...session.state, ...JSON.parse(storedState) };
-    }
-  };
-
-  const saveState = () => {
-    sessionStorage.setItem("_feedbackState", JSON.stringify(session.state));
-  };
+  // --- CONTROLADORES GLOBALES ---
+  let pageUnloadController: AbortController | null = null;
+  let modalTriggerInstance: ReturnType<typeof initModalTrigger> | null = null;
 
   const initializeFeedbackSystem = () => {
-    loadState();
-    session.pageUnloadController = new AbortController();
-    const pageSignal = session.pageUnloadController.signal;
-
-    if (sessionStorage.getItem("_feedback") || session.state.modalHasBeenShown)
-      return;
-
-    // Controlador específico para los listeners que activan el modal
-    const triggerController = new AbortController();
-    const triggerSignal = triggerController.signal;
+    // Asegurar que abortamos controladores previos si existían
+    pageUnloadController?.abort();
+    pageUnloadController = new AbortController();
+    const pageSignal = pageUnloadController.signal;
 
     const feedbackContainer = document.getElementById("feedback-container");
     const commentFeedbackContent = document.getElementById("comment_feedback");
@@ -197,41 +173,6 @@ const feedbackOptions = [
       document.dispatchEvent(new Event("close-modal-feedback"));
     };
 
-    const considerOpeningModal = () => {
-      const MIN_CLICKS = 30;
-      const MAX_CLICKS = 45;
-      const TIME_IN_SECONDS_TO_SHOW = 600; // = 10hrs * 60 min
-
-      const randomClickTarget =
-        Math.floor(Math.random() * (MAX_CLICKS - MIN_CLICKS + 1)) + MIN_CLICKS;
-
-      const hasEnoughClicks = session.state.clicks >= randomClickTarget;
-      const hasEnoughTime =
-        session.state.screenTimeSeconds > TIME_IN_SECONDS_TO_SHOW;
-
-      if (
-        (hasEnoughClicks || hasEnoughTime) &&
-        !session.state.modalHasBeenShown
-      ) {
-        session.state.modalHasBeenShown = true;
-        saveState();
-
-        const modalDialog = document.getElementById(
-          "feedback",
-        ) as HTMLDivElement | null;
-        const panel = modalDialog?.querySelector("[data-panel]");
-        if (!modalDialog || !panel) return;
-        setTimeout(() => {
-          panel?.classList.add("open");
-          modalDialog?.classList.remove("hidden");
-          document.body.style.overflow = "hidden";
-        }, 0);
-
-        triggerController.abort();
-        if (session.intervalId) clearInterval(session.intervalId);
-      }
-    };
-
     const handleFeedbackButtonClick = (event: MouseEvent) => {
       // Se detiene la propagación para que el clic no se cuente como un "clic global".
       event.stopPropagation();
@@ -255,48 +196,43 @@ const feedbackOptions = [
       commentFeedbackContent?.classList.replace("hidden", "flex");
     };
 
-    const handleCloseButtonClick = () => {
-      sendInitialFeedback("closed");
-      document.dispatchEvent(new Event("close-modal-feedback"));
-    };
-
-    const handleGlobalClick = () => {
-      session.state.clicks++;
-      saveState();
-      considerOpeningModal();
-    };
-
-    // Listeners que activan el modal (usan triggerSignal)
-    document.body.addEventListener("click", handleGlobalClick, {
-      signal: triggerSignal,
+    // Inicializar el disparador de modal con la utilidad compartida
+    modalTriggerInstance = initModalTrigger({
+      storageKey: "_feedbackState",
+      minClicks: 20,
+      maxClicks: 25,
+      timeThresholdSeconds: 600,
+      preConditions: () => {
+        const hasFeedback = sessionStorage.getItem("_feedback");
+        const hasShowDemographicModal =
+          localStorage.getItem("demographicModalShowed") || false;
+        return !hasFeedback && !!hasShowDemographicModal;
+      },
+      onTrigger: () => {
+        document.dispatchEvent(new Event("open-modal-feedback"));
+      },
     });
 
     // Listeners de interacción del modal (usan pageSignal)
     feedbackContainer?.addEventListener("click", handleFeedbackButtonClick, {
       signal: pageSignal,
     });
-    // buttonClose?.addEventListener("click", handleCloseButtonClick, {
-    //   signal: pageSignal,
-    // });
     sendCommentButton?.addEventListener("click", sendFeedbackComment, {
       signal: pageSignal,
     });
-
-    session.intervalId = setInterval(() => {
-      session.state.screenTimeSeconds++;
-      saveState();
-      considerOpeningModal();
-    }, 1000);
   };
 
-  document.addEventListener("astro:page-load", initializeFeedbackSystem);
+  document.addEventListener(
+    "initialize-feedback-system",
+    initializeFeedbackSystem,
+  );
 
   document.addEventListener("astro:before-swap", () => {
-    // Se aborta el controlador principal para limpiar los listeners del modal
-    session.pageUnloadController?.abort();
-    // Y se limpia el intervalo por si acaso
-    if (session.intervalId) {
-      clearInterval(session.intervalId);
+    // Se aborta el controlador principal para limpiar los listeners de interacción del modal
+    pageUnloadController?.abort();
+    // Se limpia la utilidad del modal
+    if (modalTriggerInstance) {
+      modalTriggerInstance.cleanup();
     }
   });
 </script>

@@ -1,0 +1,374 @@
+---
+import Button from "@components/Button.astro";
+import Modal from "@components/global/Modal.astro";
+import weightIcon from "@assets/icons/weight.svg";
+import { Image } from "astro:assets";
+import SectionLabelForm from "@components/FormulariesCompouse/SectionLabelForm.astro";
+
+import genderIcon from "@assets/icons/form/gender.png";
+import calendarIcon from "@assets/icons/form/calendar.png";
+import guestIcon from "@assets/icons/form/guest.svg";
+import info_fillIcon from "@assets/icons/form/info_fill.png";
+import medalStarIcon from "@assets/icons/form/medalStar.svg";
+import starIcon from "@assets/icons/form/star.svg";
+import tagIcon from "@assets/icons/form/tag.png";
+import GridButtonsForm from "@components/FormulariesCompouse/GridButtonsForm.astro";
+import RadioForm from "@components/FormulariesCompouse/RadioForm.astro";
+import InputForm from "@components/FormulariesCompouse/InputForm.astro";
+---
+
+<Modal id="DemographicFormModal" closeBy="none" withOutPadding>
+  <form
+    id="demographic_form"
+    class="flex flex-col w-[min(90vw, 320px)] max-h-fit bg-white rounded-xl"
+  >
+    <div
+      class="relative flex items-end justify-start h-28 w-full min-w-10/12 bg-theme-light-card rounded-t-xl px-4 pb-2 border-b-2 border-theme-primary"
+    >
+      <Image
+        src={weightIcon}
+        alt="weight icon"
+        class="absolute right-0 -bottom-2 w-20"
+      />
+      <h2
+        class="uppercase text-theme-primary font-bold text-2xl tracking-wide text-left z-10"
+      >
+        COMPLETA TU PERFIL
+      </h2>
+    </div>
+    <div class="h-6"></div>
+    <SectionLabelForm
+      label="SELECCIONA GÉNERO"
+      forLabel="gender"
+      icon={genderIcon}
+      initialRequired
+    >
+      <GridButtonsForm
+        name="gender"
+        items={[
+          { label: "Masculino", value: "male", id: "gender_masculino" },
+          { label: "Femenino", value: "female", id: "gender_femenino" },
+          { label: "Otro", value: "other", id: "gender_otro" },
+        ]}
+        spanLastOddItem
+      />
+    </SectionLabelForm>
+    <SectionLabelForm
+      label="RANGO DE EDAD"
+      forLabel="range"
+      icon={calendarIcon}
+    >
+      <GridButtonsForm
+        name="range"
+        items={[
+          { label: "< 18", value: "<18", id: "range_18" },
+          { label: "18-24", value: "18-24", id: "range_18-24" },
+          { label: "25-34", value: "25-34", id: "range_25-34" },
+          { label: "35-44", value: "35-44", id: "range_35-44" },
+          { label: "45-54", value: "45-54", id: "range_45-54" },
+          { label: "55-64", value: "55-64", id: "range_55-64" },
+          { label: "65 +", value: "65+", id: "range_65" },
+        ]}
+      />
+    </SectionLabelForm>
+    <SectionLabelForm
+      label="TIPO DE MEMBRESÍA"
+      forLabel="membership"
+      icon={tagIcon}
+      initialRequired
+    >
+      <RadioForm
+        name="membership"
+        items={[
+          {
+            label: "Classic Card",
+            value: "classic-card",
+            id: "membership_classic_card",
+            icon: starIcon,
+          },
+          {
+            label: "PF Black Card  ®",
+            value: "pf-black-card",
+            id: "membership_pf_black_card",
+            icon: medalStarIcon,
+          },
+          {
+            label: "Invitado",
+            value: "invite",
+            id: "membership_invite",
+            icon: guestIcon,
+          },
+        ]}
+      />
+    </SectionLabelForm>
+    <SectionLabelForm
+      label="EMAIL O TELÉFONO"
+      forLabel="contact"
+      icon={info_fillIcon}
+    >
+      <InputForm name="contact" placeholder="Ingresa los detalles..." />
+    </SectionLabelForm>
+    <div class="h-12"></div>
+    <div class="w-full flex items-center justify-around p-4 flex-col gap-4">
+      <Button
+        variant="primary"
+        size="large"
+        id="accept_demographic_form"
+        disabled
+        class="tracking-widest">ENVIAR</Button
+      >
+    </div>
+  </form>
+</Modal>
+
+<script>
+  import {
+    initModalTrigger,
+    type ModalTriggerState,
+  } from "@utils/modalTrigger";
+  import { getSessionValue } from "@utils/sessionStorage";
+  import { actions } from "astro:actions";
+
+  type Gender = "male" | "female" | "other";
+  type Membership = "classic-card" | "pf-black-card" | "invite";
+  type Range =
+    | "<18"
+    | "18-24"
+    | "25-34"
+    | "35-44"
+    | "45-54"
+    | "55-64"
+    | "65+"
+    | undefined;
+
+  interface DemographicFormValues {
+    gender: Gender;
+    membership: Membership;
+    range: Range;
+    contact: string;
+  }
+
+  const initializeDemographicForm = () => {
+    const demographicForm =
+      document.querySelector<HTMLFormElement>("#demographic_form");
+    if (!demographicForm || demographicForm.dataset.initialized === "true") {
+      return;
+    }
+
+    demographicForm.dataset.initialized = "true";
+
+    setTimeout(() => {
+      document.dispatchEvent(new Event("open-modal-DemographicFormModal"));
+    }, 0);
+
+    const acceptButton = document.querySelector<HTMLButtonElement>(
+      "#accept_demographic_form",
+    );
+    const genderInputs =
+      demographicForm.querySelectorAll<HTMLInputElement>('[name="gender"]');
+    const membershipInputs = demographicForm.querySelectorAll<HTMLInputElement>(
+      '[name="membership"]',
+    );
+    const contactInput =
+      demographicForm.querySelector<HTMLInputElement>('[name="contact"]');
+    const contactError =
+      document.querySelector<HTMLSpanElement>("#contact_error");
+    const contactErrorText =
+      contactError?.querySelector<HTMLSpanElement>("span.text-red-500");
+    const contactLabelSpan = document.querySelector(
+      "label[for='contact']>span.text-red-500",
+    ) as HTMLSpanElement;
+
+    const requiredButtonClasses = [
+      "opacity-70",
+      "active:scale-100",
+      "bg-theme-accent/50",
+      "cursor-not-allowed",
+    ];
+
+    const getSelectedValue = (inputs: NodeListOf<HTMLInputElement>) =>
+      Array.from(inputs).find((input) => input.checked)?.value ?? "";
+
+    const showContactError = (message: string) => {
+      if (!contactError || !contactErrorText || !contactInput) return;
+
+      contactErrorText.textContent = message;
+      contactError.classList.remove("hidden");
+      contactError.classList.add("flex");
+      contactInput.classList.remove("border-theme-purple-gray");
+      contactInput.classList.add("border-b-red-500");
+      contactInput.setAttribute("aria-invalid", "true");
+    };
+
+    const hideContactError = () => {
+      if (!contactError || !contactInput) return;
+
+      contactError.classList.add("hidden");
+      contactError.classList.remove("flex");
+      contactInput.classList.remove("border-b-red-500");
+      contactInput.removeAttribute("aria-invalid");
+    };
+
+    const getContactValidationMessage = (
+      value: string,
+      isRequired: boolean,
+    ) => {
+      const contact = value.trim();
+
+      if (!contact) {
+        return isRequired ? "Ingresa un email o telefono." : "";
+      }
+
+      const hasEmailSignal = /[a-zA-Z@.]/.test(contact);
+
+      if (!hasEmailSignal) {
+        return /^\d{10}$/.test(contact)
+          ? ""
+          : "Ingresa un telefono valido (10 digitos).";
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      return emailPattern.test(contact) ? "" : "Ingresa un email valido";
+    };
+
+    const sanitizeContactValue = () => {
+      if (!contactInput) return;
+
+      const value = contactInput.value;
+      const isEmailLike = /[a-zA-Z@.]/.test(value);
+
+      if (!isEmailLike) {
+        contactInput.value = value.replace(/\D/g, "").slice(0, 10);
+      }
+    };
+
+    const updateSubmitState = () => {
+      const gender = getSelectedValue(genderInputs);
+      const membership = getSelectedValue(membershipInputs);
+      const isInvite = membership === "invite";
+      const contactValidationMessage = getContactValidationMessage(
+        contactInput?.value ?? "",
+        isInvite,
+      );
+      const isValid = Boolean(
+        gender && membership && !contactValidationMessage,
+      );
+
+      if (contactLabelSpan) {
+        contactLabelSpan.hidden = !isInvite;
+      }
+
+      if (contactInput) {
+        contactInput.required = isInvite;
+        contactInput.setCustomValidity(contactValidationMessage);
+      }
+
+      if (
+        contactValidationMessage &&
+        (isInvite || contactInput?.value.trim())
+      ) {
+        showContactError(contactValidationMessage);
+      } else {
+        hideContactError();
+      }
+
+      if (acceptButton) {
+        acceptButton.disabled = !isValid;
+        acceptButton.setAttribute("aria-disabled", String(!isValid));
+        acceptButton.classList.toggle("cursor-not-allowed", !isValid);
+        acceptButton.classList.toggle("pointer-events-none", !isValid);
+
+        requiredButtonClasses.forEach((className) => {
+          acceptButton.classList.toggle(className, !isValid);
+        });
+      }
+    };
+
+    genderInputs.forEach((radio) => {
+      radio.addEventListener("change", updateSubmitState);
+    });
+
+    membershipInputs.forEach((radio) => {
+      radio.addEventListener("change", updateSubmitState);
+    });
+
+    contactInput?.addEventListener("input", () => {
+      sanitizeContactValue();
+      updateSubmitState();
+    });
+
+    demographicForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      updateSubmitState();
+      if (!demographicForm.checkValidity()) {
+        demographicForm.reportValidity();
+        return;
+      }
+
+      const values = Object.fromEntries(
+        new FormData(demographicForm),
+      ) as unknown as DemographicFormValues;
+
+      try {
+        const result = await actions.CreateDemographic({
+          contact: values.contact,
+          gender: values.gender,
+          range: values.range,
+          membership: values.membership,
+        });
+
+        console.log(result);
+      } catch (error) {
+      } finally {
+        document.dispatchEvent(new Event("close-modal-DemographicFormModal"));
+        document.dispatchEvent(new Event("initialize-feedback-system"));
+      }
+    });
+
+    updateSubmitState();
+  };
+
+  let modalTriggerInstance: ReturnType<typeof initModalTrigger> | null = null;
+
+  const initializeModalTrigger = () => {
+    const modalState = getSessionValue<ModalTriggerState>(
+      "_demographicModalShowed",
+      {
+        modalHasBeenShown: false,
+        screenTimeSeconds: 0,
+        clicks: 0,
+      },
+    );
+    if (modalState.modalHasBeenShown) {
+      document.dispatchEvent(new Event("initialize-feedback-system"));
+      return;
+    }
+    modalTriggerInstance = initModalTrigger({
+      storageKey: "_demographicModalShowed",
+      minClicks: 20,
+      maxClicks: 25,
+      timeThresholdSeconds: 600,
+      preConditions: () => true,
+      onTrigger: () => {
+        setTimeout(() => {
+          const dialog = document.getElementById("DemographicFormModal");
+          const panel = dialog?.querySelector("[data-panel]");
+          if (!dialog || !panel) return;
+          panel.classList.add("open");
+          dialog.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        }, 800);
+        initializeDemographicForm();
+      },
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", initializeModalTrigger);
+  document.addEventListener("astro:page-load", initializeModalTrigger);
+
+  document.addEventListener("astro:before-swap", () => {
+    if (modalTriggerInstance) {
+      modalTriggerInstance.cleanup();
+    }
+  });
+</script>

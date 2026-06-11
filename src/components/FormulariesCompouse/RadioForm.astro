@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  name: string;
+  defaultValue?: string;
+  items: Array<{
+    label: string;
+    value: string;
+    id: string;
+    icon: ImageMetadata;
+  }>;
+}
+
+const { name, defaultValue, items } = Astro.props;
+---
+
+<div class="flex w-full flex-col gap-4">
+  {
+    items.map((item) => (
+      <div class="relative">
+        <input
+          class="peer sr-only"
+          type="radio"
+          name={name}
+          id={item.id}
+          value={item.value}
+          checked={item.value === defaultValue}
+        />
+        <label
+          for={item.id}
+          class="flex min-h-16 w-full p-2 cursor-pointer items-center justify-between gap-4 rounded-2xl border-[3px] border-transparent bg-theme-light-card text-theme-purple-dark font-semibold tracking-widest transition peer-checked:border-theme-purple-dark peer-checked:[&_.membership-icon]:bg-theme-purple-dark peer-checked:[&_.membership-icon-img]:[filter:brightness(0)_saturate(100%)_invert(82%)_sepia(98%)_saturate(934%)_hue-rotate(358deg)_brightness(103%)_contrast(101%)] peer-checked:[&_.membership-indicator]:border-[2px] peer-checked:[&_.membership-indicator]:border-theme-purple-dark peer-checked:[&_.membership-indicator]:bg-theme-accent peer-checked:[&_.membership-indicator-dot]:block peer-checked:shadow"
+        >
+          <span class="flex min-w-0 items-center gap-4">
+            <span class="membership-icon flex size-14 shrink-0 items-center justify-center rounded-2xl bg-theme-purple-gray transition">
+              <Image
+                src={item.icon}
+                alt=""
+                class="membership-icon-img size-10 object-contain transition"
+              />
+            </span>
+            <span class="min-w-0 leading-tight tracking-tight">
+              {item.label}
+            </span>
+          </span>
+          <span
+            aria-hidden="true"
+            class="membership-indicator relative flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-theme-tertiary bg-white transition"
+          >
+            <span class="membership-indicator-dot hidden size-4 rounded-full bg-theme-purple-dark" />
+          </span>
+        </label>
+      </div>
+    ))
+  }
+</div>
