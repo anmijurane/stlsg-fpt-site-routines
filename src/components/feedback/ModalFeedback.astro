@@ -88,7 +88,11 @@ const feedbackOptions = [
 <script>
   import { actions } from "astro:actions";
   import type { Emoji } from "@interfaces/common";
-  import { initModalTrigger } from "@utils/modalTrigger";
+  import {
+    initModalTrigger,
+    type ModalTriggerState,
+  } from "@utils/modalTrigger";
+  import { getSessionValue } from "@utils/sessionStorage";
 
   const sanitizeRegExp =
     /(?:\r\n|\r|\n)+|<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>|<[^>]*>/gi;
@@ -203,10 +207,17 @@ const feedbackOptions = [
       maxClicks: 25,
       timeThresholdSeconds: 600,
       preConditions: () => {
-        const hasFeedback = sessionStorage.getItem("_feedback");
-        const hasShowDemographicModal =
-          localStorage.getItem("demographicModalShowed") || false;
-        return !hasFeedback && !!hasShowDemographicModal;
+        const hasFeedback = getSessionValue<string>("_feedback", "");
+        const demographicModalState = getSessionValue<ModalTriggerState>(
+          "_demographicModalShowed",
+          {
+            modalHasBeenShown: false,
+            clicks: 0,
+            screenTimeSeconds: 0,
+            clickTarget: 20,
+          },
+        );
+        return !hasFeedback && !!demographicModalState.modalHasBeenShown;
       },
       onTrigger: () => {
         document.dispatchEvent(new Event("open-modal-feedback"));
