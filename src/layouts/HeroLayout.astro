@@ -6,7 +6,7 @@ import rutinas from "@assets/routines_text.svg";
 ---
 
 <div
-  class="w-full sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-5/12 shadow-2xl rounded-md"
+  class="bg-home-gradient min-h-[100dvh] w-full overflow-hidden sm:w-8/12 sm:rounded-md md:w-6/12 lg:w-5/12 xl:w-5/12 shadow-2xl"
 >
   <div class="relative flex items-center justify-center">
     <img
@@ -30,6 +30,10 @@ import rutinas from "@assets/routines_text.svg";
         <img src={rutinas.src} alt="Rutinas" />
       </div>
     </div>
+    <div
+      class="hero-top-fade pointer-events-none absolute inset-x-0 top-0 h-28"
+      aria-hidden="true"
+    ></div>
   </div>
   <slot> Content Slot </slot>
 </div>

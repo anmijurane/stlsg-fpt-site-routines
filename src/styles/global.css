@@ -35,6 +35,18 @@
 
 }
 
+html {
+  min-height: 100%;
+  background-color: var(--color-purple-pf);
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  background-color: var(--color-purple-pf);
+}
+
 @theme {
   --color-theme-primary: var(--color-purple-pf, #9600FA);
   --color-theme-secondary: var(--color-purple-dark, #290241);
@@ -52,7 +64,25 @@
 
 @layer utilities {
   .bg-gradient-purple {
+    background-color: var(--color-purple-pf);
     background-image: linear-gradient(245deg, #9600FA 45%, #AE00FF 100%);
+  }
+
+  .bg-home-gradient {
+    background-color: var(--color-purple-pf);
+    background-image: linear-gradient(180deg,
+        var(--color-purple-pf) 0%,
+        var(--color-purple-pf) 24%,
+        var(--color-purple-medium) 67%,
+        var(--color-purple-pf) 100%);
+  }
+
+  .hero-top-fade {
+    background-image: linear-gradient(180deg,
+        var(--color-purple-pf) 0%,
+        rgb(150 0 250 / 72%) 36%,
+        rgb(150 0 250 / 28%) 60%,
+        transparent 100%);
   }
 
   .bg-gradient-purple-light {
