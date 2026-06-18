@@ -63,9 +63,9 @@ const saveLogInDataBaseWithAPI = async (body: LogEntry) => {
         }
       }
     );
-    console.log('Log saved in database:', response.data);
+    console.log('Log saved in database');
   } catch (error) {
-    console.error('Error a registry log', error);
+    console.error('Error a registry log');
   }
 }
 
@@ -74,12 +74,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // if (import.meta.env.MODE === 'development') {
   //   return next();
   // }
+  const purpose = request.headers.get('Purpose') || request.headers.get('Sec-Purpose');
+  const secFetchDest = request.headers.get('sec-fetch-dest') || '';
 
-  if (request.method === 'HEAD' || request.method === 'OPTIONS') return next();
+  const secFetchDestDiscard = ['empty', 'image', 'video', 'audio'];
+  if (
+    request.method === 'HEAD' ||
+    request.method === 'OPTIONS' ||
+    purpose === 'prefetch' ||
+    secFetchDestDiscard.includes(secFetchDest)) {
+    return next();
+  }
 
   if (
     url.pathname.startsWith('/_astro/') ||
-    url.pathname.startsWith('/_image') ||
+    url.pathname.startsWith('/_image/') ||
+    url.pathname.startsWith('/_actions/') ||
     ASSET_EXTENSIONS.some(ext => url.pathname.endsWith(ext))
   ) return next();
 
