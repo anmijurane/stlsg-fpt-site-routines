@@ -1,8 +1,9 @@
 import { useState, useCallback, type FC } from 'react'
 import { Like } from './icons/Like'
 import '@styles/evaluation-animation.css'
-
-type Reaction = 'liked' | 'disliked' | null;
+import { setFeedbackExerciseById } from '@store/routines.actions';
+import type { ReactionFeedback } from '@interfaces/routines';
+import { Routine } from '@store/routines';
 
 interface Props {
   day: number;
@@ -24,14 +25,22 @@ const SparkleParticles = () => (
 );
 
 export const RoutineExerciceFeedback: FC<Props> = ({ day, level, category, exercise = null }) => {
-  const [reaction, setReaction] = useState<Reaction>(null);
-  const [animating, setAnimating] = useState<Reaction>(null);
+  const [reaction, setReaction] = useState<ReactionFeedback>(() => {
+    const routine = Routine.get()[day];
+    if (!routine) return null;
+    if (exercise) {
+      return routine.exercises.find(ex => ex.id === exercise)?.likeAExercise || null;
+    }
+    return routine.likeARoutine;
+  });
+  const [animating, setAnimating] = useState<ReactionFeedback>(null);
 
-  const handleReaction = useCallback((type: Reaction) => {
+  const handleReaction = useCallback((type: ReactionFeedback) => {
     if (reaction !== null) return;
     setReaction(type);
     setAnimating(type);
     setTimeout(() => setAnimating(null), 800);
+    setFeedbackExerciseById(day, type, exercise, level, category, location.pathname, location.search);
   }, [reaction]);
 
   const isLiked = reaction === 'liked';
