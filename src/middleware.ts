@@ -77,7 +77,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const purpose = request.headers.get('Purpose') || request.headers.get('Sec-Purpose');
   const secFetchDest = request.headers.get('sec-fetch-dest') || '';
 
-  const secFetchDestDiscard = ['empty', 'image', 'video', 'audio'];
+  const secFetchDestDiscard = ['image', 'video', 'audio'];
   if (
     request.method === 'HEAD' ||
     request.method === 'OPTIONS' ||
