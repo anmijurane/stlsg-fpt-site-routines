@@ -73,3 +73,5 @@ export interface Frequency {
   total: number;
   label: string;
 }
+
+export type ReactionFeedback = 'liked' | 'disliked' | null;
