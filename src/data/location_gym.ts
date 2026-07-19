@@ -60,4 +60,18 @@ export const locationsGym = [
   { "slug": "66dab86bf2", "state": "Acapulco",    "club": "Multiplaza las Palmas",  "active": true },   // QR_ACA_MULTIPLAZA-LAS-PALMAS
   { "slug": "216428d3f9", "state": "Edo de Mex",  "club": "Cuatro Caminos",         "active": true },   // QR_MEX_CUATRO-CAMINOS
   { "slug": "d6830a6ee4", "state": "Mérida",      "club": "Canek",                  "active": true },   // QR_MER_CANEK
+
+  // nueva tanda 2026
+
+  { "slug": "7a3e9b1c4f", "state": "CDMX",         "club": "Centro Santa Fé",       "active": true },
+  { "slug": "d2f08c6e5a", "state": "CDMX",         "club": "Melt Polanco",          "active": true },
+  { "slug": "b5c1a7d930", "state": "CDMX",         "club": "Izazaga",               "active": true },
+  { "slug": "e8f4b2a61d", "state": "Nuevo León",   "club": "Escobedo",              "active": true },
+  { "slug": "3c9d7e0f28", "state": "Nuevo León",   "club": "Paseo La Fé",           "active": true },
+  { "slug": "a1b5d8e3c7", "state": "Querétaro",    "club": "El Refugio",            "active": true },
+  { "slug": "f6e2c9a04b", "state": "Oaxaca",       "club": "Santa Rosa",            "active": true },
+  { "slug": "4d0b7f3e18", "state": "Quintana Roo", "club": "Misión Las Flores",     "active": true },
+  { "slug": "92a6d5c8f1", "state": "Guanajuato",   "club": "Plaza Laureles",        "active": true },
+  { "slug": "1e7c4b0a9d", "state": "Saltillo",     "club": "Híper Echeverría",      "active": true },
+
 ];
